@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Cryptomentor</title>
+<style>
+  :root{
+    --bg:#0E0F14; --card:#11131A; --border:rgba(51,102,255,.2);
+    --glow:rgba(0,255,255,.25); --text:#E6E8EC; --muted:#9aa4b2;
+    --primary:#F2B705; --accent:#627EEA; --good:#4CD964; --bad:#FF453A;
+  }
+  *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;color:var(--text);background:var(--bg)}
+  .wrap{max-width:520px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+  .content{flex:1;padding:16px 16px 88px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:16px;box-shadow:0 8px 24px var(--glow)}
+  .title{font-weight:800;font-size:16px;margin:8px 0}
+  .section{font-weight:800;margin:16px 0 8px}
+  .row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(56,75,106,.2)}
+  .chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:14px;padding:8px 10px;background:rgba(28,144,243,.08);font-size:12px}
+  .avatar{width:36px;height:36px;border-radius:18px;background:#141824;display:flex;align-items:center;justify-content:center;font-weight:700}
+  .right{margin-left:auto;text-align:right}
+  .muted{color:var(--muted)}
+  /* bottom nav */
+  .nav{position:fixed;left:0;right:0;bottom:0;background:#0F1117;border-top:1px solid #222}
+  .nav .bar{max-width:520px;margin:0 auto;display:flex;justify-content:space-around}
+  .btn{flex:1;padding:10px 6px 14px;text-align:center;color:var(--muted);font-size:12px}
+  .btn.active{color:var(--primary);font-weight:700}
+  .btn span{display:block;font-size:18px;margin-bottom:4px}
+  /* simple icons */
+  .i{width:22px;height:22px;display:inline-block;border:2px solid currentColor;border-radius:6px}
+  .i.bolt{transform:skewX(-12deg);border-radius:3px}
+  .i.shield{border-radius:50%}
+  .i.spark{border-radius:50%;border-style:dashed}
+  .i.user{border-radius:50%}
+  /* hide pages */
+  [data-page]{display:none} [data-page].show{display:block}
+  .center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:40px 16px}
+  .btn-primary{background:var(--primary);color:#000;border:none;border-radius:12px;padding:10px 14px;font-weight:800}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="content">
+    <!-- Home -->
+    <div data-page="home" class="show">
+      <div class="card">
+        <div style="display:flex;justify-content:center;margin:6px 0 10px">
+          <div style="width:120px;height:120px;border-radius:60px;background:#28304A;
+                      border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+                      box-shadow:0 8px 24px var(--glow)">
+            <strong>Cryptomentor</strong>
+          </div>
+        </div>
+        <div class="title" style="text-align:center">AI Driven Trading</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;margin-top:8px">
+          <span class="chip">📈 Real-time Insights</span>
+          <span class="chip">🛡️ Enterprise Security</span>
+          <span class="chip">⚡ Pro Signals</span>
+          <span class="chip">🏆 Smart Trading</span>
+        </div>
+      </div>
+
+      <div class="section">Market</div>
+      <div id="market"></div>
+    </div>
+
+    <!-- Signals -->
+    <div data-page="signals">
+      <div class="center">
+        <div style="font-size:64px;line-height:1">🔒</div>
+        <div class="title">Unlock Pro Signals</div>
+        <div class="muted" style="text-align:center">Entry, SL, TP1/2/3 và AI risk controls.</div>
+        <button class="btn-primary" onclick="unlock()">Upgrade (mock)</button>
+      </div>
+      <div id="proSignals" style="display:none;padding:8px 0">
+        <div class="row">
+          <div class="avatar">B</div>
+          <div><div>BTCUSDT • H1</div><div class="muted">Status: Still-Valid</div></div>
+        </div>
+        <div class="row">
+          <div class="avatar">E</div>
+          <div><div>ETHUSDT • H1</div><div class="muted">Status: Late</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scan -->
+    <div data-page="scan" class="">
+      <div class="center"><div style="font-size:40px">🛰️</div><div class="title">AI Scan (mock)</div></div>
+    </div>
+
+    <!-- Alpha -->
+    <div data-page="alpha" class="">
+      <div class="center"><div style="font-size:40px">✨</div><div class="title">Hidden Alpha (mock)</div></div>
+    </div>
+
+    <!-- Account -->
+    <div data-page="account" class="">
+      <div class="center"><div style="font-size:40px">👤</div><div class="title">Account</div></div>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <nav class="nav">
+    <div class="bar">
+      <div class="btn active" data-tab="home"    onclick="show('home',this)"><span class="i"></span>Home</div>
+      <div class="btn"        data-tab="signals" onclick="show('signals',this)"><span class="i bolt"></span>Signals</div>
+      <div class="btn"        data-tab="scan"    onclick="show('scan',this)"><span class="i shield"></span>Scan</div>
+      <div class="btn"        data-tab="alpha"   onclick="show('alpha',this)"><span class="i spark"></span>Alpha</div>
+      <div class="btn"        data-tab="account" onclick="show('account',this)"><span class="i user"></span>Account</div>
+    </div>
+  </nav>
+</div>
+
+<script>
+  // mock market
+  const list = [
+    {name:'Bitcoin',  symbol:'BTC', price:64450.12, change: 2.34},
+    {name:'Ethereum', symbol:'ETH', price: 3240.55, change:-0.80},
+    {name:'Solana',   symbol:'SOL', price:  152.81, change: 7.20},
+    {name:'BNB',      symbol:'BNB', price:  598.12, change: 1.08}
+  ];
+  const $m = document.getElementById('market');
+  list.forEach(it=>{
+    const up = it.change>=0;
+    const row = document.createElement('div'); row.className='row';
+    row.innerHTML = `
+      <div class="avatar">${it.symbol[0]}</div>
+      <div><div>${it.name} • ${it.symbol}</div><div class="muted">24h</div></div>
+      <div class="right">
+        <div>$${it.price.toFixed(2)}</div>
+        <div style="color:${up?'var(--good)':'var(--bad)'}">${up?'+':''}${it.change.toFixed(2)}%</div>
+      </div>`;
+    $m.appendChild(row);
+  });
+
+  // tabs
+  function show(name, el){
+    document.querySelectorAll('[data-page]').forEach(p=>p.classList.remove('show'));
+    document.querySelector(`[data-page="${name}"]`).classList.add('show');
+    document.querySelectorAll('.btn').forEach(b=>b.classList.remove('active'));
+    el.classList.add('active');
+  }
+  // signals upgrade mock
+  function unlock(){
+    document.querySelector('#proSignals').style.display='block';
+    alert('Đã mở khóa Pro (mock)');
+  }
+</script>
+</body>
+</html>
