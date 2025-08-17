@@ -1,4 +1,4 @@
-name: Build APK - Cryptomentor (One-File)
+name: Build APK - Cryptomentor (Ultra-Simple)
 on: { workflow_dispatch: {} }
 
 jobs:
@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JAVA_TOOL_OPTIONS: "-Xms512m -Xmx3g"
-      GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx3g -Dkotlin.daemon.jvm.options=-Xmx1g"
+      GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx3g"
 
     steps:
       - uses: actions/checkout@v4
@@ -24,31 +24,27 @@ jobs:
           channel: stable
           cache: true
 
-      - name: Create Flutter project
+      - name: Create project
         run: |
           mkdir app && cd app
           flutter create .
-          # Đặt tên app
+          # Rename app to Cryptomentor
           sed -i 's/<string name="app_name">.*<\/string>/<string name="app_name">Cryptomentor<\/string>/' android/app/src/main/res/values/strings.xml || true
           sed -i 's/android:label="[^"]*"/android:label="@string\/app_name"/' android/app/src/main/AndroidManifest.xml || true
 
-      - name: Patch Android/Gradle to safe defaults
+      - name: Patch Android/Gradle
         run: |
           cd app
-          # ép version SDK an toàn
           sed -i 's/minSdkVersion *[0-9]\+/minSdkVersion 21/' android/app/build.gradle || true
           sed -i 's/targetSdkVersion *[0-9]\+/targetSdkVersion 34/' android/app/build.gradle || true
           sed -i 's/compileSdkVersion *[0-9]\+/compileSdkVersion 34/' android/app/build.gradle || true
-          # đảm bảo gradle wrapper mới
-          sed -i 's/gradle-[0-9.]\+-all.zip/gradle-8.6-all.zip/' android/gradle/wrapper/gradle-wrapper.properties || true
 
-      - name: Inject source (UI + assets)
-        shell: bash
+      - name: Write pubspec + single-file UI
         run: |
           cd app
           cat > pubspec.yaml <<'YAML'
-          name: cryptomentor_full_ui_app
-          description: Cryptomentor UI with mock data
+          name: cryptomentor_min_app
+          description: Minimal Cryptomentor to ensure APK build
           publish_to: "none"
           environment:
             sdk: ">=2.17.0 <4.0.0"
@@ -60,23 +56,14 @@ jobs:
               sdk: flutter
           flutter:
             uses-material-design: true
-            assets:
-              - assets/data/market.json
-              - assets/data/signals.json
-              - assets/data/scan.json
-              - assets/data/alpha.json
           YAML
 
-          mkdir -p lib/ui/widgets assets/data
-
+          mkdir -p lib
           cat > lib/main.dart <<'DART'
           import 'package:flutter/material.dart';
-          import 'ui/home_screen.dart';
-          import 'ui/signals_screen.dart';
-          import 'ui/scan_screen.dart';
-          import 'ui/alpha_screen.dart';
-          import 'ui/account_screen.dart';
+
           void main() => runApp(const CryptomentorApp());
+
           class CryptomentorApp extends StatelessWidget {
             const CryptomentorApp({super.key});
             @override
@@ -84,136 +71,177 @@ jobs:
               return MaterialApp(
                 title: 'Cryptomentor',
                 debugShowCheckedModeBanner: false,
-                theme: ThemeData.dark(),
+                theme: ThemeData.dark().copyWith(
+                  scaffoldBackgroundColor: const Color(0xFF0E0F14),
+                  colorScheme: const ColorScheme.dark(
+                    primary: Color(0xFFF2B705),
+                    secondary: Color(0xFF627EEA),
+                  ),
+                ),
                 home: const RootNav(),
               );
             }
           }
-          class RootNav extends StatefulWidget { const RootNav({super.key}); @override State<RootNav> createState()=>_RootNavState(); }
+
+          class RootNav extends StatefulWidget {
+            const RootNav({super.key});
+            @override State<RootNav> createState() => _RootNavState();
+          }
+
           class _RootNavState extends State<RootNav> {
-            int _i = 0; bool isPro = false;
-            @override Widget build(BuildContext c){
-              final screens = [
+            int _idx = 0;
+            bool isPro = false;
+
+            @override
+            Widget build(BuildContext context) {
+              final pages = <Widget>[
                 const HomeScreen(),
-                SignalsScreen(isPro: isPro, onUpgrade: ()=> setState(()=> isPro = true)),
-                const ScanScreen(), const AlphaScreen(), const AccountScreen()
+                SignalsScreen(isPro: isPro, onUpgrade: () => setState(() => isPro = true)),
+                const ScanScreen(),
+                const AlphaScreen(),
+                const AccountScreen(),
               ];
               return Scaffold(
-                body: SafeArea(child: screens[_i]),
+                body: SafeArea(child: pages[_idx]),
                 bottomNavigationBar: NavigationBar(
-                  selectedIndex: _i,
-                  onDestinationSelected: (i)=> setState(()=> _i=i),
+                  selectedIndex: _idx,
+                  onDestinationSelected: (i) => setState(() => _idx = i),
                   destinations: const [
-                    NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label:'Home'),
-                    NavigationDestination(icon: Icon(Icons.bolt), label:'Signals'),
-                    NavigationDestination(icon: Icon(Icons.shield_moon_outlined), label:'Scan'),
-                    NavigationDestination(icon: Icon(Icons.auto_awesome), label:'Alpha'),
-                    NavigationDestination(icon: Icon(Icons.person_outline), label:'Account'),
+                    NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: 'Home'),
+                    NavigationDestination(icon: Icon(Icons.bolt), label: 'Signals'),
+                    NavigationDestination(icon: Icon(Icons.shield_moon_outlined), label: 'Scan'),
+                    NavigationDestination(icon: Icon(Icons.auto_awesome), label: 'Alpha'),
+                    NavigationDestination(icon: Icon(Icons.person_outline), label: 'Account'),
                   ],
                 ),
               );
             }
           }
-          DART
 
-          cat > lib/ui/home_screen.dart <<'DART'
-          import 'dart:convert'; import 'package:flutter/material.dart';
-          class HomeScreen extends StatefulWidget { const HomeScreen({super.key}); @override State<HomeScreen> createState()=>_HomeScreenState(); }
-          class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
-            late TabController _tab; List<dynamic> market=[];
-            @override void initState(){ super.initState(); _tab = TabController(length: 4, vsync: this); }
-            @override void didChangeDependencies(){ super.didChangeDependencies(); _load(); }
-            Future<void> _load() async { final s = await DefaultAssetBundle.of(context).loadString('assets/data/market.json'); setState(()=> market=jsonDecode(s)); }
-            @override Widget build(BuildContext c){
-              return CustomScrollView(slivers: [
-                SliverToBoxAdapter(child: Padding(padding: const EdgeInsets.all(16), child: Column(children: const [Text('AI Driven Trading', style: TextStyle(fontSize:18,fontWeight:FontWeight.w700)), SizedBox(height: 12)]))),
-                SliverAppBar(pinned:true, title: const Text('Market'),
-                  bottom: TabBar(controller:_tab, isScrollable:true, tabs: const [Tab(text:'Top Gainers'),Tab(text:'Top Losers'),Tab(text:'Trending'),Tab(text:'Favorites')])),
-                SliverFillRemaining(child: TabBarView(controller:_tab, children:[
-                  _list(), _list(), _list(), _list(),
-                ])),
+          class HomeScreen extends StatelessWidget {
+            const HomeScreen({super.key});
+            @override
+            Widget build(BuildContext context) {
+              return ListView(
+                padding: const EdgeInsets.all(16),
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF11131A),
+                      borderRadius: BorderRadius.circular(24),
+                      boxShadow: const [BoxShadow(color: Color(0x3300FFFF), blurRadius: 24, offset: Offset(0,6))],
+                      border: Border.all(color: const Color(0x2233CCFF)),
+                    ),
+                    child: Column(
+                      children: const [
+                        SizedBox(height: 6),
+                        Text('AI Driven Trading', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+                        SizedBox(height: 10),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text('Market', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                  const SizedBox(height: 8),
+                  ...[
+                    {'name':'Bitcoin',  'symbol':'BTC', 'price': 64450.12, 'change': 2.34},
+                    {'name':'Ethereum','symbol':'ETH', 'price':  3240.55, 'change':-0.80},
+                    {'name':'Solana',  'symbol':'SOL', 'price':   152.81, 'change': 7.20},
+                  ].map((it) {
+                    final up = (it['change'] as num) >= 0;
+                    return ListTile(
+                      leading: CircleAvatar(child: Text((it['symbol'] as String)[0])),
+                      title: Text('${it['name']} • ${it['symbol']}'),
+                      trailing: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text('\$${(it['price'] as num).toStringAsFixed(2)}'),
+                          Text('${up ? '+' : ''}${(it['change'] as num).toStringAsFixed(2)}%',
+                            style: TextStyle(color: up ? Colors.greenAccent : Colors.redAccent)),
+                        ],
+                      ),
+                    );
+                  }),
+                ],
+              );
+            }
+          }
+
+          class SignalsScreen extends StatelessWidget {
+            final bool isPro;
+            final VoidCallback onUpgrade;
+            const SignalsScreen({super.key, required this.isPro, required this.onUpgrade});
+            @override
+            Widget build(BuildContext context) {
+              if (!isPro) {
+                return Center(
+                  child: Column(mainAxisSize: MainAxisSize.min, children: [
+                    const Icon(Icons.lock_outline, size: 64),
+                    const SizedBox(height: 8),
+                    const Text('Unlock Pro Signals', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+                    const SizedBox(height: 10),
+                    ElevatedButton.icon(onPressed: onUpgrade, icon: const Icon(Icons.workspace_premium_outlined), label: const Text('Upgrade (mock)')),
+                  ]),
+                );
+              }
+              final data = [
+                {'pair':'BTCUSDT','tf':'H1','status':'Still-Valid'},
+                {'pair':'ETHUSDT','tf':'H1','status':'Late'},
+              ];
+              return ListView.builder(
+                itemCount: data.length,
+                itemBuilder: (_, i) => ListTile(title: Text('${data[i]['pair']} • ${data[i]['tf']}'), subtitle: Text('${data[i]['status']}')),
+              );
+            }
+          }
+
+          class ScanScreen extends StatelessWidget {
+            const ScanScreen({super.key});
+            @override
+            Widget build(BuildContext context) {
+              final tokens = [
+                {'name':'TKNX','risk':'High'},
+                {'name':'SAFE','risk':'Low'},
+              ];
+              return ListView.builder(
+                itemCount: tokens.length,
+                itemBuilder: (_, i) => ListTile(title: Text(tokens[i]['name']!), subtitle: Text('Risk: ${tokens[i]['risk']}')),
+              );
+            }
+          }
+
+          class AlphaScreen extends StatelessWidget {
+            const AlphaScreen({super.key});
+            @override
+            Widget build(BuildContext context) {
+              return ListView(children: const [
+                ListTile(title: Text('BTC Halving Cycle Momentum')),
               ]);
             }
-            Widget _list()=> ListView.builder(itemCount: market.length, itemBuilder: (_,i){ final it = market[i]; final up = (it['change'] as num) >= 0;
-              return ListTile(title: Text('${it['name']} • ${it['symbol']}'),
-                trailing: Text('${up?'+':''}${(it['change'] as num).toStringAsFixed(2)}%'));});
+          }
+
+          class AccountScreen extends StatelessWidget {
+            const AccountScreen({super.key});
+            @override
+            Widget build(BuildContext context) {
+              return ListView(padding: const EdgeInsets.all(16), children: const [
+                ListTile(leading: Icon(Icons.info_outline), title: Text('About')),
+              ]);
+            }
           }
           DART
-
-          cat > lib/ui/signals_screen.dart <<'DART'
-          import 'dart:convert'; import 'package:flutter/material.dart';
-          class SignalsScreen extends StatefulWidget { final bool isPro; final VoidCallback onUpgrade; const SignalsScreen({super.key, required this.isPro, required this.onUpgrade}); @override State<SignalsScreen> createState()=>_SignalsScreenState(); }
-          class _SignalsScreenState extends State<SignalsScreen>{ List<dynamic> signals=[];
-            @override void didChangeDependencies(){ super.didChangeDependencies(); _load(); }
-            Future<void> _load() async { final s = await DefaultAssetBundle.of(context).loadString('assets/data/signals.json'); setState(()=> signals=jsonDecode(s)); }
-            @override Widget build(BuildContext c)=> Scaffold(appBar: AppBar(title: const Text('Signals')), body: widget.isPro? _pro(): _lock());
-            Widget _lock()=> Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
-              const Icon(Icons.lock_outline, size:64), const SizedBox(height:12),
-              const Text('Unlock Pro Signals'), const SizedBox(height:8),
-              ElevatedButton(onPressed: widget.onUpgrade, child: const Text('Upgrade (mock)'))
-            ]));
-            Widget _pro(){ if (signals.isEmpty) return const Center(child: CircularProgressIndicator());
-              return ListView.builder(itemCount: signals.length, itemBuilder: (_,i){ final s = signals[i]; return ListTile(title: Text('${s['pair']} • ${s['tf']}'));});}
-          }
-          DART
-
-          cat > lib/ui/scan_screen.dart <<'DART'
-          import 'dart:convert'; import 'package:flutter/material.dart';
-          class ScanScreen extends StatefulWidget{ const ScanScreen({super.key}); @override State<ScanScreen> createState()=>_ScanScreenState(); }
-          class _ScanScreenState extends State<ScanScreen>{ List<dynamic> tokens=[];
-            @override void didChangeDependencies(){ super.didChangeDependencies(); _load(); }
-            Future<void> _load() async { final s = await DefaultAssetBundle.of(context).loadString('assets/data/scan.json'); setState(()=> tokens=jsonDecode(s)); }
-            @override Widget build(BuildContext c)=> Scaffold(appBar: AppBar(title: const Text('AI Scan')),
-              body: ListView.builder(itemCount: tokens.length, itemBuilder: (_,i){ final t = tokens[i]; return ListTile(title: Text(t['name']), subtitle: Text('Risk: ${t['risk']}'));}));
-          }
-          DART
-
-          cat > lib/ui/alpha_screen.dart <<'DART'
-          import 'dart:convert'; import 'package:flutter/material.dart';
-          class AlphaScreen extends StatefulWidget{ const AlphaScreen({super.key}); @override State<AlphaScreen> createState()=>_AlphaScreenState(); }
-          class _AlphaScreenState extends State<AlphaScreen>{ List<dynamic> briefs=[];
-            @override void didChangeDependencies(){ super.didChangeDependencies(); _load(); }
-            Future<void> _load() async { final s = await DefaultAssetBundle.of(context).loadString('assets/data/alpha.json'); setState(()=> briefs=jsonDecode(s)); }
-            @override Widget build(BuildContext c)=> Scaffold(appBar: AppBar(title: const Text('Hidden Alpha')),
-              body: ListView.builder(itemCount: briefs.length, itemBuilder: (_,i){ final b = briefs[i]; return ListTile(title: Text(b['title']));}));
-          }
-          DART
-
-          cat > lib/ui/account_screen.dart <<'DART'
-          import 'package:flutter/material.dart';
-          class AccountScreen extends StatelessWidget{ const AccountScreen({super.key}); @override Widget build(BuildContext c)=> Scaffold(appBar: AppBar(title: const Text('Account')),
-            body: ListView(children: const [ListTile(leading: Icon(Icons.info_outline), title: Text('About'))]));
-          }
-          DART
-
-          # mock data
-          cat > assets/data/market.json <<'JSON'
-          [{"name":"Bitcoin","symbol":"BTC","price":64450.12,"change":2.34,"volume":120.3,"fav":1},
-           {"name":"Ethereum","symbol":"ETH","price":3240.55,"change":-0.8,"volume":90.2,"fav":1}]
-          JSON
-          cat > assets/data/signals.json <<'JSON'
-          [{"pair":"BTCUSDT","tf":"H1","entry":[64000,64500],"sl":63000,"tp":[65000,66000,67000],"rr":"1:2.3","status":"Still-Valid"}]
-          JSON
-          cat > assets/data/scan.json <<'JSON'
-          [{"name":"TKNX","risk":"High","contract":"0x1234567890abcdef"}]
-          JSON
-          cat > assets/data/alpha.json <<'JSON'
-          [{"title":"BTC Halving","why":"On-chain","risk":"Macro","catalyst":"ETF","valid":"Q3 2025"}]
-          JSON
 
       - name: flutter pub get
         run: cd app && flutter pub get
 
-      - name: Build Debug APK via Gradle (stacktrace)
-        run: |
-          set -e
-          cd app/android
-          ./gradlew :app:assembleDebug --stacktrace --warning-mode all --no-daemon
+      - name: Build debug APK
+        run: cd app && flutter build apk --debug --no-tree-shake-icons -v
 
       - name: Upload APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: |
-            app/build/app/outputs/flutter-apk/app-debug.apk
-            app/build/outputs/**/*.apk
+          path: app/build/app/outputs/flutter-apk/app-debug.apk
