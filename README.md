@@ -1,2 +1,0 @@
-# Cryptomentorapp-
-App for testing
