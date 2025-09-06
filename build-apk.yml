@@ -1,0 +1,62 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      feature_dex:
+        description: 'Enable DEX module'
+        required: false
+        default: 'false'
+      feature_whales:
+        description: 'Enable Whales module'
+        required: false
+        default: 'false'
+      feature_admin:
+        description: 'Enable Admin module'
+        required: false
+        default: 'false'
+      feature_guardian:
+        description: 'Enable Guardian module'
+        required: false
+        default: 'false'
+      cmt_max_supply:
+        description: 'CMT Max Supply'
+        required: false
+        default: '2000000000'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.0'
+          channel: 'stable'
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Build APK (release)
+        run: |
+          flutter build apk --release \
+            --dart-define=FEATURE_DEX=${{ github.event.inputs.feature_dex }} \
+            --dart-define=FEATURE_WHALES=${{ github.event.inputs.feature_whales }} \
+            --dart-define=FEATURE_ADMIN=${{ github.event.inputs.feature_admin }} \
+            --dart-define=FEATURE_GUARDIAN=${{ github.event.inputs.feature_guardian }} \
+            --dart-define=CMT_MAX_SUPPLY=${{ github.event.inputs.cmt_max_supply }}
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: cryptomentor-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
