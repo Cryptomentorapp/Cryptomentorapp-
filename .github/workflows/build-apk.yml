@@ -21,10 +21,11 @@ jobs:
           flutter-version: '3.22.0'
           channel: 'stable'
 
-      # TẠO BỘ KHUNG ANDROID/ (Gradle) VÌ REPO CHƯA CÓ
-      # Lệnh này sẽ tạo đủ android/, ios/… và KHÔNG ghi đè code lib/pubspec sẵn có
+      # Tạo android/ với project-name hợp lệ
       - name: Bootstrap Flutter app structure
-        run: flutter create . --platforms=android -t app
+        run: |
+          rm -rf android
+          flutter create . --platforms=android -t app --project-name cryptomentorapp
 
       - name: Flutter pub get
         run: flutter pub get
