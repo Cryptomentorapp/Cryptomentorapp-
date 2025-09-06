@@ -5,23 +5,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: temurin
+          java-version: "17"
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.0'
-          channel: 'stable'
+          flutter-version: "3.22.0"
+          channel: stable
 
-      # Tạo project Android sạch trong thư mục app/ rồi chép source vào
+      # Tạo khung app Android sạch rồi chép source vào
       - name: Bootstrap Flutter app in subdir
         run: |
           rm -rf app
@@ -34,8 +33,7 @@ jobs:
         working-directory: app
         run: flutter doctor -v
 
-      # Clean cache Gradle để tránh xung đột
-      - name: Clean caches
+      - name: Clean Gradle & Flutter caches
         working-directory: app
         run: |
           flutter clean
@@ -45,19 +43,32 @@ jobs:
         working-directory: app
         run: flutter pub get
 
-      # Build có log chi tiết (stacktrace, debug)
-      - name: Build APK (release, verbose)
+      # Build DEBUG trước để chắc chắn có file test
+      - name: Build APK (debug)
+        working-directory: app
+        run: flutter build apk --debug --no-analytics -v
+
+      - name: Upload debug APK
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: cryptomentor-apk-debug
+          path: app/build/app/outputs/flutter-apk/app-debug.apk
+
+      # Build RELEASE với log đầy đủ
+      - name: Build APK (release, verbose stacktrace)
         working-directory: app
         env:
-          GRADLE_OPTS: "-Dorg.gradle.jvmargs='-Xmx2g -Dfile.encoding=UTF-8'"
+          GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dfile.encoding=UTF-8"
         run: |
-          flutter build apk --release -v \
-            --split-debug-info=build/symbols \
-            --obfuscate
+          ./android/gradlew -v || true
+          flutter build apk --release --no-analytics -v
+          # nếu lỗi, rerun gradle để lấy stacktrace chi tiết
+          ./android/gradlew assembleRelease --stacktrace --no-daemon --warning-mode all || true
 
-      - name: Upload APK
-        if: ${{ success() }}
+      - name: Upload release APK (if exists)
         uses: actions/upload-artifact@v4
         with:
           name: cryptomentor-apk
           path: app/build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: ignore
