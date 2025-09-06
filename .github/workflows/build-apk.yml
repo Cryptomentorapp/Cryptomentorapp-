@@ -1,0 +1,43 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Bootstrap Flutter app structure
+        run: |
+          flutter create --platforms=android -t app cmapp
+          rsync -av --delete lib/ cmapp/lib/
+          rsync -av --delete assets/ cmapp/assets/
+          cp pubspec.yaml cmapp/pubspec.yaml
+
+      - name: Flutter pub get
+        working-directory: cmapp
+        run: flutter pub get
+
+      - name: Build APK (release)
+        working-directory: cmapp
+        run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: cryptomentor-apk
+          path: cmapp/build/app/outputs/flutter-apk/app-release.apk
