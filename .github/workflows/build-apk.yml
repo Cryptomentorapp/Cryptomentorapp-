@@ -5,6 +5,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -20,7 +21,7 @@ jobs:
           flutter-version: "3.22.0"
           channel: stable
 
-      # Tạo khung app Android sạch rồi chép source vào
+      # Tạo app Android sạch rồi chép source vào thư mục app/
       - name: Bootstrap Flutter app in subdir
         run: |
           rm -rf app
@@ -43,28 +44,26 @@ jobs:
         working-directory: app
         run: flutter pub get
 
-      # Build DEBUG trước để chắc chắn có file test
+      # Build DEBUG trước để có file test ngay
       - name: Build APK (debug)
         working-directory: app
-        run: flutter build apk --debug --no-analytics -v
+        run: flutter build apk --debug -v
 
       - name: Upload debug APK
-        if: ${{ success() }}
         uses: actions/upload-artifact@v4
         with:
           name: cryptomentor-apk-debug
           path: app/build/app/outputs/flutter-apk/app-debug.apk
 
-      # Build RELEASE với log đầy đủ
-      - name: Build APK (release, verbose stacktrace)
+      # Build RELEASE + log chi tiết
+      - name: Build APK (release, verbose)
         working-directory: app
         env:
           GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dfile.encoding=UTF-8"
         run: |
-          ./android/gradlew -v || true
-          flutter build apk --release --no-analytics -v
-          # nếu lỗi, rerun gradle để lấy stacktrace chi tiết
-          ./android/gradlew assembleRelease --stacktrace --no-daemon --warning-mode all || true
+          flutter build apk --release -v || true
+          cd android
+          ./gradlew assembleRelease --stacktrace --no-daemon --warning-mode all || true
 
       - name: Upload release APK (if exists)
         uses: actions/upload-artifact@v4
