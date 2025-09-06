@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cryptomentor — Module 4: Token Scam Scanner</title>
+<style>
+:root{
+  --bg:#0a0e14;--panel:#0f141b;--card:#101724;--text:#e7eef7;--muted:#9fb0c3;--divider:rgba(255,255,255,.10);
+  --gold:#f6d465;--green:#1bd97b;--red:#ff5c7c;--amber:#f6d465;--orange:#ffb15c;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial}
+.container{max-width:1100px;margin:0 auto;padding:12px}
+.topbar{display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:900}
+.brand .logo{width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #f6d465 0%, #8f6a00 45%, #000 100%);box-shadow:0 0 10px rgba(246,212,101,.25)}
+
+.gborder{position:relative}
+.gborder::after{content:"";position:absolute;inset:0;padding:.5px;border-radius:14px;
+  background:linear-gradient(135deg, rgba(246,212,101,.45) 0%, rgba(30,25,10,.25) 35%, rgba(0,0,0,0) 60%, rgba(123,92,255,.25) 95%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.55}
+
+input,select,button{font-family:inherit}
+.input{flex:1;min-width:180px;background:#182233;border:1px solid var(--divider);color:var(--text);padding:10px 12px;border-radius:12px}
+.btn{background:#182233;border:1px solid var(--divider);color:var(--text);padding:10px 12px;border-radius:12px;font-weight:700;cursor:pointer}
+.btn.gold{background:linear-gradient(90deg, rgba(246,212,101,.9), rgba(20,20,20,.9));color:#111;border:1px solid rgba(246,212,101,.6)}
+.btn.ghost{background:transparent;border:1px solid var(--divider)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+
+.tabs{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}
+.tab{padding:8px 12px;border-radius:12px;border:1px solid var(--divider);cursor:pointer}
+.tab.active{background:#182233;border-color:#2a3543}
+.view{display:none}
+.view.active{display:block}
+
+.card{background:var(--card);border:1px solid var(--divider);border-radius:14px;padding:12px;margin:10px 0}
+.card h3{margin:0 0 8px}
+.grid{display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:900px){ .grid{grid-template-columns:2fr 1fr} }
+
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.kv .item{background:#0f1826;border:1px solid var(--divider);border-radius:10px;padding:8px}
+.kv b{display:block;font-size:12px;color:var(--muted)}
+.kv span{font-size:15px;font-weight:800}
+
+.badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge{padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid rgba(255,255,255,.2)}
+.badge.safe{background:rgba(27,217,123,.15);color:#1bd97b;border-color:rgba(27,217,123,.45)}
+.badge.warn{background:rgba(246,212,101,.12);color:#f6d465;border-color:rgba(246,212,101,.45)}
+.badge.risk{background:rgba(255,177,92,.12);color:#ffb15c;border-color:rgba(255,177,92,.45)}
+.badge.danger{background:rgba(255,92,124,.12);color:#ff5c7c;border-color:rgba(255,92,124,.45)}
+
+.score{display:flex;align-items:center;gap:10px}
+.score .bar{flex:1;height:10px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+.score .fill{height:100%}
+
+.list{margin:6px 0 0 16px}
+.list li{margin:4px 0}
+
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:8px;border-bottom:1px solid rgba(255,255,255,.06);text-align:left;font-size:14px}
+.table th{color:var(--muted)}
+
+.helper{font-size:12px;color:var(--muted)}
+.footnote{margin-top:8px;font-size:12px;color:var(--muted);text-align:center}
+
+.disclaimer{margin-top:12px;font-size:12px;color:#9fb0c3;text-align:center}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="brand"><div class="logo"></div><div>Cryptomentor — Token Scam Scanner</div></div>
+  </div>
+
+  <div class="card gborder">
+    <h3>Tìm & Quét Token</h3>
+    <div class="row">
+      <input id="inp" class="input" placeholder="Dán contract hoặc tìm theo tên (vd: pepe)">
+      <button class="btn gold" id="btnSearch">Tìm</button>
+      <button class="btn ghost" id="btnScan">Quét nhanh</button>
+    </div>
+    <div class="helper">Mẹo: nếu không biết contract, gõ tên → chọn đúng token trong danh sách gợi ý, rồi bấm <b>Quét nhanh</b>.</div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-view="results">Kết quả</div>
+    <div class="tab" data-view="alerts">Cảnh báo</div>
+    <div class="tab" data-view="watch">Watchlist</div>
+    <div class="tab" data-view="edu">Giải thích</div>
+  </div>
+
+  <!-- Results -->
+  <div id="results" class="view active">
+    <div class="grid">
+      <div class="card gborder" id="cardSummary">
+        <h3>Tổng quan rủi ro</h3>
+        <div class="badges" id="badges"></div>
+        <div class="score" style="margin:8px 0 6px">
+          <div style="min-width:90px">Điểm rủi ro:</div>
+          <div class="bar"><div id="riskfill" class="fill" style="width:0;background:linear-gradient(90deg,#1bd97b,#ffb15c,#ff5c7c)"></div></div>
+          <div id="riskscore" style="min-width:42px;text-align:right">0</div>
+        </div>
+        <div class="kv" style="margin-top:8px">
+          <div class="item"><b>Token</b><span id="kv_token">—</span></div>
+          <div class="item"><b>Chain</b><span id="kv_chain">—</span></div>
+          <div class="item"><b>Tuổi (ngày)</b><span id="kv_age">—</span></div>
+          <div class="item"><b>Thanh khoản (USD)</b><span id="kv_liq">—</span></div>
+          <div class="item"><b>Khoá LP</b><span id="kv_lock">—</span></div>
+          <div class="item"><b>Thuế Buy/Sell</b><span id="kv_tax">—</span></div>
+        </div>
+      </div>
+      <div class="card gborder">
+        <h3>Gợi ý trùng tên</h3>
+        <table class="table" id="tableSuggest"><thead><tr><th>Token</th><th>Chain</th><th>Liquidity</th><th>Age</th><th></th></tr></thead><tbody id="tbodySuggest"><tr><td colspan="5">Nhập tên để tra cứu…</td></tr></tbody></table>
+      </div>
+    </div>
+
+    <div class="card gborder" id="cardRisks">
+      <h3>Chi tiết kiểm tra</h3>
+      <ul class="list" id="riskList">
+        <!-- dynamic bullets -->
+      </ul>
+      <div class="footnote">* Một số kiểm tra cần quyền đọc on‑chain sâu — sẽ bật khi kết nối API đầy đủ.</div>
+    </div>
+
+    <div class="grid">
+      <div class="card gborder">
+        <h3>Phân bổ top holders</h3>
+        <canvas id="holders" height="160"></canvas>
+      </div>
+      <div class="card gborder">
+        <h3>Thanh khoản & Thuế</h3>
+        <ul class="list" id="liqTax">
+          <li>LP khoá: —</li>
+          <li>LP burn: —</li>
+          <li>Buy tax: —</li>
+          <li>Sell tax: —</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card gborder">
+      <h3>Anomalies / Hành vi bất thường</h3>
+      <ul class="list" id="anoms">
+        <li>—</li>
+      </ul>
+    </div>
+
+    <div class="disclaimer">⚠️ Kết quả chỉ mang tính cảnh báo & giáo dục. Không phải lời khuyên đầu tư.</div>
+  </div>
+
+  <!-- Alerts -->
+  <div id="alerts" class="view">
+    <div class="card gborder">
+      <h3>Danh sách dự án nghi vấn (demo)</h3>
+      <table class="table"><thead><tr><th>Token</th><th>Chain</th><th>Lý do</th><th>Mức</th></tr></thead>
+        <tbody id="tbodyAlerts"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Watchlist -->
+  <div id="watch" class="view">
+    <div class="card gborder">
+      <h3>Watchlist của bạn</h3>
+      <table class="table"><thead><tr><th>Token</th><th>Chain</th><th>Risk</th><th></th></tr></thead>
+        <tbody id="tbodyWatch"><tr><td colspan="4">Chưa có mục nào.</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div id="edu" class="view">
+    <div class="card gborder">
+      <h3>Giải thích nhanh</h3>
+      <ul class="list">
+        <li><b>LP lock</b>: thanh khoản bị khoá trong thời gian cố định; khoá thấp → dễ rút thảm (rugpull).</li>
+        <li><b>Top holders</b>: 1 ví nắm quá 30–40% → rủi ro thao túng.</li>
+        <li><b>Honeypot</b>: hợp đồng chặn bán hoặc thuế bán cực cao.</li>
+        <li><b>Mint/Blacklist</b>: quyền phát hành thêm/blacklist ví — nếu bật → rủi ro lớn.</li>
+        <li><b>Buy/Sell tax</b>: thuế giao dịch; >10% thường là cảnh báo.</li>
+      </ul>
+      <div class="helper">Sắp tới: nối dữ liệu on‑chain (Etherscan, Solscan) + DEX (Dexscreener) + honeypot test để quét real‑time.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Hash tabs
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  const view=t.dataset.view;
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(view).classList.add('active');
+  location.hash = '#'+view;
+}));
+if(location.hash){ const id=location.hash.slice(1); const tab=[...document.querySelectorAll('.tab')].find(x=>x.dataset.view===id); if(tab){ tab.click(); } }
+
+// Suggestion via Dexscreener (best‑effort; falls back when blocked)
+const tbodySuggest=document.getElementById('tbodySuggest');
+async function searchName(q){
+  tbodySuggest.innerHTML = '<tr><td colspan="5">Đang tìm…</td></tr>';
+  try{
+    const r=await fetch('https://api.dexscreener.com/latest/dex/search?q='+encodeURIComponent(q));
+    const j=await r.json();
+    const rows=(j.pairs||[]).slice(0,10).map(p=>`<tr>
+      <td>${p.baseToken?.symbol||'?'} <span style="color:#9fb0c3">(${p.baseToken?.address?.slice(0,6)}…)</span></td>
+      <td>${p.chainId||'—'}</td>
+      <td>${fmtUSD(p.liquidity?.usd)}</td>
+      <td>${p.pairCreatedAt?ageDays(p.pairCreatedAt):'—'}</td>
+      <td><button class="btn" onclick='selectToken(${JSON.stringify(p).replace(/'/g,"&apos;")})'>Chọn</button></td>
+    </tr>`).join('');
+    tbodySuggest.innerHTML = rows || '<tr><td colspan="5">Không thấy kết quả phù hợp.</td></tr>';
+  }catch(e){
+    tbodySuggest.innerHTML = '<tr><td colspan="5">Không truy cập được Dexscreener (CORS). Nhập contract trực tiếp để quét demo.</td></tr>';
+  }
+}
+function ageDays(ts){ try{ const d = Math.max(0, Date.now()-Number(ts)); return Math.floor(d/86400000)+'d'; }catch(e){ return '—'; } }
+function fmtUSD(v){ if(!v&&v!==0) return '—'; if(v>=1e9) return '$'+(v/1e9).toFixed(2)+'B'; if(v>=1e6) return '$'+(v/1e6).toFixed(2)+'M'; if(v>=1e3) return '$'+(v/1e3).toFixed(1)+'K'; return '$'+Number(v).toFixed(0); }
+
+// Demo scan engine (offline): derive deterministic "risk" by hashing input
+function hashStr(s){ let h=0; for(let i=0;i<s.length;i++){ h=((h<<5)-h)+s.charCodeAt(i); h|=0; } return Math.abs(h); }
+function rng(seed){ let x=seed%2147483647; return ()=> (x = x*16807 % 2147483647)/2147483647; }
+
+function selectToken(p){
+  const token = (p.baseToken?.symbol||'TOKEN'); const chain=p.chainId||'EVM'; const liq=p.liquidity?.usd||0; const age= p.pairCreatedAt? Math.max(0, Math.floor((Date.now()-Number(p.pairCreatedAt))/86400000)): Math.floor(Math.random()*400);
+  runScan(token, chain, liq, age);
+}
+
+function runScan(token, chain='EVM', liq=0, age=30){
+  const seed = hashStr(token + chain + String(liq) + String(age));
+  const rnd = rng(seed);
+  // Generate plausible fields
+  const lpLock = Math.floor(rnd()*100);
+  const lpBurn = Math.floor(rnd()*100);
+  const buyTax = Math.round(rnd()*15*10)/10;
+  const sellTax = Math.round(rnd()*20*10)/10;
+  const ownerPct = Math.round(rnd()*60);
+  const top10Pct = Math.min(100, Math.round(40 + rnd()*55));
+  const honeypot = rnd()>.87; // 13% chance
+  const canMint = rnd()>.7;   // 30% chance
+  const canBlacklist = rnd()>.8;
+  const cooldown = rnd()>.6;
+  const anomalies = [
+    rnd()>.5?'Biến động giá >20% trong 5m':'Bot volume chiếm tỷ trọng cao',
+    rnd()>.5?'Vốn hoá tăng mạnh nhưng người dùng onchain thấp':'Whale gom hàng bất thường'
+  ];
+  const risk = Math.min(100,
+      (100-lpLock)*0.25 + (100-lpBurn)*0.15 + (buyTax+sellTax)*1.2 + ownerPct*0.5 + (top10Pct-40)*0.4
+      + (honeypot?25:0) + (canMint?15:0) + (canBlacklist?20:0) + (cooldown?10:0)
+      + (age<14?12:0) + (liq<20000?10:0)
+  );
+  const level = risk<25?'safe': risk<50?'warn': risk<75?'risk':'danger';
+  // Fill summary
+  setText('kv_token', token); setText('kv_chain', chain);
+  setText('kv_age', age+'d'); setText('kv_liq', fmtUSD(liq));
+  setText('kv_lock', lpLock+'%'); setText('kv_tax', `${buyTax}% / ${sellTax}%`);
+  document.getElementById('riskfill').style.width = Math.round(risk)+'%';
+  document.getElementById('riskscore').textContent = Math.round(risk);
+  // badges
+  const bd = document.getElementById('badges'); bd.innerHTML='';
+  const arr=[];
+  if(level==='safe') arr.push(['safe','SAFE (rủi ro thấp)']);
+  if(level==='warn') arr.push(['warn','CẢNH BÁO (cần kiểm tra sâu)']);
+  if(level==='risk') arr.push(['risk','RỦI RO CAO']);
+  if(level==='danger') arr.push(['danger','NGUY HIỂM (có dấu hiệu rug/honey)']);
+  if(buyTax>10||sellTax>10) arr.push(['warn','Thuế cao']);
+  if(lpLock<50) arr.push(['risk','LP khoá thấp']);
+  if(ownerPct>30||top10Pct>70) arr.push(['risk','Tập trung ví lớn']);
+  if(honeypot) arr.push(['danger','Nghi honeypot']);
+  if(canMint||canBlacklist) arr.push(['risk','Quyền admin nguy hiểm']);
+  if(cooldown) arr.push(['warn','Trading cooldown']);
+  arr.forEach(x=>{ const s=document.createElement('div'); s.className='badge '+x[0]; s.textContent=x[1]; bd.appendChild(s); });
+  // risk bullets
+  const bullets=[];
+  bullets.push(`LP lock ~ ${lpLock}% • LP burn ~ ${lpBurn}%`);
+  bullets.push(`Buy/Sell tax ≈ ${buyTax}%/${sellTax}%`);
+  bullets.push(`Owner/Top10 ≈ ${ownerPct}%/${top10Pct}%`);
+  if(honeypot) bullets.push('Honeypot: nghi ngờ (không bán được / thuế bán cực cao)');
+  if(canMint) bullets.push('Contract có quyền MINt thêm token');
+  if(canBlacklist) bullets.push('Contract có chức năng BLACKLIST ví');
+  if(cooldown) bullets.push('Phát hiện cooldown giao dịch');
+  const ul=document.getElementById('riskList'); ul.innerHTML = bullets.map(b=>`<li>${b}</li>`).join('');
+  // liq & tax
+  document.getElementById('liqTax').innerHTML = `
+    <li>LP khoá: ${lpLock}%</li>
+    <li>LP burn: ${lpBurn}%</li>
+    <li>Buy tax: ${buyTax}%</li>
+    <li>Sell tax: ${sellTax}%</li>
+  `;
+  // anomalies
+  document.getElementById('anoms').innerHTML = anomalies.map(a=>`<li>${a}</li>`).join('');
+  // holders chart
+  drawHolders(ownerPct, top10Pct);
+  // add to watch demo
+  pushWatch(token, chain, Math.round(risk));
+  // Switch to Kết quả
+  document.querySelector('.tab[data-view="results"]').click();
+}
+
+function drawHolders(owner, top10){
+  const cvs=document.getElementById('holders'); const ctx=cvs.getContext('2d');
+  const W=cvs.clientWidth, H=cvs.height; cvs.width=W*2; ctx.scale(2,1);
+  ctx.clearRect(0,0,W,H);
+  const series = [
+    {name:'Owner', v:owner, color:'#ff5c7c'},
+    {name:'Top 2–10', v:Math.max(0, top10-owner), color:'#ffb15c'},
+    {name:'Còn lại', v:Math.max(0, 100-top10), color:'#1bd97b'}
+  ];
+  const total = series.reduce((s,x)=>s+x.v,0)||1;
+  let x=0;
+  series.forEach(s=>{
+    const w=W*(s.v/total);
+    ctx.fillStyle=s.color; ctx.fillRect(x, 20, w, 50);
+    ctx.fillStyle='#e7eef7'; ctx.font='12px Inter'; ctx.fillText(`${s.name} ${s.v}%`, x+6, 45);
+    x+=w+2;
+  });
+}
+
+function setText(id, t){ const el=document.getElementById(id); if(el) el.textContent=t; }
+
+// Watchlist
+function pushWatch(token, chain, risk){
+  const tb=document.getElementById('tbodyWatch');
+  const tr=document.createElement('tr');
+  const tag = risk<25?'safe': risk<50?'warn': risk<75?'risk':'danger';
+  tr.innerHTML = `<td>${token}</td><td>${chain}</td><td><span class="badge ${tag}">${risk}</span></td>
+    <td><button class="btn ghost" onclick="this.closest('tr').remove()">Xoá</button></td>`;
+  if(tb.children.length && tb.children[0].children.length===1){ tb.innerHTML=''; }
+  tb.appendChild(tr);
+}
+
+// Alerts demo list
+const demoAlerts = [
+  ['MEMEAI','ETH','LP unlock sớm + thuế >10%','RỦI RO CAO'],
+  ['X100','SOL','Top holder >70%','NGUY HIỂM'],
+  ['DOGENEXT','BSC','Honeypot nghi ngờ','NGUY HIỂM'],
+  ['MOON','BASE','Admin có quyền mint','CẢNH BÁO'],
+  ['RUGX','ETH','LP burn 0% & unlock 3 ngày','NGUY HIỂM'],
+];
+document.getElementById('tbodyAlerts').innerHTML = demoAlerts.map(a=>`<tr><td>${a[0]}</td><td>${a[1]}</td><td>${a[2]}</td><td>${a[3]}</td></tr>`).join('');
+
+// UI events
+document.getElementById('btnSearch').addEventListener('click',()=>{
+  const q=document.getElementById('inp').value.trim();
+  if(!q){ alert('Nhập tên hoặc contract'); return; }
+  if(q.startsWith('0x')||q.length>36){ // giả định contract
+    runScan(q.slice(0,6).toUpperCase(), 'EVM', Math.floor(Math.random()*500000), Math.floor(Math.random()*400));
+  }else{
+    searchName(q);
+  }
+});
+document.getElementById('btnScan').addEventListener('click',()=>{
+  const q=document.getElementById('inp').value.trim()||'DEMO';
+  runScan(q.toUpperCase(), 'EVM', Math.floor(Math.random()*500000), Math.floor(Math.random()*400));
+});
+
+</script>
+</body>
+</html>

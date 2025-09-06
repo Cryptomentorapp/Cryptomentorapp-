@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cryptomentor — Academy (Training Module)</title>
+<style>
+:root{
+  --bg:#0b0f14; --panel:#0f141b; --card:#101826; --text:#e7eef7; --muted:#9fb0c3; --div:rgba(255,255,255,.12);
+  --gold:#f6d465; --gold2:#caa74b; --accent:#7b5cff; --green:#12cf84; --red:#ff5c7c; --yellow:#ffd36e;
+}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Arial}
+/* Container */
+.wrap{max-width:920px;margin:0 auto;padding:12px}
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;padding:10px 6px;position:sticky;top:0;background:linear-gradient(180deg,#0b0f14,#0b0f1400 85%);backdrop-filter:blur(6px);z-index:20}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:34px;height:34px;border-radius:8px;position:relative;background:#0f141b;display:grid;place-items:center;font-weight:900;color:#f6d465;border:1px solid var(--div)}
+.logo::after{content:"";position:absolute;inset:0;padding:.5px;border-radius:8px;background:
+  linear-gradient(135deg, rgba(246,212,101,.55), rgba(0,0,0,.2) 45%, rgba(123,92,255,.35));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.55}
+.brand h1{font-size:16px;margin:0;line-height:1.2}
+.brand small{display:block;color:var(--muted);margin-top:2px}
+/* Top nav tabs */
+.tabs{display:flex;gap:8px;overflow:auto;padding:6px 0}
+.tab{padding:8px 12px;border-radius:999px;background:#111927;border:1px solid var(--div);color:#cfe1ff;cursor:pointer;white-space:nowrap;font-size:14px}
+.tab.active{border-color:rgba(246,212,101,.5);box-shadow:0 0 0 1px rgba(246,212,101,.35) inset;color:#fff}
+/* Sections */
+.section{display:none}
+.section.active{display:block}
+/* Cards */
+.card{background:var(--card);border:1px solid var(--div);border-radius:14px;padding:12px;position:relative;overflow:hidden}
+.card+.card{margin-top:12px}
+.card::after{content:"";position:absolute;inset:0;padding:.5px;border-radius:14px;background:
+  linear-gradient(135deg, rgba(246,212,101,.5), rgba(0,0,0,.2) 45%, rgba(123,92,255,.35));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.45}
+/* Roadmap grid */
+.track-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:640px){ .track-grid{grid-template-columns:1fr} }
+.track h3{margin:0 0 8px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.badge{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid var(--div);background:#0f1624;color:#cfe1ff}
+.badge.gold{background:linear-gradient(180deg,rgba(246,212,101,.22),rgba(0,0,0,0));border-color:rgba(246,212,101,.45);color:#fff}
+/* Lesson list */
+.lesson{display:flex;justify-content:space-between;gap:8px;align-items:center;background:#0f1624;border:1px solid var(--div);border-radius:12px;padding:10px;margin-top:8px}
+.lesson-title{font-weight:700}
+.lesson-meta{font-size:12px;color:var(--muted)}
+.lesson button{border:1px solid var(--div);background:#0f141b;color:#fff;border-radius:10px;padding:7px 10px;cursor:pointer}
+.lock{opacity:.6}
+/* Glossary */
+.search{display:flex;gap:8px;margin:8px 0 12px}
+.search input{flex:1;border:1px solid var(--div);background:#0f141b;color:#fff;border-radius:10px;padding:10px}
+.glossary .item{padding:10px;border:1px solid var(--div);border-radius:12px;background:#0f1624;margin-top:8px}
+.glossary b{color:#fff}
+/* Lesson drawer */
+.drawer{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;z-index:50}
+.panel{max-width:940px;margin:0 auto;background:var(--panel);height:100%;overflow:auto;position:relative}
+.hdr{position:sticky;top:0;background:#111827;padding:10px;display:flex;justify-content:space-between;align-items:center;color:#fff;border-bottom:1px solid var(--div);z-index:2}
+.hdr .title{font-weight:900}
+.btn{border:1px solid var(--div);background:#1f2937;color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
+/* Gold note */
+.cm{border:1px solid rgba(246,212,101,.35);background:linear-gradient(180deg, rgba(246,212,101,.08), rgba(0,0,0,0));border-radius:12px;padding:12px;margin:12px 0}
+/* Content blocks */
+.block{background:#0f1624;border:1px solid var(--div);border-radius:12px;padding:12px;margin:12px 0}
+.block h4{margin:0 0 8px}
+ul{margin:6px 0 0 18px}
+/* Quiz */
+.quiz{background:#0f1624;border:1px solid var(--div);border-radius:12px;padding:12px}
+.q{margin:8px 0}
+.q b{display:block;margin-bottom:6px}
+.opt{display:flex;align-items:center;gap:8px;margin:4px 0}
+.actions{display:flex;gap:8px;margin-top:12px}
+.success{color:var(--green);font-weight:800}
+.error{color:var(--red);font-weight:800}
+/* Progress */
+.progress{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;color:var(--muted)}
+.progress .dot{width:8px;height:8px;border-radius:999px;background:#334155;border:1px solid var(--div)}
+.progress .dot.done{background:linear-gradient(180deg,rgba(246,212,101,.9),rgba(246,212,101,.45))}
+.small{font-size:12px;color:var(--muted)}
+/* Footer disclaimer */
+.disclaimer{font-size:12px;color:#9fb0c3;padding:10px;text-align:center}
+/* No horizontal overflow */
+.wrap, .panel{overflow-x:hidden}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <div class="brand">
+      <div class="logo">CM</div>
+      <div>
+        <h1>Cryptomentor</h1>
+        <small>Academy — Học nhanh, hiểu sâu, thực chiến</small>
+      </div>
+    </div>
+    <div class="tabs" id="tabs">
+      <div class="tab active" data-tab="roadmap">Lộ trình</div>
+      <div class="tab" data-tab="glossary">Thuật ngữ</div>
+      <div class="tab" data-tab="progress">Tiến độ</div>
+    </div>
+  </div>
+
+  <!-- Roadmap Section -->
+  <section class="section active" id="roadmap">
+    <div class="track-grid">
+      <div class="card track">
+        <h3>Nền tảng thị trường</h3>
+        <div class="badges">
+          <span class="badge gold">Cốt lõi</span><span class="badge">15–25 phút/bài</span>
+        </div>
+        <div class="lesson" data-id="marketcap">
+          <div>
+            <div class="lesson-title">Market Cap & BTC Dominance</div>
+            <div class="lesson-meta">Định giá toàn thị trường • Altseason là gì?</div>
+          </div>
+          <button class="btn" data-open>Học ngay</button>
+        </div>
+        <div class="lesson" data-id="candles">
+          <div>
+            <div class="lesson-title">Nến Nhật 101</div>
+            <div class="lesson-meta">Thân, bóng, mẫu nến cơ bản</div>
+          </div>
+          <button class="btn" data-open>Học ngay</button>
+        </div>
+      </div>
+
+      <div class="card track">
+        <h3>Chỉ báo & Momentum</h3>
+        <div class="badges">
+          <span class="badge">Kỹ thuật</span><span class="badge">Thực hành</span>
+        </div>
+        <div class="lesson" data-id="ema">
+          <div>
+            <div class="lesson-title">EMA 20/50/200</div>
+            <div class="lesson-meta">Trend-follow tiếp cận đơn giản</div>
+          </div>
+          <button class="btn" data-open>Học ngay</button>
+        </div>
+        <div class="lesson" data-id="rsi">
+          <div>
+            <div class="lesson-title">RSI & Động lượng</div>
+            <div class="lesson-meta">Quá mua/Quá bán • Phân kỳ</div>
+          </div>
+          <button class="btn" data-open>Học ngay</button>
+        </div>
+      </div>
+
+      <div class="card track">
+        <h3>Phái sinh & Big Data</h3>
+        <div class="badges">
+          <span class="badge">On-chain</span><span class="badge">Derivatives</span>
+        </div>
+        <div class="lesson" data-id="oi">
+          <div>
+            <div class="lesson-title">Open Interest (OI)</div>
+            <div class="lesson-meta">“Nhiệt độ” futures • Vị thế mở</div>
+          </div>
+          <button class="btn" data-open>Học ngay</button>
+        </div>
+        <div class="lesson" data-id="funding">
+          <div>
+            <div class="lesson-title">Funding Rate</div>
+            <div class="lesson-meta">Cân bằng long/short • Rủi ro squeeze</div>
+          </div>
+          <button class="btn" data-open>Học ngay</button>
+        </div>
+      </div>
+
+      <div class="card track">
+        <h3>Quản trị rủi ro</h3>
+        <div class="badges">
+          <span class="badge gold">Bắt buộc</span><span class="badge">An toàn vốn</span>
+        </div>
+        <div class="lesson" data-id="risk">
+          <div>
+            <div class="lesson-title">SL/TP & R:R</div>
+            <div class="lesson-meta">Vào/ra kỷ luật • Quản trị vị thế</div>
+          </div>
+          <button class="btn" data-open>Học ngay</button>
+        </div>
+        <div class="lesson" data-id="sr">
+          <div>
+            <div class="lesson-title">Support & Resistance</div>
+            <div class="lesson-meta">Vùng đỡ/kháng cự • Xác nhận</div>
+          </div>
+          <button class="btn" data-open>Học ngay</button>
+        </div>
+      </div>
+
+      <div class="card track">
+        <h3>Tokenomics & On-chain cơ bản</h3>
+        <div class="badges">
+          <span class="badge">Fundamentals</span><span class="badge">Nhà đầu tư</span>
+        </div>
+        <div class="lesson" data-id="tokenomics">
+          <div>
+            <div class="lesson-title">Tokenomics cơ bản</div>
+            <div class="lesson-meta">Phát hành, phân bổ, unlock</div>
+          </div>
+          <button class="btn" data-open>Học ngay</button>
+        </div>
+        <div class="lesson" data-id="security">
+          <div>
+            <div class="lesson-title">Bảo mật & Ví</div>
+            <div class="lesson-meta">Kết nối ví an toàn • Chống scam</div>
+          </div>
+          <button class="btn" data-open>Học ngay</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Glossary Section -->
+  <section class="section" id="glossary">
+    <div class="card">
+      <div class="search">
+        <input id="gq" placeholder="Tìm thuật ngữ (VD: OI, Funding, RSI, MCap...)">
+        <button class="btn" id="gbtn">Tìm</button>
+      </div>
+      <div class="glossary" id="glist"></div>
+    </div>
+  </section>
+
+  <!-- Progress Section -->
+  <section class="section" id="progress">
+    <div class="card">
+      <h3>Tiến độ học</h3>
+      <div class="progress" id="progDots"></div>
+      <p class="small">Hoàn thành bài & vượt quiz để mở khóa bài tiếp theo. Khi đạt 100%, bạn sẽ nhận huy hiệu <b>CM Learner</b> trong Community.</p>
+    </div>
+  </section>
+
+  <div class="disclaimer">Nội dung đào tạo nhằm mục đích giáo dục và thông tin. Không phải lời khuyên đầu tư.</div>
+</div>
+
+<!-- Drawer: Lesson Detail -->
+<div class="drawer" id="drawer">
+  <div class="panel">
+    <div class="hdr">
+      <div class="title" id="dTitle">Bài học</div>
+      <div>
+        <button class="btn" id="btnClose">Đóng</button>
+      </div>
+    </div>
+    <div class="wrap" id="lessonWrap">
+      <!-- dynamic lesson content will be injected here -->
+    </div>
+  </div>
+</div>
+
+<script>
+/* State */
+const LESSONS=[
+  {id:'marketcap', title:'Market Cap & BTC Dominance', track:'Nền tảng thị trường', minutes:18},
+  {id:'candles',   title:'Nến Nhật 101', track:'Nền tảng thị trường', minutes:16},
+  {id:'ema',       title:'EMA 20/50/200', track:'Chỉ báo & Momentum', minutes:20},
+  {id:'rsi',       title:'RSI & Động lượng', track:'Chỉ báo & Momentum', minutes:18},
+  {id:'oi',        title:'Open Interest (OI)', track:'Phái sinh & Big Data', minutes:17},
+  {id:'funding',   title:'Funding Rate', track:'Phái sinh & Big Data', minutes:17},
+  {id:'risk',      title:'SL/TP & R:R', track:'Quản trị rủi ro', minutes:19},
+  {id:'sr',        title:'Support & Resistance', track:'Quản trị rủi ro', minutes:19},
+  {id:'tokenomics',title:'Tokenomics cơ bản', track:'Tokenomics & On-chain', minutes:20},
+  {id:'security',  title:'Bảo mật & Ví', track:'Tokenomics & On-chain', minutes:15},
+];
+const STORAGE_KEY='cm_academy_progress_v1';
+let progress = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); // { marketcap:'done', ... }
+
+/* Tabs */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    const target=t.dataset.tab;
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.getElementById(target).classList.add('active');
+    if(target==='progress') renderProgress();
+    if(target==='glossary') renderGlossary();
+  });
+});
+
+/* Open lesson drawer */
+document.querySelectorAll('[data-open]').forEach(btn=>{
+  btn.addEventListener('click', (e)=>{
+    const lessonEl = e.target.closest('.lesson');
+    const id = lessonEl?.dataset?.id;
+    if(!id) return;
+    openLesson(id);
+  });
+});
+
+/* Close drawer */
+document.getElementById('btnClose').addEventListener('click', ()=>{
+  document.getElementById('drawer').style.display='none';
+});
+
+/* Render Progress */
+function renderProgress(){
+  const dots=document.getElementById('progDots');
+  dots.innerHTML='';
+  LESSONS.forEach(ls=>{
+    const d=document.createElement('div');
+    d.className = 'dot' + (progress[ls.id]==='done' ? ' done' : '');
+    d.title = ls.title + (progress[ls.id]==='done' ? ' — Hoàn thành' : '');
+    dots.appendChild(d);
+  });
+}
+
+/* Glossary content */
+const GLOSSARY=[
+  {k:'Market Cap (MCap)', v:'Tổng giá trị vốn hóa thị trường: giá x số lượng lưu hành. Dùng để so sánh quy mô dự án/coin.'},
+  {k:'BTC Dominance (DOM)', v:'Tỷ trọng vốn hóa của BTC so với toàn thị trường. DOM↓ cùng MCap↑ thường gợi ý Altseason.'},
+  {k:'Open Interest (OI)', v:'Tổng số hợp đồng phái sinh đang mở. OI tăng → thêm vị thế mới; kết hợp với giá & funding để đọc xu hướng.'},
+  {k:'Funding Rate', v:'Phí cân bằng long/short trên futures. Funding dương cao → quá hưng phấn; âm sâu → có thể squeeze lên.'},
+  {k:'RSI', v:'Chỉ số động lượng (0–100). >70: quá mua; <30: quá bán. Tín hiệu mạnh khi có phân kỳ với giá.'},
+  {k:'EMA', v:'Đường trung bình động hàm mũ, nhấn mạnh dữ liệu mới. EMA20/50/200 thường dùng cho trend.'},
+  {k:'Support/Resistance', v:'Vùng mà giá thường bật lên (S) hoặc bị cản lại (R). Hiệu lực khi có hợp lưu volume, timeframes.'},
+  {k:'R:R (Risk-Reward)', v:'Tỉ lệ Lợi nhuận/Rủi ro. 1:2 nghĩa là chấp nhận rủi ro 1 để kỳ vọng lãi 2.'},
+  {k:'Tokenomics', v:'Cấu trúc phát hành, phân bổ, lịch unlock, tiện ích token. Cực kỳ quan trọng khi đầu tư dài hạn.'},
+  {k:'Stablecoin Inflow', v:'Dòng vốn stablecoin vào sàn/DEX → đoán dòng tiền sắp giải ngân.'},
+  {k:'NVT', v:'Network Value to Transactions — định giá mạng lưới so với lượng giao dịch (tương tự P/E).'},
+  {k:'Trailing Stop', v:'Cơ chế kéo SL theo giá để khóa lợi nhuận khi giá đi đúng hướng.'}
+];
+function renderGlossary(q=''){
+  const gl=document.getElementById('glist');
+  const term = (q||'').trim().toLowerCase();
+  const arr = !term ? GLOSSARY : GLOSSARY.filter(x=> x.k.toLowerCase().includes(term) || x.v.toLowerCase().includes(term));
+  gl.innerHTML='';
+  arr.forEach(x=>{
+    const d=document.createElement('div'); d.className='item';
+    d.innerHTML = `<b>${x.k}</b><div class="small">${x.v}</div>`;
+    gl.appendChild(d);
+  });
+}
+document.getElementById('gbtn').addEventListener('click',()=>{
+  const q=document.getElementById('gq').value; renderGlossary(q);
+});
+
+/* Lesson templates (content + quiz) */
+const TPL={
+  marketcap: {
+    intro:[
+      'Market Cap (MCap) = Giá × Nguồn cung lưu hành. Dùng để đo “quy mô” coin/dự án.',
+      'BTC Dominance (DOM) = Tỷ trọng vốn hóa BTC / Toàn thị trường. DOM↓ cùng MCap↑ thường gợi ý Altseason.'
+    ],
+    example:[
+      'Nếu MCap toàn thị trường tăng từ 2.0T → 2.2T và DOM giảm 1–2%, dòng tiền đang rời BTC sang Alt.',
+      'Khi DOM tăng mạnh trong khi MCap đi ngang/giảm, dòng tiền co về BTC → ưu tiên phòng thủ.'
+    ],
+    apply:[
+      'Ưu tiên giao dịch BTC khi DOM↑ và Alt yếu.',
+      'Ưu tiên Altcap khi DOM↓ và MCap↑ (có thể chọn L1/L2/DeFi theo heatmap).'
+    ],
+    cm:[
+      'Đừng đọc DOM/MCap một mình. Hãy kết hợp khối lượng (volume), funding, và tin vĩ mô.',
+      'Tín hiệu đẹp khi DOM chạm kháng cự lịch sử và bị từ chối cùng lúc MCap break lên.'
+    ],
+    quiz:[
+      {q:'DOM↓ cùng MCap↑ thường ám chỉ điều gì?', opts:['Altseason','BTC mạnh lên','Sideways khó đoán'], a:0},
+      {q:'MCap là gì?', opts:['Giá × Nguồn cung lưu hành','Tổng volume 24h','Tổng số holder'], a:0},
+      {q:'Khi DOM↑ mạnh và MCap giảm, nên ưu tiên gì?', opts:['Altcoin nhỏ','Giữ phòng thủ với BTC','Mua NFT'], a:1}
+    ]
+  },
+  candles: {
+    intro:[
+      'Nến Nhật gồm: Giá mở (O), cao (H), thấp (L), đóng (C).',
+      'Mẫu nến cơ bản: Pinbar, Engulfing, Doji… dùng để nhận diện lực mua/bán.'
+    ],
+    example:[
+      'Bullish Engulfing tại hỗ trợ + volume tăng → xác suất đảo chiều lên cao.',
+      'Doji tại kháng cự + RSI quá mua → rủi ro điều chỉnh.'
+    ],
+    apply:[
+      'Kết hợp mẫu nến với vùng S/R và EMA để tăng xác suất.',
+      'Không giao dịch chỉ dựa 1 cây nến.'
+    ],
+    cm:[
+      'Nến mạnh + volume lớn tại vùng hợp lưu là tín hiệu tốt nhất.',
+      'Ưu tiên setup thuận xu hướng chính trên timeframe cao hơn.'
+    ],
+    quiz:[
+      {q:'Nến thể hiện điều gì?', opts:['Giá mở/cao/thấp/đóng','Chỉ giá đóng','Chỉ volume'], a:0},
+      {q:'Mẫu nến Doji thường báo hiệu?', opts:['Sự do dự/đổi chiều','Tiếp diễn chắc chắn','Không ý nghĩa'], a:0},
+      {q:'Khi nào mẫu nến đáng tin hơn?', opts:['Khi có hợp lưu S/R + volume','Khi đứng giữa vùng trống','Khi RSI = 50'], a:0}
+    ]
+  },
+  ema: {
+    intro:[
+      'EMA là trung bình động nhấn mạnh dữ liệu mới; EMA20/50/200 phổ biến cho ngắn/trung/dài hạn.',
+      'Cắt lên/cắt xuống giữa các EMA giúp nhận diện chuyển pha xu hướng.'
+    ],
+    example:[
+      'EMA20 cắt lên EMA50 trên 4H + giá nằm trên EMA200 → xu hướng tăng khỏe.',
+      'Khoảng cách giá–EMA quá xa → dễ có nhịp hồi về EMA.'
+    ],
+    apply:[
+      'Theo xu hướng: mua khi giá pullback về EMA20/50 trong trend tăng.',
+      'Tránh mua khi giá đã “đu” cao so với EMA (rủi ro FOMO).'
+    ],
+    cm:[
+      'EMA chỉ là khung. Hãy nhìn cấu trúc đỉnh–đáy và volume.',
+      'Backtest chiến lược với EMA phù hợp coin/timeframe bạn giao dịch.'
+    ],
+    quiz:[
+      {q:'EMA nhấn mạnh điều gì?', opts:['Dữ liệu mới','Dữ liệu cũ','Chỉ volume'], a:0},
+      {q:'Khi giá xa EMA quá lâu?', opts:['Rủi ro điều chỉnh','An toàn tuyệt đối','Không ảnh hưởng'], a:0},
+      {q:'Tín hiệu mạnh là?', opts:['EMA20 cắt lên EMA50 trong xu hướng tăng','EMA ngẫu nhiên giao nhau','Không bao giờ dùng EMA'], a:0}
+    ]
+  },
+  rsi: {
+    intro:[
+      'RSI đo động lượng 0–100. >70: quá mua; <30: quá bán; phân kỳ là tín hiệu mạnh.',
+      'RSI ở vùng 50±5 thể hiện cân bằng/sideways.'
+    ],
+    example:[
+      'Giá tạo đỉnh cao hơn nhưng RSI tạo đỉnh thấp hơn → phân kỳ giảm (cảnh giác).',
+      'RSI phá qua 50 từ dưới lên + giá break EMA → cải thiện xu hướng tăng.'
+    ],
+    apply:[
+      'Dùng RSI xác nhận vào/ra cùng S/R và EMA.',
+      'Không bán chỉ vì RSI>70 nếu trend đang rất mạnh.'
+    ],
+    cm:[
+      'Phân kỳ ở khung cao (4H/1D) đáng tin hơn khung nhỏ.',
+      'RSI + volume là bộ đôi khỏe cho breakout.'
+    ],
+    quiz:[
+      {q:'RSI>70 thể hiện gì?', opts:['Quá mua','Quá bán','Không ý nghĩa'], a:0},
+      {q:'Phân kỳ giảm là khi?', opts:['Giá ↑ nhưng RSI ↓','Giá ↓ nhưng RSI ↑','Giá ↔ và RSI ↔'], a:0},
+      {q:'RSI tại ~50 thể hiện?', opts:['Cân bằng/sideways','Xu hướng tăng mạnh','Xu hướng giảm mạnh'], a:0}
+    ]
+  },
+  oi: {
+    intro:[
+      'Open Interest (OI) là số vị thế phái sinh đang mở. OI↑ thường có vị thế mới tham gia.',
+      'Kết hợp OI với hướng giá và funding để đọc lực thị trường.'
+    ],
+    example:[
+      'Giá ↑ & OI ↑ & funding dương cao → hưng phấn, rủi ro long crowded.',
+      'Giá ↓ & OI ↓ → đóng vị thế, thị trường xả bỏ.'
+    ],
+    apply:[
+      'Ưu tiên setup khi có đồng thuận giữa giá–OI–funding–volume.',
+      'Tránh mở vị thế khi OI tăng quá nhanh kèm funding dương sâu.'
+    ],
+    cm:[
+      'OI cao không xấu nếu đi kèm long/short cân bằng.',
+      'Theo dõi liquidation map để né cú quét.'
+    ],
+    quiz:[
+      {q:'OI là gì?', opts:['Vị thế đang mở','Giá trung bình','Số holder'], a:0},
+      {q:'Giá ↑ & OI ↑ & funding dương cao gợi ý?', opts:['Crowded long','Crowded short','Sideways'], a:0},
+      {q:'Giá ↓ & OI ↓ phản ánh?', opts:['Thoát vị thế','Thêm vị thế','Không biết'], a:0}
+    ]
+  },
+  funding: {
+    intro:[
+      'Funding rate là phí cân bằng long/short trên futures. Dương: long trả short; Âm: short trả long.',
+      'Funding cực đoan thường dẫn đến cú squeeze ngược.'
+    ],
+    example:[
+      'Funding +0.12%/8h và tăng → rủi ro long crowded, cẩn trọng đảo chiều.',
+      'Funding âm sâu -0.15%/8h khi giá tạo đáy → dễ có short squeeze.'
+    ],
+    apply:[
+      'Không vào long khi funding dương quá cao & OI tăng nhanh.',
+      'Tìm long ngắn khi funding âm sâu + tín hiệu đảo chiều kỹ thuật.'
+    ],
+    cm:[
+      'Fund + OI + Delta volume là “bộ cảm biến” tốt cho đỉnh/đáy ngắn hạn.',
+      'Không lạm dụng một chỉ báo — luôn chờ xác nhận.'
+    ],
+    quiz:[
+      {q:'Funding dương nghĩa là?', opts:['Long trả phí cho short','Short trả phí cho long','Không ai trả'], a:0},
+      {q:'Funding cực đoan dễ gây?', opts:['Squeeze ngược','Không ảnh hưởng','Thanh khoản tăng'], a:0},
+      {q:'Khi funding âm sâu + tín hiệu đảo chiều?', opts:['Cân nhắc long ngắn','Cố chấp short','Bỏ qua'], a:0}
+    ]
+  },
+  risk: {
+    intro:[
+      'R:R = Lợi nhuận/Rủi ro. Quản trị vốn là nền tảng sống còn.',
+      'SL/TP đặt tại vùng kỹ thuật: dưới hỗ trợ hoặc trên kháng cự.'
+    ],
+    example:[
+      'Entry 100, SL 95, TP 110 → R:R = (10)/(5)=2:1.',
+      'Không giảm SL chỉ vì “hy vọng”.'
+    ],
+    apply:[
+      'Mỗi lệnh rủi ro 0.5–1.5% tài khoản.',
+      'Chốt dần TP, dời SL về Entry khi đạt mốc.'
+    ],
+    cm:[
+      'Kỷ luật SL quan trọng hơn bắt đỉnh đáy.',
+      'Thua nhỏ – thắng vừa – tích lũy lâu dài.'
+    ],
+    quiz:[
+      {q:'R:R = 2:1 nghĩa là?', opts:['Kỳ vọng 2, rủi ro 1','Rủi ro 2, lãi 1','Không liên quan'], a:0},
+      {q:'Đặt SL ở đâu?', opts:['Sau vùng kỹ thuật','Ngẫu nhiên','Không cần'], a:0},
+      {q:'Mỗi lệnh nên rủi ro?', opts:['0.5–1.5%','5–10%','>20%'], a:0}
+    ]
+  },
+  sr: {
+    intro:[
+      'Hỗ trợ (S) là vùng giá có lực mua; Kháng cự (R) là vùng có lực bán.',
+      'Hiệu lực khi có hợp lưu EMA/RSI/Volume/timeframe cao.'
+    ],
+    example:[
+      'Break R với volume lớn → khả năng tiếp diễn; retest R thành S mới là điểm vào đẹp.',
+      'Bật tại S + nến đảo chiều + RSI cải thiện → setup long.'
+    ],
+    apply:[
+      'Vẽ vùng, không vẽ 1 đường; quan sát phản ứng nến.',
+      'Không mua ngay dưới kháng cự mạnh.'
+    ],
+    cm:[
+      'S/R mạnh hơn trên timeframe cao (4H/1D).',
+      'Hợp lưu càng nhiều, xác suất càng cao.'
+    ],
+    quiz:[
+      {q:'S/R là gì?', opts:['Vùng đỡ/cản','Tên indicator','Volume'], a:0},
+      {q:'Break R kèm volume lớn gợi ý?', opts:['Tiếp diễn','Đảo chiều','Sideways'], a:0},
+      {q:'Nên vẽ S/R như?', opts:['Vùng','Đường mỏng','Không cần'], a:0}
+    ]
+  },
+  tokenomics: {
+    intro:[
+      'Tokenomics: cách token phát hành, phân bổ, lịch unlock, tiện ích.',
+      'Xem kỹ phân bổ team/VC và lịch unlock để tránh áp lực bán.'
+    ],
+    example:[
+      'Token có FDV cao, unlock dày trong 3 tháng đầu → rủi ro bán mạnh.',
+      'Tiện ích rõ (staking/fee share/governance) tạo nhu cầu thực.'
+    ],
+    apply:[
+      'Đầu tư dài hạn ưu tiên dự án có lịch unlock mượt và tiện ích thực.',
+      'So sánh FDV với đối thủ cùng phân khúc.'
+    ],
+    cm:[
+      'Đọc vesting schedule trước khi xuống tiền.',
+      'Tập trung token có dòng tiền và sản phẩm chạy thật.'
+    ],
+    quiz:[
+      {q:'Tokenomics gồm?', opts:['Phát hành, phân bổ, unlock, tiện ích','Chỉ giá','Chỉ on-chain'], a:0},
+      {q:'FDV là gì?', opts:['Giá trị pha loãng hoàn toàn','Volume 24h','Số holder'], a:0},
+      {q:'Vì sao lịch unlock quan trọng?', opts:['Áp lực bán','Không liên quan','Chỉ PR'], a:0}
+    ]
+  },
+  security: {
+    intro:[
+      'Bảo mật ví: ưu tiên ví lạnh, seed phrase offline, ký giao dịch có ý thức.',
+      'Chống scam: cảnh giác dApp lạ, revoke quyền, không bấm link lạ.'
+    ],
+    example:[
+      'Phân quyền spend hạn mức thấp; kiểm tra contract; dùng allowlist.',
+      'Revoke định kỳ các approval cũ.'
+    ],
+    apply:[
+      'Dùng mạng an toàn, bật bảo vệ trên trình duyệt.',
+      'Test với ví phụ trước khi dùng ví chính.'
+    ],
+    cm:[
+      'Không nhập seed ở bất kỳ trang web nào.',
+      'Không “all-in” một chain/protocol mới.'
+    ],
+    quiz:[
+      {q:'Điều nào an toàn?', opts:['Seed offline','Gửi seed cho bạn','Nhập seed lên web'], a:0},
+      {q:'Revoke dùng để?', opts:['Thu hồi quyền đã cấp','Tăng gas','Giảm slippage'], a:0},
+      {q:'Nên test?', opts:['Ví phụ/ít tiền','Ví chính','Không cần'], a:0}
+    ]
+  }
+};
+
+/* Build lesson content */
+function openLesson(id){
+  const meta = LESSONS.find(x=>x.id===id);
+  if(!meta) return;
+  const t = TPL[id];
+  const w = document.getElementById('lessonWrap');
+  document.getElementById('dTitle').textContent = meta.title;
+
+  const toList = (arr)=> `<ul>${arr.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+
+  w.innerHTML = `
+    <div class="card">
+      <div class="badges"><span class="badge gold">${meta.track}</span><span class="badge">${meta.minutes} phút</span></div>
+      <div class="cm"><b>CM Note</b><div class="small">Bài học này là nền tảng để đọc thị trường thông minh và an toàn hơn. Đừng học lướt — hãy xem ví dụ và làm quiz để “khóa” kiến thức.</div></div>
+      <div class="block"><h4>Giải thích nhanh</h4>${toList(t.intro)}</div>
+      <div class="block"><h4>Ví dụ minh họa</h4>${toList(t.example)}</div>
+      <div class="block"><h4>Ứng dụng thực tế</h4>${toList(t.apply)}</div>
+      <div class="cm"><b>CM Note (Kinh nghiệm)</b>${toList(t.cm)}</div>
+
+      <div class="quiz" id="quiz-${id}">
+        <h4>Quiz nhanh</h4>
+        ${t.quiz.map((q,i)=>`
+          <div class="q" data-i="${i}">
+            <b>Câu ${i+1}. ${q.q}</b>
+            ${q.opts.map((o,j)=>`
+              <label class="opt">
+                <input type="radio" name="q${i}" value="${j}"> ${['a','b','c','d'][j]}) ${o}
+              </label>
+            `).join('')}
+          </div>
+        `).join('')}
+        <div class="actions">
+          <button class="btn" onclick="submitQuiz('${id}')">Nộp bài</button>
+          <span id="quizMsg-${id}"></span>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('drawer').style.display='block';
+}
+
+function submitQuiz(id){
+  const t = TPL[id]; if(!t) return;
+  const root = document.getElementById('quiz-'+id);
+  let correct=0;
+  t.quiz.forEach((q, i)=>{
+    const picked = root.querySelector(`input[name="q${i}"]:checked`);
+    const msg = root.querySelector(`#m${i}`) || document.createElement('div');
+    msg.id = `m${i}`; msg.className='small';
+    if(picked && Number(picked.value)===q.a){ correct++; msg.textContent='Đúng'; msg.classList.add('success'); msg.classList.remove('error'); }
+    else { msg.textContent='Sai'; msg.classList.add('error'); msg.classList.remove('success'); }
+    const qDiv = root.querySelector(`.q[data-i="${i}"]`);
+    if(qDiv && !qDiv.querySelector('#m'+i)) qDiv.appendChild(msg);
+  });
+  const all = t.quiz.length;
+  const msgAll = document.getElementById('quizMsg-'+id);
+  if(correct===all){
+    msgAll.innerHTML = '<span class="success">✔ Hoàn hảo! Bạn đã mở khóa bài tiếp theo.</span>';
+    progress[id]='done';
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    renderProgress();
+  }else{
+    msgAll.innerHTML = `<span class="error">Bạn đúng ${correct}/${all}. Hãy xem lại các mục và thử lại.</span>`;
+  }
+}
+
+/* Initial renders */
+renderProgress();
+renderGlossary();
+
+</script>
+</body>
+</html>
