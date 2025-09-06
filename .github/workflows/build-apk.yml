@@ -21,7 +21,7 @@ jobs:
           flutter-version: "3.22.0"
           channel: stable
 
-      # Tạo app Android sạch rồi chép source vào thư mục app/
+      # Tạo project sạch trong thư mục app/ rồi chép source vào
       - name: Bootstrap Flutter app in subdir
         run: |
           rm -rf app
@@ -34,40 +34,58 @@ jobs:
         working-directory: app
         run: flutter doctor -v
 
-      - name: Clean Gradle & Flutter caches
+      - name: Clean & pub get
         working-directory: app
         run: |
           flutter clean
           rm -rf ~/.gradle/caches ~/.gradle/wrapper
+          flutter pub get
 
-      - name: Pub get
-        working-directory: app
-        run: flutter pub get
-
-      # Build DEBUG trước để có file test ngay
-      - name: Build APK (debug)
-        working-directory: app
-        run: flutter build apk --debug -v
+      # Build DEBUG bằng Gradle (log rất chi tiết)
+      - name: Assemble Debug (Gradle)
+        working-directory: app/android
+        env:
+          ORG_GRADLE_PROJECT_org.gradle.jvmargs: "-Xmx4g -Dfile.encoding=UTF-8"
+        run: |
+          ./gradlew --version
+          ./gradlew assembleDebug --stacktrace --no-daemon --warning-mode all
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
           name: cryptomentor-apk-debug
-          path: app/build/app/outputs/flutter-apk/app-debug.apk
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            app/build/app/outputs/flutter-apk/app-debug.apk
+          if-no-files-found: warn
 
-      # Build RELEASE + log chi tiết
-      - name: Build APK (release, verbose)
-        working-directory: app
+      # Build RELEASE (không chặn job nếu lỗi để mình có log)
+      - name: Assemble Release (Gradle)
+        working-directory: app/android
         env:
-          GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dfile.encoding=UTF-8"
+          ORG_GRADLE_PROJECT_org.gradle.jvmargs: "-Xmx4g -Dfile.encoding=UTF-8"
         run: |
-          flutter build apk --release -v || true
-          cd android
           ./gradlew assembleRelease --stacktrace --no-daemon --warning-mode all || true
 
       - name: Upload release APK (if exists)
         uses: actions/upload-artifact@v4
         with:
           name: cryptomentor-apk
-          path: app/build/app/outputs/flutter-apk/app-release.apk
+          path: |
+            app/build/outputs/apk/release/app-release.apk
+            app/build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: ignore
+
+      # Gói toàn bộ thư mục build để soi lỗi (AAPT/Kotlin/AGP…)
+      - name: Archive build logs
+        if: always()
+        working-directory: app
+        run: zip -r build-logs.zip build || true
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: app/build-logs.zip
           if-no-files-found: ignore
