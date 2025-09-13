@@ -1,32 +1,79 @@
-name: Build Android APK (Root Create)
-on: [push, workflow_dispatch]
+name: Build Android APK (Patched v3 - Licenses Fixed)
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    env:
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+      ANDROID_HOME: /usr/local/lib/android/sdk
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with: { distribution: 'temurin', java-version: '17' }
-      - uses: subosito/flutter-action@v2
-        with: { flutter-version: '3.22.0', channel: 'stable', cache: true }
-      - uses: android-actions/setup-android@v3
-        with: { api-level: 34, build-tools: 34.0.0 }
-      - name: Create Flutter project at root
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Accept Android SDK licenses
         run: |
-          flutter create . --org com.cryptomentor.app -a kotlin
-      - name: Inject project (from project/ folder)
+          set -e
+          yes | sudo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          # Fallback to specific version if 'latest' path mismatches
+          yes | sudo $ANDROID_SDK_ROOT/cmdline-tools/16.0/bin/sdkmanager --licenses || true
+
+      - name: Install required SDK packages
         run: |
-          rm -rf lib && mkdir -p lib
-          cp -r project/lib/* lib/
-          cp project/pubspec.yaml pubspec.yaml
-          mkdir -p assets
-          [ -d project/assets ] && cp -r project/assets/* assets/ || true
-      - name: Ensure Android compile/min SDK
+          set -e
+          sudo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_SDK_ROOT --install \
+            "platform-tools" "platforms;android-34" "build-tools;34.0.0" || true
+          yes | sudo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
+
+      - name: Create base Flutter project
+        run: flutter create cryptomentor --project-name cryptomentor --org com.cryptomentor.app -a kotlin
+
+      - name: Inject files
         run: |
-          sed -i 's/compileSdkVersion [0-9][0-9]*/compileSdkVersion 34/' android/app/build.gradle || true
-          sed -i 's/minSdkVersion [0-9][0-9]*/minSdkVersion 21/' android/app/build.gradle || true
-          echo "org.gradle.jvmargs=-Xmx3g -Dfile.encoding=UTF-8" >> android/gradle.properties
-      - run: flutter pub get
-      - run: flutter build apk --release --verbose
-      - uses: actions/upload-artifact@v4
-        with: { name: Cryptomentor-APK, path: build/app/outputs/flutter-apk/app-release.apk }
+          cp pubspec.yaml cryptomentor/pubspec.yaml
+          rm -rf cryptomentor/lib
+          mkdir -p cryptomentor/lib
+          cp -r lib/* cryptomentor/lib/
+          mkdir -p cryptomentor/assets
+          cp -r assets/* cryptomentor/assets/ || true
+
+      - name: Ensure Android compile/min SDK & gradle settings
+        run: |
+          sed -i 's/compileSdkVersion [0-9][0-9]*/compileSdkVersion 34/' cryptomentor/android/app/build.gradle || true
+          sed -i 's/minSdkVersion [0-9][0-9]*/minSdkVersion 21/' cryptomentor/android/app/build.gradle || true
+          echo "org.gradle.jvmargs=-Xmx3g -Dfile.encoding=UTF-8" >> cryptomentor/android/gradle.properties
+          echo "android.useAndroidX=true" >> cryptomentor/android/gradle.properties
+          echo "android.enableJetifier=true" >> cryptomentor/android/gradle.properties
+
+      - name: Flutter pub get
+        working-directory: cryptomentor
+        run: flutter pub get
+
+      - name: Build APK (release)
+        working-directory: cryptomentor
+        run: flutter build apk --release --verbose
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Cryptomentor-APK
+          path: cryptomentor/build/app/outputs/flutter-apk/app-release.apk
