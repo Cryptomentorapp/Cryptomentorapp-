@@ -1,4 +1,4 @@
-name: Build Android APK (Patched)
+name: Build Android APK
 on: [push, workflow_dispatch]
 jobs:
   build:
@@ -9,8 +9,6 @@ jobs:
         with: { distribution: 'temurin', java-version: '17' }
       - uses: subosito/flutter-action@v2
         with: { flutter-version: '3.22.0', channel: 'stable', cache: true }
-      - uses: android-actions/setup-android@v3
-        with: { api-level: 34, build-tools: 34.0.0 }
       - name: Create base Flutter project
         run: flutter create cryptomentor --project-name cryptomentor --org com.cryptomentor.app -a kotlin
       - name: Inject files
@@ -25,9 +23,11 @@ jobs:
         run: |
           sed -i 's/compileSdkVersion [0-9][0-9]*/compileSdkVersion 34/' cryptomentor/android/app/build.gradle || true
           sed -i 's/minSdkVersion [0-9][0-9]*/minSdkVersion 21/' cryptomentor/android/app/build.gradle || true
-      - working-directory: cryptomentor
+      - name: Get deps
+        working-directory: cryptomentor
         run: flutter pub get
-      - working-directory: cryptomentor
-        run: flutter build apk --release --verbose
+      - name: Build
+        working-directory: cryptomentor
+        run: flutter build apk --release
       - uses: actions/upload-artifact@v4
         with: { name: Cryptomentor-APK, path: cryptomentor/build/app/outputs/flutter-apk/app-release.apk }
