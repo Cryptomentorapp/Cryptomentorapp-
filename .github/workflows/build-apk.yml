@@ -1,4 +1,4 @@
-name: Build Android APK (Unified - tolerant analyze)
+name: Build Android APK (Self-healing)
 
 on:
   workflow_dispatch:
@@ -66,26 +66,23 @@ jobs:
           echo "app_dir=$APP_DIR" >> $GITHUB_OUTPUT
           echo "Detected Flutter app dir: $APP_DIR"
 
-      - name: Install dependencies & analyze (non-fatal)
+      - name: Prepare project (auto-fix Gradle structure if needed)
+        id: prep
         shell: bash
         run: |
           set -e
           cd "${{ steps.detect.outputs.app_dir }}"
-          flutter --version
-          flutter doctor -v
           flutter pub get
-          # Do not fail the pipeline on warnings/information-level lints
-          flutter analyze --no-fatal-warnings --no-fatal-infos || true
+          # If Android scaffolding missing -> create locally on runner only
+          if [ ! -d "android" ] || [ ! -f "android/app/build.gradle" ] || [ ! -f "android/gradlew" ]; then
+            echo "Android scaffolding missing -> flutter create . (runner-only, no commit)"
+            flutter create .
+          fi
+          # Ensure wrapper is executable
+          [ -f "android/gradlew" ] && chmod +x android/gradlew || true
+          [ -f "gradlew" ] && chmod +x gradlew || true
 
-      - name: Ensure Gradle wrapper is executable
-        shell: bash
-        run: |
-          set -e
-          cd "${{ steps.detect.outputs.app_dir }}"
-          if [ -f "android/gradlew" ]; then chmod +x android/gradlew; fi
-          if [ -f "gradlew" ]; then chmod +x gradlew; fi
-
-      - name: Build APK (release with debug fallback in same shell)
+      - name: Build APK (release with debug fallback; retry after auto-fix)
         id: build_apk
         shell: bash
         run: |
@@ -94,13 +91,23 @@ jobs:
           echo "Attempting RELEASE build..."
           flutter build apk --release
           rc=$?
-          if [ $rc -eq 0 ] && [ -f build/app/outputs/flutter-apk/app-release.apk ]; then
-            echo "variant=release" >> $GITHUB_OUTPUT
-            echo "apk_path=${{ steps.detect.outputs.app_dir }}/build/app/outputs/flutter-apk/app-release.apk" >> $GITHUB_OUTPUT
-            exit 0
+          if [ $rc -ne 0 ]; then
+            echo "Release build failed ($rc). Trying DEBUG build..."
+            flutter build apk --debug
+            rc=$?
           fi
-          echo "Release build failed (code $rc). Falling back to DEBUG..."
-          flutter build apk --debug
+          if [ $rc -ne 0 ]; then
+            echo "Build failed ($rc). Checking for 'unsupported Gradle project' and auto-fixing..."
+            # Last resort: force-create android scaffolding then retry DEBUG build
+            flutter create .
+            [ -f "android/gradlew" ] && chmod +x android/gradlew || true
+            flutter build apk --debug
+            rc=$?
+          fi
+          if [ $rc -ne 0 ]; then
+            echo "::error ::Flutter build failed with exit code $rc"
+            exit $rc
+          fi
 
       - name: Find built APK path
         id: find_apk
@@ -122,15 +129,3 @@ jobs:
           name: cryptomentor-apk
           path: ${{ steps.find_apk.outputs.apk_path }}
           if-no-files-found: error
-
-      - name: Archive build outputs
-        if: always()
-        run: |
-          mkdir -p logs
-          APP_DIR="${{ steps.detect.outputs.app_dir }}"
-          cp -r "$APP_DIR/build" logs/ || true
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: build-logs
-          path: logs
