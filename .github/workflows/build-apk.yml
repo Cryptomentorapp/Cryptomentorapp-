@@ -1,0 +1,54 @@
+name: Build Android APK (Patched v3.1)
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - name: Flutter doctor
+        run: flutter doctor -v
+      - name: Accept Android Licenses & Install SDK 34
+        shell: bash
+        run: |
+          yes | sdkmanager --licenses || true
+          sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+      - name: Ensure project structure
+        run: |
+          if [ ! -f "pubspec.yaml" ]; then
+            echo "pubspec.yaml not found at repo root. Please copy pack files to repo root." && exit 1
+          fi
+          mkdir -p assets/images lib
+      - name: Pub get
+        run: flutter pub get
+      - name: Build APK (release)
+        env:
+          JAVA_TOOL_OPTIONS: "-Dfile.encoding=UTF-8"
+        run: flutter build apk --release -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cryptomentor-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cryptomentor-apk-debug
+          path: build/app/outputs/flutter-apk/app-debug.apk
+          if-no-files-found: ignore
+      - name: Archive build logs
+        if: always()
+        run: |
+          mkdir -p logs
+          cp -r build/* logs/ || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-logs
+          path: logs
