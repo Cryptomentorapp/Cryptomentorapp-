@@ -1,4 +1,4 @@
-name: Build Android APK (Fixed)
+name: Build Android APK (Robust)
 
 on:
   workflow_dispatch:
@@ -14,8 +14,8 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+          cache: gradle
 
-      # Install Android SDK + sdkmanager in PATH
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
@@ -25,46 +25,55 @@ jobs:
           sdkmanager --install "platform-tools" "platforms;android-34" "build-tools;34.0.0"
           yes | sdkmanager --licenses
 
-      # Flutter toolchain
-      - name: Set up Flutter
+      - name: Set up Flutter (stable)
         uses: subosito/flutter-action@v2
         with:
           channel: stable
           cache: true
 
-      - name: Flutter doctor
-        run: flutter doctor -v
+      - name: Flutter info
+        run: |
+          flutter --version
+          flutter doctor -v
 
       - name: Get packages
         run: flutter pub get
 
-      # Build APK (release); fall back to debug if release signing is not configured
-      - name: Build release APK
-        run: flutter build apk --release
-      
-      - name: Upload release APK
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cryptomentor-apk-release
-          path: build/app/outputs/flutter-apk/app-release.apk
-          if-no-files-found: warn
-
-      - name: Build debug APK (fallback)
-        if: failure()
+      - name: Ensure gradlew executable (if native Android modules exist)
         run: |
-          echo "Release build failed, building debug APK as fallback"
-          flutter build apk --debug
+          if [ -f "./android/gradlew" ]; then
+            chmod +x ./android/gradlew || true
+          fi
+          if [ -f "./gradlew" ]; then
+            chmod +x ./gradlew || true
+          fi
 
-      - name: Upload debug APK
-        if: always()
+      - name: Build APK (release with automatic debug fallback)
+        id: build_apk
+        shell: bash
+        run: |
+          set -e
+          echo "Attempting release build..."
+          if flutter build apk --release; then
+            APK=build/app/outputs/flutter-apk/app-release.apk
+            echo "variant=release" >> $GITHUB_OUTPUT
+            echo "apk_path=$APK" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "Release build failed. Falling back to debug build..."
+          # In the same shell so Flutter stays in PATH
+          flutter build apk --debug
+          APK=build/app/outputs/flutter-apk/app-debug.apk
+          echo "variant=debug" >> $GITHUB_OUTPUT
+          echo "apk_path=$APK" >> $GITHUB_OUTPUT
+
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: cryptomentor-apk-debug
-          path: build/app/outputs/flutter-apk/app-debug.apk
-          if-no-files-found: ignore
+          name: cryptomentor-apk-${{ steps.build_apk.outputs.variant }}
+          path: ${{ steps.build_apk.outputs.apk_path }}
+          if-no-files-found: error
 
-      # Archive build logs
       - name: Archive build logs
         if: always()
         run: |
