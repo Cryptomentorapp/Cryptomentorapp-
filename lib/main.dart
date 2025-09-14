@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-import 'theme/app_theme.dart';
+import 'utils/app_theme.dart';
 import 'screens/home_screen.dart';
-void main() => runApp(const CMApp());
-class CMApp extends StatelessWidget {
-  const CMApp({super.key});
+
+void main() {
+  runApp(const CryptomentorApp());
+}
+
+class CryptomentorApp extends StatelessWidget {
+  const CryptomentorApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Cryptomentor',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.dark(),
+      title: 'Cryptomentor',
+      theme: AppTheme.dark, // ✅ không có ()
       home: const HomeScreen(),
     );
   }
