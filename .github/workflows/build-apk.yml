@@ -1,4 +1,4 @@
-name: Build Android APK (ONE-SHOT v3)
+name: Build Android APK (ONE-SHOT v4 autodetect)
 
 on:
   workflow_dispatch:
@@ -40,12 +40,9 @@ jobs:
           echo "$SDK/build-tools/34.0.0" >> $GITHUB_PATH
 
           "$SDK/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$SDK" --version
-
-          # Accept licenses safely (avoid Broken pipe with 'yes' + pipefail)
           set +o pipefail
           yes | "$SDK/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$SDK" --licenses >/dev/null || true
           set -o pipefail
-
           "$SDK/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$SDK" --install             "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
       - name: Set up Flutter (stable)
@@ -54,35 +51,66 @@ jobs:
           channel: stable
           cache: true
 
-      - name: Flutter doctor
-        run: flutter doctor -v
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Ensure Gradle wrapper is executable (if present)
+      - name: Detect Flutter app directory
+        id: detect
         shell: bash
         run: |
-          if [ -f "./android/gradlew" ]; then chmod +x ./android/gradlew; fi
-          if [ -f "./gradlew" ]; then chmod +x ./gradlew; fi
+          set -e
+          # Prefer repository root if it has pubspec.yaml
+          if [ -f "pubspec.yaml" ]; then
+            APP_DIR="."
+          else
+            # Find first pubspec.yaml (excluding caches)
+            APP_DIR=$(git ls-files | grep -E '^.*pubspec\.yaml$' | head -n1 | xargs -r dirname)
+            if [ -z "$APP_DIR" ]; then
+              echo "No pubspec.yaml found in repo" >&2
+              exit 1
+            fi
+          fi
+          echo "app_dir=$APP_DIR" >> $GITHUB_OUTPUT
+          echo "Detected Flutter app dir: $APP_DIR"
+
+      - name: Prepare project (migrate if needed)
+        shell: bash
+        run: |
+          set -e
+          cd "${{ steps.detect.outputs.app_dir }}"
+          flutter --version
+          flutter doctor -v
+          flutter config --no-analytics || true
+
+          # If android folder or Gradle files missing/outdated, scaffold
+          if [ ! -d "android" ] || [ ! -f "android/app/build.gradle" ]; then
+            echo "Android folder missing/outdated -> flutter create ."
+            flutter create .
+          fi
+
+          # Gradle wrapper permission just in case
+          if [ -f "android/gradlew" ]; then chmod +x android/gradlew; fi
+          if [ -f "gradlew" ]; then chmod +x gradlew; fi
+
+          # Clean & get deps
+          flutter clean
+          flutter pub get
 
       - name: Build APK (release with debug fallback in same shell)
         id: build_apk
         shell: bash
         run: |
           set +e
+          cd "${{ steps.detect.outputs.app_dir }}"
           echo "Attempting RELEASE build..."
           flutter build apk --release
           rc=$?
           if [ $rc -eq 0 ] && [ -f build/app/outputs/flutter-apk/app-release.apk ]; then
             echo "variant=release" >> $GITHUB_OUTPUT
-            echo "apk_path=build/app/outputs/flutter-apk/app-release.apk" >> $GITHUB_OUTPUT
+            echo "apk_path=${{ steps.detect.outputs.app_dir }}/build/app/outputs/flutter-apk/app-release.apk" >> $GITHUB_OUTPUT
             exit 0
           fi
           echo "Release build failed (code $rc). Falling back to DEBUG..."
           flutter build apk --debug
           echo "variant=debug" >> $GITHUB_OUTPUT
-          echo "apk_path=build/app/outputs/flutter-apk/app-debug.apk" >> $GITHUB_OUTPUT
+          echo "apk_path=${{ steps.detect.outputs.app_dir }}/build/app/outputs/flutter-apk/app-debug.apk" >> $GITHUB_OUTPUT
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
@@ -95,7 +123,8 @@ jobs:
         if: always()
         run: |
           mkdir -p logs
-          cp -r build/* logs/ || true
+          APP_DIR="${{ steps.detect.outputs.app_dir }}"
+          cp -r "$APP_DIR/build" logs/ || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
