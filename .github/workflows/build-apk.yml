@@ -1,10 +1,11 @@
-name: Build Android APK (ONE-SHOT)
+name: Build Android APK (ONE-SHOT v2)
 
 on:
   workflow_dispatch:
 
 env:
   ANDROID_SDK_ROOT: ${{ github.workspace }}/android-sdk
+  ANDROID_HOME: ${{ github.workspace }}/android-sdk
 
 jobs:
   build:
@@ -21,7 +22,6 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      # ===== Manual Android SDK install (no external Android action dependencies) =====
       - name: Install Android commandline-tools & SDK 34
         shell: bash
         run: |
@@ -33,17 +33,17 @@ jobs:
           unzip -q cmdtools.zip -d cmdline-tools
           mv cmdline-tools/cmdline-tools cmdline-tools/latest
 
+          # Make sdkmanager available in THIS step and future steps
+          export PATH="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/build-tools/34.0.0:$PATH"
           echo "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" >> $GITHUB_PATH
           echo "$ANDROID_SDK_ROOT/platform-tools" >> $GITHUB_PATH
           echo "$ANDROID_SDK_ROOT/build-tools/34.0.0" >> $GITHUB_PATH
-          echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
-          echo "JAVA_HOME=${{ steps.setup-java.outputs.path || '' }}" >> $GITHUB_ENV || true
 
-          sdkmanager --sdk_root="$ANDROID_SDK_ROOT" --version
-          yes | sdkmanager --sdk_root="$ANDROID_SDK_ROOT" --licenses
-          sdkmanager --sdk_root="$ANDROID_SDK_ROOT" --install             "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+          # Use absolute path just in case
+          "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_SDK_ROOT" --version
+          yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_SDK_ROOT" --licenses
+          "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_SDK_ROOT" --install             "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
-      # ===== Flutter toolchain =====
       - name: Set up Flutter (stable)
         uses: subosito/flutter-action@v2
         with:
