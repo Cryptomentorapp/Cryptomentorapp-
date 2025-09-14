@@ -1,0 +1,21 @@
+
+import 'package:flutter/material.dart';
+class ResearchScreen extends StatelessWidget{
+  const ResearchScreen({super.key});
+  @override Widget build(BuildContext c){
+    final items = const [
+      ('BTC / Bitcoin', '\$110k', '24h -0.4%'),
+      ('ETH / Ethereum', '\$4.2k', '24h -0.5%'),
+      ('BNB / BNB', '\$860', '24h +1.2%'),
+    ];
+    return Scaffold(
+      appBar: AppBar(title: const Text('Research Hub')),
+      body: ListView.separated(
+        padding: const EdgeInsets.all(16),
+        itemCount: items.length,
+        separatorBuilder: (_, __) => const Divider(height: 1),
+        itemBuilder: (ctx, i) => ListTile(title: Text(items[i].$1), subtitle: Text(items[i].$3), trailing: Text(items[i].$2)),
+      ),
+    );
+  }
+}
