@@ -1,32 +1,16 @@
-name: Build Android APK (Full Live)
 
-on:
-  workflow_dispatch:
-
+name: Build Android APK
+on: { workflow_dispatch: {} }
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
       - uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-      - name: Bootstrap Flutter (android)
-        run: flutter create --platforms=android -t app app
-      - name: Move sources
-        run: |
-          rsync -a --delete lib/ app/lib/
-          rsync -a --delete assets/ app/assets/ || true
-          cp pubspec.yaml app/pubspec.yaml
-          cd app && flutter pub get
-      - name: Build release APK
-        run: cd app && flutter build apk --release -v
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
+        with: { flutter-version: '3.22.3' }
+      - run: flutter pub get
+      - run: flutter build apk --release -v
+      - uses: actions/upload-artifact@v4
         with:
           name: cryptomentor-apk
-          path: app/build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
