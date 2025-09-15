@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build Android APK (Full Live)
 
 on:
   workflow_dispatch:
@@ -15,18 +15,16 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - name: Bootstrap Flutter project
+      - name: Bootstrap Flutter (android)
+        run: flutter create --platforms=android -t app app
+      - name: Move sources
         run: |
-          flutter create --platforms=android -t app app
           rsync -a --delete lib/ app/lib/
           rsync -a --delete assets/ app/assets/ || true
           cp pubspec.yaml app/pubspec.yaml
-          cd app
-          flutter pub get
-      - name: Build APK (release)
-        run: |
-          cd app
-          flutter build apk --release -v
+          cd app && flutter pub get
+      - name: Build release APK
+        run: cd app && flutter build apk --release -v
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
