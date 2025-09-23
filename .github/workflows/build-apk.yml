@@ -1,7 +1,7 @@
 name: Daily Android APK Build
 on:
   schedule:
-    - cron: '0 1 * * *'
+    - cron: '0 1 * * *' # 08:00 GMT+7
   workflow_dispatch:
   push:
     branches: [ main, master ]
@@ -19,7 +19,7 @@ jobs:
         run: flutter pub get
       - name: Build APK (release)
         run: flutter build apk --release
-      - name: Upload APK
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-release-apk
