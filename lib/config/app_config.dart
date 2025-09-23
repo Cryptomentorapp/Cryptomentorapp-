@@ -1,0 +1,1 @@
+class AppConfig { static const String appName = 'Cryptomentor'; }
