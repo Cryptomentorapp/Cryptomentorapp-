@@ -68,7 +68,7 @@ class _TokenScannerPageState extends State<TokenScannerPage> with TickerProvider
 class _HotToken { final String name; final String symbol; final String id; final int? rank; _HotToken({required this.name, required this.symbol, required this.id, required this.rank}); }
 class _DetailView extends StatelessWidget {
   final Map<String,dynamic> detail; final VoidCallback onBack; const _DetailView({required this.detail, required this.onBack, super.key});
-  String _usd(dynamic v){ if(v is num) return '\$'+v.toString(); return '-'; }
+  String _usd(dynamic v){ if(v is num) return '\\$'+v.toString(); return '-'; }
   @override Widget build(BuildContext context){
     final name=(detail['name']??'').toString(); final symbol=(detail['symbol']??'').toString().toUpperCase(); final img=(detail['image']?['small']??'').toString();
     final mcap=detail['market_data']?['market_cap']?['usd']; final price=detail['market_data']?['current_price']?['usd']; final vol=detail['market_data']?['total_volume']?['usd'];
@@ -95,7 +95,7 @@ class _DetailView extends StatelessWidget {
   }
   static String _riskExplain(Map<String,dynamic> d){
     final mcap=d['market_data']?['market_cap']?['usd']; final vol=d['market_data']?['total_volume']?['usd']; final r=<String>[];
-    if(mcap is num && mcap<5000000) r.add('Market cap nhỏ (<$5M)'); if(vol is num && vol<200000) r.add('Volume 24h thấp (<$200k)');
+    if(mcap is num && mcap<5000000) r.add('Market cap nhỏ (<\\$5M)'); if(vol is num && vol<200000) r.add('Volume 24h thấp (<\\$200k)');
     if(r.isEmpty) return 'Không phát hiện dấu hiệu rủi ro cao từ market data cơ bản.'; return r.join(' · ')+'. Khuyến nghị kiểm tra thêm holders & liquidity.';
   }
   static Color _riskColor(String risk){ switch(risk){ case 'HIGH RISK': return Colors.red; case 'MEDIUM': return Colors.orange; default: return Colors.green; } }
