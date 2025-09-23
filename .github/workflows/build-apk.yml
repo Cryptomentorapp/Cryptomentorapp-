@@ -1,7 +1,7 @@
 name: Daily Android APK Build
 on:
   schedule:
-    - cron: '0 1 * * *' # 08:00 GMT+7
+    - cron: '0 1 * * *'
   workflow_dispatch:
   push:
     branches: [ main, master ]
@@ -13,13 +13,13 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - name: Generate platforms
-        run: flutter create .
+      - name: Generate platforms with org
+        run: flutter create --org com.cryptomentor .
       - name: Get deps
         run: flutter pub get
       - name: Build APK (release)
         run: flutter build apk --release
-      - name: Upload artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-release-apk
