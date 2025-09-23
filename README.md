@@ -1,1 +1,0 @@
-Cryptomentor full release scaffold. Build with flutter pub get && flutter build apk --release
