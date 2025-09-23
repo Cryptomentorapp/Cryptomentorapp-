@@ -4,7 +4,7 @@ class CMTheme {
     final base = ThemeData(useMaterial3: true);
     return base.copyWith(
       colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF00D1B2), brightness: Brightness.light),
-      cardTheme: const CardTheme(
+      cardTheme: const CardThemeData(
         elevation: 0,
         margin: EdgeInsets.symmetric(vertical: 8, horizontal: 0),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
@@ -16,7 +16,7 @@ class CMTheme {
     return base.copyWith(
       scaffoldBackgroundColor: const Color(0xFF0B1220),
       colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF00D1B2), brightness: Brightness.dark),
-      cardTheme: const CardTheme(
+      cardTheme: const CardThemeData(
         color: Color(0xFF0F172A),
         elevation: 0,
         margin: EdgeInsets.symmetric(vertical: 8, horizontal: 0),
