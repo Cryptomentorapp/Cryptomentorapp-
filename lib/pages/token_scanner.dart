@@ -62,8 +62,7 @@ class _TokenScannerPageState extends State<TokenScannerPage> with TickerProvider
         final h=hotlist[i]; return Card(child: ListTile(
           title: Text('${h.name} (${h.symbol.toUpperCase()})'), subtitle: Text('Trend · Rank #${h.rank ?? '-'}'),
           trailing: const Icon(Icons.search), onTap: ()=>scanById(h.id)));
-      }, separatorBuilder: (_,__)=>const SizedBox(height:8),
-    ));
+      }, separatorBuilder: (_,__)=>const SizedBox(height:8)));
   }
 }
 class _HotToken { final String name; final String symbol; final String id; final int? rank; _HotToken({required this.name, required this.symbol, required this.id, required this.rank}); }
@@ -81,11 +80,15 @@ class _DetailView extends StatelessWidget {
       Text('Giá hiện tại: ${price!=null?'\$${price.toString()}':'-'}'),
       Text('Market cap: ${mcap!=null?'\$${mcap.toString()}':'-'}'),
       Text('Volume 24h: ${vol!=null?'\$${vol.toString()}':'-'}'),
-      const SizedBox(height:12), const Text('Giải thích:', style: TextStyle(fontWeight: FontWeight.bold)), Text(explain),
-      const SizedBox(height:12), const Text('Lưu ý thêm:', style: TextStyle(fontWeight: FontWeight.bold)),
-      const Text('• Token mới & thanh khoản thấp thường rủi ro pump/dump.
-• Kiểm tra thêm holders & liquidity trước khi mua.'),
-      const SizedBox(height:12), OutlinedButton.icon(onPressed:onBack, icon: const Icon(Icons.arrow_back), label: const Text('Quay lại kết quả')),
+      const SizedBox(height:12),
+      const Text('Giải thích:', style: TextStyle(fontWeight: FontWeight.bold)),
+      Text(explain),
+      const SizedBox(height:12),
+      const Text('Lưu ý thêm:', style: TextStyle(fontWeight: FontWeight.bold)),
+      const Text('• Token mới & thanh khoản thấp thường rủi ro pump/dump.'),
+      const Text('• Kiểm tra thêm holders & liquidity trước khi mua.'),
+      const SizedBox(height:12),
+      OutlinedButton.icon(onPressed:onBack, icon: const Icon(Icons.arrow_back), label: const Text('Quay lại kết quả')),
     ]);
   }
   static String _riskLabel(Map<String,dynamic> d){
