@@ -1,1 +1,0 @@
-import 'package:flutter/material.dart'; class CMTheme{ static ThemeData dark(){ return ThemeData.dark(useMaterial3:true);} }
