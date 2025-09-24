@@ -1,26 +1,30 @@
-name: Daily Android APK Build
+name: Android APK
 on:
-  schedule:
-    - cron: '0 1 * * *' # 08:00 GMT+7
   workflow_dispatch:
   push:
     branches: [ main, master ]
 jobs:
-  build-apk:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      - name: Generate platforms with org
-        run: flutter create --org com.cryptomentor .
-      - name: Get deps
+      - name: Create platforms
+        run: flutter create .
+      - name: Pub get
         run: flutter pub get
-      - name: Build APK (release)
+      - name: Build APK
         run: flutter build apk --release
-      - name: Upload artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-release-apk
+          name: app-release.apk
           path: build/app/outputs/flutter-apk/app-release.apk
