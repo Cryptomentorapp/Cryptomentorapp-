@@ -1,0 +1,1 @@
+import 'package:flutter/material.dart'; class AdminPanelPage extends StatelessWidget{ const AdminPanelPage({super.key}); @override Widget build(BuildContext c)=>ListView(children: const [ ListTile(title: Text('Admin toggles (demo)')), ]);}

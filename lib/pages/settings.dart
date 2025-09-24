@@ -1,0 +1,1 @@
+import 'package:flutter/material.dart'; class SettingsPage extends StatelessWidget{ const SettingsPage({super.key}); @override Widget build(BuildContext c)=>ListView(children: const [ ListTile(title: Text('Language')), ]);}

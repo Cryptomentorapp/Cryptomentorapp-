@@ -1,0 +1,1 @@
+import 'package:flutter/foundation.dart'; class AppState extends ChangeNotifier{ bool premium=false; void toggle(String k,bool v){ premium=v; notifyListeners(); }}
