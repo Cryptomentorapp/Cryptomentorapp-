@@ -5,7 +5,7 @@ class CMTheme {
     return base.copyWith(
       scaffoldBackgroundColor: const Color(0xFF0B1220),
       colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF00D1B2), brightness: Brightness.dark),
-      cardTheme: const CardThemeData(
+      cardTheme: const CardTheme(
         color: Color(0xFF0F172A),
         elevation: 0,
         margin: EdgeInsets.symmetric(vertical: 8),
