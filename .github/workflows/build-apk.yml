@@ -1,8 +1,9 @@
-name: Android APK
+name: Android APK (FULL MAX)
 on:
   workflow_dispatch:
   push:
     branches: [ main, master ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,39 +21,31 @@ jobs:
         with:
           channel: stable
 
-      - name: Create platforms
+      - name: Ensure platforms
         run: flutter create .
-
-      - name: Flutter doctor
-        run: flutter doctor -v
 
       - name: Pub get
         run: flutter pub get
 
-      - name: Analyze
-        run: flutter analyze || true
-
-      - name: Build debug (verbose)
-        run: flutter build apk --debug -v | tee debug_build.log
-
-      - name: Upload debug log
-        uses: actions/upload-artifact@v4
-        with:
-          name: debug_build.log
-          path: debug_build.log
-
       - name: Build release (verbose, no shrink)
-        run: flutter build apk --release --no-shrink -v | tee release_build.log
+        run: |
+          set -euxo pipefail
+          flutter build apk --release --no-shrink -v | tee release_build.log
+          echo "== APK PATHS FOUND =="
+          find build -type f -name "*.apk" || true
 
-      - name: Upload release log
-        if: always()
+      - name: Upload logs
         uses: actions/upload-artifact@v4
         with:
           name: release_build.log
           path: release_build.log
 
-      - name: Upload APK
+      - name: Upload APK (catch-all)
         uses: actions/upload-artifact@v4
         with:
-          name: app-release.apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: app-apk
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/flutter-apk/*-release.apk
+            build/**/outputs/**/*.apk
+          if-no-files-found: warn
