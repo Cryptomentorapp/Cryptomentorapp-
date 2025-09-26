@@ -1,0 +1,23 @@
+import 'package:http/http.dart' as http;
+import 'package:xml/xml.dart' as xml;
+import '../config.dart';
+
+class RSSItem{ final String title, link, pubDate; RSSItem(this.title,this.link,this.pubDate); }
+
+class RSSService{
+  static Future<List<RSSItem>> fetchAll() async {
+    final urls = [CMConfig.cryptopanicRSS, CMConfig.cointelegraphRSS];
+    final all=<RSSItem>[];
+    for(final u in urls){
+      final r = await http.get(Uri.parse(u));
+      if(r.statusCode==200){
+        final doc = xml.XmlDocument.parse(r.body);
+        for(final it in doc.findAllElements('item')){
+          all.add(RSSItem(it.getElement('title')?.text ?? '', it.getElement('link')?.text ?? '', it.getElement('pubDate')?.text ?? ''));
+        }
+      }
+    }
+    all.sort((a,b)=>b.pubDate.compareTo(a.pubDate));
+    return all.take(60).toList();
+  }
+}

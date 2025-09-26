@@ -1,0 +1,1 @@
+import 'package:flutter/material.dart'; class CMError extends StatelessWidget{ final String message; const CMError(this.message,{super.key}); @override Widget build(BuildContext c)=>Center(child: Text('Error: '+message)); }

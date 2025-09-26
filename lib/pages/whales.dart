@@ -1,0 +1,25 @@
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import '../services/chain_service.dart';
+
+class WhalesPage extends StatefulWidget{ const WhalesPage({super.key}); @override State<WhalesPage> createState()=>_W(); }
+class _W extends State<WhalesPage>{
+  List items=[]; bool loading=false;
+  @override void initState(){ super.initState(); _load(); }
+  Future<void> _load() async { final s=await rootBundle.loadString('assets/whales_top50.json'); items=jsonDecode(s); setState((){}); }
+  Future<void> _fetch(Map w) async { setState(()=>loading=true);
+    try{ final chain=(w['chain']??'ETH').toString().toUpperCase(); final addr=(w['address']??'').toString(); String res;
+      if(chain=='ETH'){ res = await ChainService.balanceETH(addr); } else { res = await ChainService.balanceBSC(addr); }
+      if(mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Balance raw: '+res)));
+    } catch(e){ if(mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: '+e.toString()))); }
+    setState(()=>loading=false); }
+  @override Widget build(BuildContext c)=>Stack(children:[
+    ListView.separated(padding: const EdgeInsets.all(12), itemCount: items.length, itemBuilder:(_,i){
+      final w=Map<String,dynamic>.from(items[i]);
+      return Card(child: ListTile(title: Text((w['label']??'').toString()), subtitle: Text('${(w['chain']??'').toString()} · ${(w['address']??'').toString()}'),
+        trailing: TextButton(onPressed: ()=>_fetch(w), child: const Text('Fetch balance'))));
+    }, separatorBuilder:(_,__)=>const SizedBox(height:8)),
+    if(loading) const Positioned.fill(child: IgnorePointer(child: Center(child: CircularProgressIndicator()))),
+  ]);
+}

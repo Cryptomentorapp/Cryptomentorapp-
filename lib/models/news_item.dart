@@ -1,0 +1,1 @@
+class NewsItem{ final String title, link, pubDate; NewsItem(this.title,this.link,this.pubDate); }
