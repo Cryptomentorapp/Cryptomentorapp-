@@ -1,0 +1,1 @@
+import 'package:flutter/material.dart'; import '../widgets/cm_card.dart'; class CommunityPage extends StatelessWidget{ const CommunityPage({super.key}); @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Community')), body: ListView(padding: const EdgeInsets.all(16), children:[ const CMCard(child: Text('Bảng tin + gợi ý AI (placeholder)')), ])); }

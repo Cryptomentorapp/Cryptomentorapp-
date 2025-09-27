@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "signals": {
+    "negative": [
+      "LP mỏng, không khoá",
+      "Owner có quyền chỉnh thuế, mint/burn",
+      "Top 10 holders > 80%",
+      "Volume chủ yếu từ 1 DEX, chênh lệch giá lớn, nhiều MEV sandwich"
+    ],
+    "positive": [
+      "LP khoá ≥ 90%",
+      "Contract renounce",
+      "Cộng đồng tự nhiên, không bot"
+    ]
+  }
+}

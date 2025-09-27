@@ -1,0 +1,4131 @@
+{
+  "version": "1.0",
+  "total_lessons": 100,
+  "levels": [
+    {
+      "level": "L1 - Beginner",
+      "lessons": [
+        {
+          "id": "L1-001",
+          "title": "Blockchain 101",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Blockchain 101 trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Blockchain 101 giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Blockchain 101: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Blockchain 101",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Blockchain 101."
+            },
+            {
+              "q": "Vì sao cần Blockchain 101?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Blockchain 101?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-002",
+          "title": "Bitcoin căn bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Bitcoin căn bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Bitcoin căn bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Bitcoin căn bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Bitcoin căn bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Bitcoin căn bản."
+            },
+            {
+              "q": "Vì sao cần Bitcoin căn bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Bitcoin căn bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-003",
+          "title": "Ethereum & Smart Contract",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Ethereum & Smart Contract trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Ethereum & Smart Contract giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Ethereum & Smart Contract: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Ethereum & Smart Contract",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Ethereum & Smart Contract."
+            },
+            {
+              "q": "Vì sao cần Ethereum & Smart Contract?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Ethereum & Smart Contract?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-004",
+          "title": "Coin vs Token",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Coin vs Token trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Coin vs Token giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Coin vs Token: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Coin vs Token",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Coin vs Token."
+            },
+            {
+              "q": "Vì sao cần Coin vs Token?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Coin vs Token?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-005",
+          "title": "Ví Crypto: Hot vs Cold",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Ví Crypto: Hot vs Cold trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Ví Crypto: Hot vs Cold giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Ví Crypto: Hot vs Cold: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Ví Crypto: Hot vs Cold",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Ví Crypto: Hot vs Cold."
+            },
+            {
+              "q": "Vì sao cần Ví Crypto: Hot vs Cold?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Ví Crypto: Hot vs Cold?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-006",
+          "title": "Seed Phrase & Private Key",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Seed Phrase & Private Key trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Seed Phrase & Private Key giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Seed Phrase & Private Key: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Seed Phrase & Private Key",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Seed Phrase & Private Key."
+            },
+            {
+              "q": "Vì sao cần Seed Phrase & Private Key?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Seed Phrase & Private Key?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-007",
+          "title": "Giao dịch & Gas Fee",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Giao dịch & Gas Fee trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Giao dịch & Gas Fee giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Giao dịch & Gas Fee: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Giao dịch & Gas Fee",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Giao dịch & Gas Fee."
+            },
+            {
+              "q": "Vì sao cần Giao dịch & Gas Fee?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Giao dịch & Gas Fee?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-008",
+          "title": "CEX vs DEX",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** CEX vs DEX trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng CEX vs DEX giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "CEX vs DEX: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của CEX vs DEX",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng CEX vs DEX."
+            },
+            {
+              "q": "Vì sao cần CEX vs DEX?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng CEX vs DEX?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-009",
+          "title": "Stablecoin: USDT/USDC/DAI",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Stablecoin: USDT/USDC/DAI trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Stablecoin: USDT/USDC/DAI giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Stablecoin: USDT/USDC/DAI: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Stablecoin: USDT/USDC/DAI",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Stablecoin: USDT/USDC/DAI."
+            },
+            {
+              "q": "Vì sao cần Stablecoin: USDT/USDC/DAI?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Stablecoin: USDT/USDC/DAI?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-010",
+          "title": "Địa chỉ ví & checksum",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Địa chỉ ví & checksum trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Địa chỉ ví & checksum giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Địa chỉ ví & checksum: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Địa chỉ ví & checksum",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Địa chỉ ví & checksum."
+            },
+            {
+              "q": "Vì sao cần Địa chỉ ví & checksum?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Địa chỉ ví & checksum?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-011",
+          "title": "Tối ưu phí gas",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Tối ưu phí gas trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Tối ưu phí gas giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Tối ưu phí gas: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Tối ưu phí gas",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Tối ưu phí gas."
+            },
+            {
+              "q": "Vì sao cần Tối ưu phí gas?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Tối ưu phí gas?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-012",
+          "title": "Nhận diện scam phổ biến",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Nhận diện scam phổ biến trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Nhận diện scam phổ biến giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Nhận diện scam phổ biến: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Nhận diện scam phổ biến",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Nhận diện scam phổ biến."
+            },
+            {
+              "q": "Vì sao cần Nhận diện scam phổ biến?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Nhận diện scam phổ biến?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-013",
+          "title": "KYC/AML căn bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** KYC/AML căn bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng KYC/AML căn bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "KYC/AML căn bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của KYC/AML căn bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng KYC/AML căn bản."
+            },
+            {
+              "q": "Vì sao cần KYC/AML căn bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng KYC/AML căn bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-014",
+          "title": "Quản lý danh mục cơ bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Quản lý danh mục cơ bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Quản lý danh mục cơ bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Quản lý danh mục cơ bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Quản lý danh mục cơ bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Quản lý danh mục cơ bản."
+            },
+            {
+              "q": "Vì sao cần Quản lý danh mục cơ bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Quản lý danh mục cơ bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-015",
+          "title": "Chu kỳ thị trường",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Chu kỳ thị trường trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Chu kỳ thị trường giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Chu kỳ thị trường: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Chu kỳ thị trường",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Chu kỳ thị trường."
+            },
+            {
+              "q": "Vì sao cần Chu kỳ thị trường?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Chu kỳ thị trường?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-016",
+          "title": "Biến động & rủi ro",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Biến động & rủi ro trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Biến động & rủi ro giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Biến động & rủi ro: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Biến động & rủi ro",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Biến động & rủi ro."
+            },
+            {
+              "q": "Vì sao cần Biến động & rủi ro?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Biến động & rủi ro?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-017",
+          "title": "Thanh khoản là gì",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Thanh khoản là gì trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Thanh khoản là gì giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Thanh khoản là gì: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Thanh khoản là gì",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Thanh khoản là gì."
+            },
+            {
+              "q": "Vì sao cần Thanh khoản là gì?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Thanh khoản là gì?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-018",
+          "title": "Các loại lệnh cơ bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Các loại lệnh cơ bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Các loại lệnh cơ bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Các loại lệnh cơ bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Các loại lệnh cơ bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Các loại lệnh cơ bản."
+            },
+            {
+              "q": "Vì sao cần Các loại lệnh cơ bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Các loại lệnh cơ bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-019",
+          "title": "Đọc trang giá (CoinGecko)",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Đọc trang giá (CoinGecko) trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Đọc trang giá (CoinGecko) giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Đọc trang giá (CoinGecko): trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Đọc trang giá (CoinGecko)",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Đọc trang giá (CoinGecko)."
+            },
+            {
+              "q": "Vì sao cần Đọc trang giá (CoinGecko)?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Đọc trang giá (CoinGecko)?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L1-020",
+          "title": "Bộ công cụ cơ bản cho người mới",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Bộ công cụ cơ bản cho người mới trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Bộ công cụ cơ bản cho người mới giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Bộ công cụ cơ bản cho người mới: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Bộ công cụ cơ bản cho người mới",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Bộ công cụ cơ bản cho người mới."
+            },
+            {
+              "q": "Vì sao cần Bộ công cụ cơ bản cho người mới?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Bộ công cụ cơ bản cho người mới?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "L2 - Trading & TA",
+      "lessons": [
+        {
+          "id": "L2-021",
+          "title": "Nến Nhật 101",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Nến Nhật 101 trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Nến Nhật 101 giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Nến Nhật 101: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Nến Nhật 101",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Nến Nhật 101."
+            },
+            {
+              "q": "Vì sao cần Nến Nhật 101?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Nến Nhật 101?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-022",
+          "title": "Mẫu nến cơ bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Mẫu nến cơ bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Mẫu nến cơ bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Mẫu nến cơ bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Mẫu nến cơ bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Mẫu nến cơ bản."
+            },
+            {
+              "q": "Vì sao cần Mẫu nến cơ bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Mẫu nến cơ bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-023",
+          "title": "Hỗ trợ/Kháng cự",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Hỗ trợ/Kháng cự trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Hỗ trợ/Kháng cự giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Hỗ trợ/Kháng cự: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Hỗ trợ/Kháng cự",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Hỗ trợ/Kháng cự."
+            },
+            {
+              "q": "Vì sao cần Hỗ trợ/Kháng cự?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Hỗ trợ/Kháng cự?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-024",
+          "title": "Kẻ trendline đúng cách",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Kẻ trendline đúng cách trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Kẻ trendline đúng cách giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Kẻ trendline đúng cách: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Kẻ trendline đúng cách",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Kẻ trendline đúng cách."
+            },
+            {
+              "q": "Vì sao cần Kẻ trendline đúng cách?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Kẻ trendline đúng cách?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-025",
+          "title": "Đường trung bình MA/EMA",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Đường trung bình MA/EMA trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Đường trung bình MA/EMA giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Đường trung bình MA/EMA: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Đường trung bình MA/EMA",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Đường trung bình MA/EMA."
+            },
+            {
+              "q": "Vì sao cần Đường trung bình MA/EMA?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Đường trung bình MA/EMA?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-026",
+          "title": "Giao cắt EMA/SMA",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Giao cắt EMA/SMA trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Giao cắt EMA/SMA giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Giao cắt EMA/SMA: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Giao cắt EMA/SMA",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Giao cắt EMA/SMA."
+            },
+            {
+              "q": "Vì sao cần Giao cắt EMA/SMA?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Giao cắt EMA/SMA?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-027",
+          "title": "MACD cơ bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** MACD cơ bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng MACD cơ bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "MACD cơ bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của MACD cơ bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng MACD cơ bản."
+            },
+            {
+              "q": "Vì sao cần MACD cơ bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng MACD cơ bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-028",
+          "title": "RSI: quá mua/quá bán",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** RSI: quá mua/quá bán trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng RSI: quá mua/quá bán giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "RSI: quá mua/quá bán: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của RSI: quá mua/quá bán",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng RSI: quá mua/quá bán."
+            },
+            {
+              "q": "Vì sao cần RSI: quá mua/quá bán?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng RSI: quá mua/quá bán?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-029",
+          "title": "Bollinger Bands",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Bollinger Bands trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Bollinger Bands giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Bollinger Bands: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Bollinger Bands",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Bollinger Bands."
+            },
+            {
+              "q": "Vì sao cần Bollinger Bands?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Bollinger Bands?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-030",
+          "title": "Stochastic Oscillator",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Stochastic Oscillator trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Stochastic Oscillator giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Stochastic Oscillator: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Stochastic Oscillator",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Stochastic Oscillator."
+            },
+            {
+              "q": "Vì sao cần Stochastic Oscillator?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Stochastic Oscillator?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-031",
+          "title": "Khối lượng (Volume) cơ bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Khối lượng (Volume) cơ bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Khối lượng (Volume) cơ bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Khối lượng (Volume) cơ bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Khối lượng (Volume) cơ bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Khối lượng (Volume) cơ bản."
+            },
+            {
+              "q": "Vì sao cần Khối lượng (Volume) cơ bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Khối lượng (Volume) cơ bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-032",
+          "title": "OBV (On-Balance Volume)",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** OBV (On-Balance Volume) trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng OBV (On-Balance Volume) giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "OBV (On-Balance Volume): trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của OBV (On-Balance Volume)",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng OBV (On-Balance Volume)."
+            },
+            {
+              "q": "Vì sao cần OBV (On-Balance Volume)?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng OBV (On-Balance Volume)?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-033",
+          "title": "Volume Profile (khái niệm)",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Volume Profile (khái niệm) trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Volume Profile (khái niệm) giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Volume Profile (khái niệm): trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Volume Profile (khái niệm)",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Volume Profile (khái niệm)."
+            },
+            {
+              "q": "Vì sao cần Volume Profile (khái niệm)?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Volume Profile (khái niệm)?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-034",
+          "title": "ATR & đo biến động",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** ATR & đo biến động trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng ATR & đo biến động giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "ATR & đo biến động: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của ATR & đo biến động",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng ATR & đo biến động."
+            },
+            {
+              "q": "Vì sao cần ATR & đo biến động?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng ATR & đo biến động?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-035",
+          "title": "Mô hình Tam giác/Triangle",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Mô hình Tam giác/Triangle trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Mô hình Tam giác/Triangle giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Mô hình Tam giác/Triangle: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Mô hình Tam giác/Triangle",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Mô hình Tam giác/Triangle."
+            },
+            {
+              "q": "Vì sao cần Mô hình Tam giác/Triangle?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Mô hình Tam giác/Triangle?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-036",
+          "title": "Head & Shoulders",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Head & Shoulders trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Head & Shoulders giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Head & Shoulders: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Head & Shoulders",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Head & Shoulders."
+            },
+            {
+              "q": "Vì sao cần Head & Shoulders?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Head & Shoulders?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-037",
+          "title": "Double Top/Bottom",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Double Top/Bottom trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Double Top/Bottom giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Double Top/Bottom: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Double Top/Bottom",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Double Top/Bottom."
+            },
+            {
+              "q": "Vì sao cần Double Top/Bottom?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Double Top/Bottom?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-038",
+          "title": "Fibonacci Retracement",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Fibonacci Retracement trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Fibonacci Retracement giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Fibonacci Retracement: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Fibonacci Retracement",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Fibonacci Retracement."
+            },
+            {
+              "q": "Vì sao cần Fibonacci Retracement?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Fibonacci Retracement?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-039",
+          "title": "Breakout & Pullback",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Breakout & Pullback trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Breakout & Pullback giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Breakout & Pullback: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Breakout & Pullback",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Breakout & Pullback."
+            },
+            {
+              "q": "Vì sao cần Breakout & Pullback?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Breakout & Pullback?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L2-040",
+          "title": "Quản trị rủi ro trong TA",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Quản trị rủi ro trong TA trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Quản trị rủi ro trong TA giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Quản trị rủi ro trong TA: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Quản trị rủi ro trong TA",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Quản trị rủi ro trong TA."
+            },
+            {
+              "q": "Vì sao cần Quản trị rủi ro trong TA?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Quản trị rủi ro trong TA?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "L3 - Tokenomics & Projects",
+      "lessons": [
+        {
+          "id": "L3-041",
+          "title": "Tokenomics căn bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Tokenomics căn bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Tokenomics căn bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Tokenomics căn bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Tokenomics căn bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Tokenomics căn bản."
+            },
+            {
+              "q": "Vì sao cần Tokenomics căn bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Tokenomics căn bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-042",
+          "title": "Cung lưu hành & Tổng cung",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Cung lưu hành & Tổng cung trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Cung lưu hành & Tổng cung giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Cung lưu hành & Tổng cung: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Cung lưu hành & Tổng cung",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Cung lưu hành & Tổng cung."
+            },
+            {
+              "q": "Vì sao cần Cung lưu hành & Tổng cung?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Cung lưu hành & Tổng cung?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-043",
+          "title": "Vesting & Cliff",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Vesting & Cliff trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Vesting & Cliff giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Vesting & Cliff: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Vesting & Cliff",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Vesting & Cliff."
+            },
+            {
+              "q": "Vì sao cần Vesting & Cliff?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Vesting & Cliff?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-044",
+          "title": "Lạm phát token",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Lạm phát token trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Lạm phát token giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Lạm phát token: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Lạm phát token",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Lạm phát token."
+            },
+            {
+              "q": "Vì sao cần Lạm phát token?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Lạm phát token?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-045",
+          "title": "Utility vs Governance token",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Utility vs Governance token trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Utility vs Governance token giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Utility vs Governance token: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Utility vs Governance token",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Utility vs Governance token."
+            },
+            {
+              "q": "Vì sao cần Utility vs Governance token?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Utility vs Governance token?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-046",
+          "title": "Lịch phát thải",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Lịch phát thải trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Lịch phát thải giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Lịch phát thải: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Lịch phát thải",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Lịch phát thải."
+            },
+            {
+              "q": "Vì sao cần Lịch phát thải?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Lịch phát thải?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-047",
+          "title": "Kho bạc (Treasury) & Runway",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Kho bạc (Treasury) & Runway trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Kho bạc (Treasury) & Runway giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Kho bạc (Treasury) & Runway: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Kho bạc (Treasury) & Runway",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Kho bạc (Treasury) & Runway."
+            },
+            {
+              "q": "Vì sao cần Kho bạc (Treasury) & Runway?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Kho bạc (Treasury) & Runway?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-048",
+          "title": "Phân bổ token & Fairness",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Phân bổ token & Fairness trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Phân bổ token & Fairness giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Phân bổ token & Fairness: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Phân bổ token & Fairness",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Phân bổ token & Fairness."
+            },
+            {
+              "q": "Vì sao cần Phân bổ token & Fairness?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Phân bổ token & Fairness?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-049",
+          "title": "FDV vs Market Cap",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** FDV vs Market Cap trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng FDV vs Market Cap giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "FDV vs Market Cap: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của FDV vs Market Cap",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng FDV vs Market Cap."
+            },
+            {
+              "q": "Vì sao cần FDV vs Market Cap?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng FDV vs Market Cap?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-050",
+          "title": "Airdrop: cơ chế & rủi ro",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Airdrop: cơ chế & rủi ro trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Airdrop: cơ chế & rủi ro giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Airdrop: cơ chế & rủi ro: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Airdrop: cơ chế & rủi ro",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Airdrop: cơ chế & rủi ro."
+            },
+            {
+              "q": "Vì sao cần Airdrop: cơ chế & rủi ro?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Airdrop: cơ chế & rủi ro?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-051",
+          "title": "Đọc Whitepaper hiệu quả",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Đọc Whitepaper hiệu quả trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Đọc Whitepaper hiệu quả giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Đọc Whitepaper hiệu quả: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Đọc Whitepaper hiệu quả",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Đọc Whitepaper hiệu quả."
+            },
+            {
+              "q": "Vì sao cần Đọc Whitepaper hiệu quả?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Đọc Whitepaper hiệu quả?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-052",
+          "title": "Thẩm định team & dev",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Thẩm định team & dev trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Thẩm định team & dev giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Thẩm định team & dev: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Thẩm định team & dev",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Thẩm định team & dev."
+            },
+            {
+              "q": "Vì sao cần Thẩm định team & dev?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Thẩm định team & dev?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-053",
+          "title": "Đánh giá roadmap",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Đánh giá roadmap trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Đánh giá roadmap giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Đánh giá roadmap: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Đánh giá roadmap",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Đánh giá roadmap."
+            },
+            {
+              "q": "Vì sao cần Đánh giá roadmap?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Đánh giá roadmap?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-054",
+          "title": "So sánh đối thủ & moat",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** So sánh đối thủ & moat trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng So sánh đối thủ & moat giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "So sánh đối thủ & moat: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của So sánh đối thủ & moat",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng So sánh đối thủ & moat."
+            },
+            {
+              "q": "Vì sao cần So sánh đối thủ & moat?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng So sánh đối thủ & moat?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-055",
+          "title": "Hệ sinh thái & đối tác",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Hệ sinh thái & đối tác trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Hệ sinh thái & đối tác giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Hệ sinh thái & đối tác: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Hệ sinh thái & đối tác",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Hệ sinh thái & đối tác."
+            },
+            {
+              "q": "Vì sao cần Hệ sinh thái & đối tác?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Hệ sinh thái & đối tác?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-056",
+          "title": "ICO/IEO/IDO khác nhau thế nào",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** ICO/IEO/IDO khác nhau thế nào trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng ICO/IEO/IDO khác nhau thế nào giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "ICO/IEO/IDO khác nhau thế nào: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của ICO/IEO/IDO khác nhau thế nào",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng ICO/IEO/IDO khác nhau thế nào."
+            },
+            {
+              "q": "Vì sao cần ICO/IEO/IDO khác nhau thế nào?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng ICO/IEO/IDO khác nhau thế nào?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-057",
+          "title": "Cơ chế Launchpad",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Cơ chế Launchpad trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Cơ chế Launchpad giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Cơ chế Launchpad: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Cơ chế Launchpad",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Cơ chế Launchpad."
+            },
+            {
+              "q": "Vì sao cần Cơ chế Launchpad?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Cơ chế Launchpad?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-058",
+          "title": "Quy trình niêm yết sàn",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Quy trình niêm yết sàn trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Quy trình niêm yết sàn giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Quy trình niêm yết sàn: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Quy trình niêm yết sàn",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Quy trình niêm yết sàn."
+            },
+            {
+              "q": "Vì sao cần Quy trình niêm yết sàn?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Quy trình niêm yết sàn?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-059",
+          "title": "Thanh khoản & Market Making",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Thanh khoản & Market Making trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Thanh khoản & Market Making giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Thanh khoản & Market Making: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Thanh khoản & Market Making",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Thanh khoản & Market Making."
+            },
+            {
+              "q": "Vì sao cần Thanh khoản & Market Making?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Thanh khoản & Market Making?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L3-060",
+          "title": "Chỉ số cộng đồng: Discord/Twitter/Telegram",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Chỉ số cộng đồng: Discord/Twitter/Telegram trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Chỉ số cộng đồng: Discord/Twitter/Telegram giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Chỉ số cộng đồng: Discord/Twitter/Telegram: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Chỉ số cộng đồng: Discord/Twitter/Telegram",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Chỉ số cộng đồng: Discord/Twitter/Telegram."
+            },
+            {
+              "q": "Vì sao cần Chỉ số cộng đồng: Discord/Twitter/Telegram?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Chỉ số cộng đồng: Discord/Twitter/Telegram?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "L4 - On-chain & DeFi",
+      "lessons": [
+        {
+          "id": "L4-061",
+          "title": "Etherscan căn bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Etherscan căn bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Etherscan căn bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Etherscan căn bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Etherscan căn bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Etherscan căn bản."
+            },
+            {
+              "q": "Vì sao cần Etherscan căn bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Etherscan căn bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-062",
+          "title": "BscScan căn bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** BscScan căn bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng BscScan căn bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "BscScan căn bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của BscScan căn bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng BscScan căn bản."
+            },
+            {
+              "q": "Vì sao cần BscScan căn bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng BscScan căn bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-063",
+          "title": "Đọc giao dịch & tx hash",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Đọc giao dịch & tx hash trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Đọc giao dịch & tx hash giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Đọc giao dịch & tx hash: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Đọc giao dịch & tx hash",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Đọc giao dịch & tx hash."
+            },
+            {
+              "q": "Vì sao cần Đọc giao dịch & tx hash?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Đọc giao dịch & tx hash?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-064",
+          "title": "Nội dung nội bộ (internal tx)",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Nội dung nội bộ (internal tx) trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Nội dung nội bộ (internal tx) giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Nội dung nội bộ (internal tx): trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Nội dung nội bộ (internal tx)",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Nội dung nội bộ (internal tx)."
+            },
+            {
+              "q": "Vì sao cần Nội dung nội bộ (internal tx)?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Nội dung nội bộ (internal tx)?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-065",
+          "title": "Event logs & topic",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Event logs & topic trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Event logs & topic giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Event logs & topic: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Event logs & topic",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Event logs & topic."
+            },
+            {
+              "q": "Vì sao cần Event logs & topic?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Event logs & topic?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-066",
+          "title": "Phân bổ holder & top ví",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Phân bổ holder & top ví trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Phân bổ holder & top ví giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Phân bổ holder & top ví: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Phân bổ holder & top ví",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Phân bổ holder & top ví."
+            },
+            {
+              "q": "Vì sao cần Phân bổ holder & top ví?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Phân bổ holder & top ví?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-067",
+          "title": "Xác minh hợp đồng (verified)",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Xác minh hợp đồng (verified) trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Xác minh hợp đồng (verified) giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Xác minh hợp đồng (verified): trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Xác minh hợp đồng (verified)",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Xác minh hợp đồng (verified)."
+            },
+            {
+              "q": "Vì sao cần Xác minh hợp đồng (verified)?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Xác minh hợp đồng (verified)?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-068",
+          "title": "LP & Liquidity Pool",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** LP & Liquidity Pool trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng LP & Liquidity Pool giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "LP & Liquidity Pool: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của LP & Liquidity Pool",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng LP & Liquidity Pool."
+            },
+            {
+              "q": "Vì sao cần LP & Liquidity Pool?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng LP & Liquidity Pool?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-069",
+          "title": "Nguyên lý AMM x*y=k",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Nguyên lý AMM x*y=k trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Nguyên lý AMM x*y=k giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Nguyên lý AMM x*y=k: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Nguyên lý AMM x*y=k",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Nguyên lý AMM x*y=k."
+            },
+            {
+              "q": "Vì sao cần Nguyên lý AMM x*y=k?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Nguyên lý AMM x*y=k?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-070",
+          "title": "Slippage & front-running",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Slippage & front-running trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Slippage & front-running giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Slippage & front-running: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Slippage & front-running",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Slippage & front-running."
+            },
+            {
+              "q": "Vì sao cần Slippage & front-running?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Slippage & front-running?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-071",
+          "title": "Impermanent Loss",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Impermanent Loss trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Impermanent Loss giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Impermanent Loss: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Impermanent Loss",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Impermanent Loss."
+            },
+            {
+              "q": "Vì sao cần Impermanent Loss?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Impermanent Loss?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-072",
+          "title": "Staking cơ bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Staking cơ bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Staking cơ bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Staking cơ bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Staking cơ bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Staking cơ bản."
+            },
+            {
+              "q": "Vì sao cần Staking cơ bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Staking cơ bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-073",
+          "title": "Farming & Rewards",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Farming & Rewards trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Farming & Rewards giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Farming & Rewards: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Farming & Rewards",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Farming & Rewards."
+            },
+            {
+              "q": "Vì sao cần Farming & Rewards?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Farming & Rewards?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-074",
+          "title": "Yield Aggregator",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Yield Aggregator trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Yield Aggregator giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Yield Aggregator: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Yield Aggregator",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Yield Aggregator."
+            },
+            {
+              "q": "Vì sao cần Yield Aggregator?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Yield Aggregator?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-075",
+          "title": "Lending/Borrowing",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Lending/Borrowing trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Lending/Borrowing giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Lending/Borrowing: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Lending/Borrowing",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Lending/Borrowing."
+            },
+            {
+              "q": "Vì sao cần Lending/Borrowing?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Lending/Borrowing?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-076",
+          "title": "Thanh lý (Liquidation) cơ chế",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Thanh lý (Liquidation) cơ chế trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Thanh lý (Liquidation) cơ chế giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Thanh lý (Liquidation) cơ chế: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Thanh lý (Liquidation) cơ chế",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Thanh lý (Liquidation) cơ chế."
+            },
+            {
+              "q": "Vì sao cần Thanh lý (Liquidation) cơ chế?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Thanh lý (Liquidation) cơ chế?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-077",
+          "title": "Cross-chain Bridge",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Cross-chain Bridge trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Cross-chain Bridge giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Cross-chain Bridge: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Cross-chain Bridge",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Cross-chain Bridge."
+            },
+            {
+              "q": "Vì sao cần Cross-chain Bridge?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Cross-chain Bridge?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-078",
+          "title": "TVL & DEX Volume",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** TVL & DEX Volume trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng TVL & DEX Volume giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "TVL & DEX Volume: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của TVL & DEX Volume",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng TVL & DEX Volume."
+            },
+            {
+              "q": "Vì sao cần TVL & DEX Volume?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng TVL & DEX Volume?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-079",
+          "title": "Phân tích dòng vốn on-chain",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Phân tích dòng vốn on-chain trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Phân tích dòng vốn on-chain giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Phân tích dòng vốn on-chain: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Phân tích dòng vốn on-chain",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Phân tích dòng vốn on-chain."
+            },
+            {
+              "q": "Vì sao cần Phân tích dòng vốn on-chain?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Phân tích dòng vốn on-chain?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L4-080",
+          "title": "Theo dõi cá voi (Whales) đúng cách",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Theo dõi cá voi (Whales) đúng cách trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Theo dõi cá voi (Whales) đúng cách giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Theo dõi cá voi (Whales) đúng cách: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Theo dõi cá voi (Whales) đúng cách",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Theo dõi cá voi (Whales) đúng cách."
+            },
+            {
+              "q": "Vì sao cần Theo dõi cá voi (Whales) đúng cách?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Theo dõi cá voi (Whales) đúng cách?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": "L5 - Advanced & Pro Trading",
+      "lessons": [
+        {
+          "id": "L5-081",
+          "title": "Orderflow & Footprint (khái niệm)",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Orderflow & Footprint (khái niệm) trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Orderflow & Footprint (khái niệm) giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Orderflow & Footprint (khái niệm): trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Orderflow & Footprint (khái niệm)",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Orderflow & Footprint (khái niệm)."
+            },
+            {
+              "q": "Vì sao cần Orderflow & Footprint (khái niệm)?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Orderflow & Footprint (khái niệm)?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-082",
+          "title": "Funding Rate",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Funding Rate trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Funding Rate giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Funding Rate: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Funding Rate",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Funding Rate."
+            },
+            {
+              "q": "Vì sao cần Funding Rate?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Funding Rate?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-083",
+          "title": "Open Interest",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Open Interest trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Open Interest giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Open Interest: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Open Interest",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Open Interest."
+            },
+            {
+              "q": "Vì sao cần Open Interest?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Open Interest?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-084",
+          "title": "Tỷ lệ Long/Short",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Tỷ lệ Long/Short trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Tỷ lệ Long/Short giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Tỷ lệ Long/Short: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Tỷ lệ Long/Short",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Tỷ lệ Long/Short."
+            },
+            {
+              "q": "Vì sao cần Tỷ lệ Long/Short?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Tỷ lệ Long/Short?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-085",
+          "title": "CVD (Cumulative Volume Delta)",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** CVD (Cumulative Volume Delta) trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng CVD (Cumulative Volume Delta) giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "CVD (Cumulative Volume Delta): trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của CVD (Cumulative Volume Delta)",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng CVD (Cumulative Volume Delta)."
+            },
+            {
+              "q": "Vì sao cần CVD (Cumulative Volume Delta)?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng CVD (Cumulative Volume Delta)?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-086",
+          "title": "Cấu trúc thị trường HH/HL/LH/LL",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Cấu trúc thị trường HH/HL/LH/LL trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Cấu trúc thị trường HH/HL/LH/LL giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Cấu trúc thị trường HH/HL/LH/LL: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Cấu trúc thị trường HH/HL/LH/LL",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Cấu trúc thị trường HH/HL/LH/LL."
+            },
+            {
+              "q": "Vì sao cần Cấu trúc thị trường HH/HL/LH/LL?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Cấu trúc thị trường HH/HL/LH/LL?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-087",
+          "title": "SMC: POI & Order Block",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** SMC: POI & Order Block trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng SMC: POI & Order Block giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "SMC: POI & Order Block: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của SMC: POI & Order Block",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng SMC: POI & Order Block."
+            },
+            {
+              "q": "Vì sao cần SMC: POI & Order Block?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng SMC: POI & Order Block?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-088",
+          "title": "Fair Value Gap (FVG)",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Fair Value Gap (FVG) trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Fair Value Gap (FVG) giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Fair Value Gap (FVG): trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Fair Value Gap (FVG)",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Fair Value Gap (FVG)."
+            },
+            {
+              "q": "Vì sao cần Fair Value Gap (FVG)?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Fair Value Gap (FVG)?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-089",
+          "title": "Liquidity Sweep & Stop-hunt",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Liquidity Sweep & Stop-hunt trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Liquidity Sweep & Stop-hunt giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Liquidity Sweep & Stop-hunt: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Liquidity Sweep & Stop-hunt",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Liquidity Sweep & Stop-hunt."
+            },
+            {
+              "q": "Vì sao cần Liquidity Sweep & Stop-hunt?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Liquidity Sweep & Stop-hunt?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-090",
+          "title": "Chiến lược vào/ra lệnh",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Chiến lược vào/ra lệnh trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Chiến lược vào/ra lệnh giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Chiến lược vào/ra lệnh: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Chiến lược vào/ra lệnh",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Chiến lược vào/ra lệnh."
+            },
+            {
+              "q": "Vì sao cần Chiến lược vào/ra lệnh?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Chiến lược vào/ra lệnh?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-091",
+          "title": "Position Sizing & R:R",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Position Sizing & R:R trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Position Sizing & R:R giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Position Sizing & R:R: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Position Sizing & R:R",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Position Sizing & R:R."
+            },
+            {
+              "q": "Vì sao cần Position Sizing & R:R?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Position Sizing & R:R?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-092",
+          "title": "Nhật ký giao dịch",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Nhật ký giao dịch trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Nhật ký giao dịch giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Nhật ký giao dịch: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Nhật ký giao dịch",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Nhật ký giao dịch."
+            },
+            {
+              "q": "Vì sao cần Nhật ký giao dịch?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Nhật ký giao dịch?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-093",
+          "title": "Backtest cơ bản",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Backtest cơ bản trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Backtest cơ bản giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Backtest cơ bản: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Backtest cơ bản",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Backtest cơ bản."
+            },
+            {
+              "q": "Vì sao cần Backtest cơ bản?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Backtest cơ bản?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-094",
+          "title": "Đánh giá chiến lược",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Đánh giá chiến lược trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Đánh giá chiến lược giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Đánh giá chiến lược: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Đánh giá chiến lược",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Đánh giá chiến lược."
+            },
+            {
+              "q": "Vì sao cần Đánh giá chiến lược?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Đánh giá chiến lược?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-095",
+          "title": "Tâm lý & kỷ luật",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Tâm lý & kỷ luật trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Tâm lý & kỷ luật giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Tâm lý & kỷ luật: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Tâm lý & kỷ luật",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Tâm lý & kỷ luật."
+            },
+            {
+              "q": "Vì sao cần Tâm lý & kỷ luật?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Tâm lý & kỷ luật?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-096",
+          "title": "Kế hoạch giao dịch hoàn chỉnh",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Kế hoạch giao dịch hoàn chỉnh trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Kế hoạch giao dịch hoàn chỉnh giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Kế hoạch giao dịch hoàn chỉnh: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Kế hoạch giao dịch hoàn chỉnh",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Kế hoạch giao dịch hoàn chỉnh."
+            },
+            {
+              "q": "Vì sao cần Kế hoạch giao dịch hoàn chỉnh?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Kế hoạch giao dịch hoàn chỉnh?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-097",
+          "title": "Phân tích đa khung thời gian (MTF)",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Phân tích đa khung thời gian (MTF) trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Phân tích đa khung thời gian (MTF) giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Phân tích đa khung thời gian (MTF): trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Phân tích đa khung thời gian (MTF)",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Phân tích đa khung thời gian (MTF)."
+            },
+            {
+              "q": "Vì sao cần Phân tích đa khung thời gian (MTF)?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Phân tích đa khung thời gian (MTF)?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-098",
+          "title": "Giao dịch theo sự kiện (Event-driven)",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Giao dịch theo sự kiện (Event-driven) trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Giao dịch theo sự kiện (Event-driven) giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Giao dịch theo sự kiện (Event-driven): trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Giao dịch theo sự kiện (Event-driven)",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Giao dịch theo sự kiện (Event-driven)."
+            },
+            {
+              "q": "Vì sao cần Giao dịch theo sự kiện (Event-driven)?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Giao dịch theo sự kiện (Event-driven)?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-099",
+          "title": "Playbook tin tức & catalyst",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Playbook tin tức & catalyst trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Playbook tin tức & catalyst giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Playbook tin tức & catalyst: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Playbook tin tức & catalyst",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Playbook tin tức & catalyst."
+            },
+            {
+              "q": "Vì sao cần Playbook tin tức & catalyst?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Playbook tin tức & catalyst?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        },
+        {
+          "id": "L5-100",
+          "title": "Tổng hợp: từ beginner → pro",
+          "duration_min": 12,
+          "content": "**Định nghĩa:** Tổng hợp: từ beginner → pro trình bày theo ngôn ngữ dễ hiểu.\n\n**Vì sao quan trọng:** Hiểu đúng Tổng hợp: từ beginner → pro giúp ra quyết định tốt hơn và giảm rủi ro.\n\n**Lỗi thường gặp:** Áp dụng sai bối cảnh; cần dữ liệu và kiểm chứng đa khung.",
+          "quiz": [
+            {
+              "q": "Tổng hợp: từ beginner → pro: trọng tâm là gì?",
+              "choices": [
+                "Khái niệm và ứng dụng của Tổng hợp: từ beginner → pro",
+                "Một loại coin cụ thể",
+                "Một sàn duy nhất",
+                "Không liên quan"
+              ],
+              "answer": 0,
+              "explain": "Trọng tâm là giải thích và áp dụng Tổng hợp: từ beginner → pro."
+            },
+            {
+              "q": "Vì sao cần Tổng hợp: từ beginner → pro?",
+              "choices": [
+                "Để quyết định tốt hơn",
+                "Chỉ để giải trí",
+                "Không ảnh hưởng",
+                "Vì hiếm dùng"
+              ],
+              "answer": 0,
+              "explain": "Kiến thức giúp quản trị rủi ro."
+            },
+            {
+              "q": "Lỗi khi áp dụng Tổng hợp: từ beginner → pro?",
+              "choices": [
+                "Sai bối cảnh",
+                "Luôn đúng",
+                "Không cần kiểm chứng",
+                "Chỉ trên 1 chain"
+              ],
+              "answer": 0,
+              "explain": "Tránh áp dụng máy móc; cần dữ liệu."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

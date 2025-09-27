@@ -1,0 +1,1 @@
+import 'package:flutter/material.dart'; import '../widgets/cm_card.dart'; class LaunchpadPage extends StatelessWidget{ const LaunchpadPage({super.key}); @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Launchpad')), body: ListView(padding: const EdgeInsets.all(16), children:[ const CMCard(child: Text('Danh sách dự án (demo).')), ])); }

@@ -1,0 +1,1 @@
+import 'package:flutter/material.dart'; import '../widgets/cm_card.dart'; class UserPage extends StatelessWidget{ const UserPage({super.key}); @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('User Profile')), body: ListView(padding: const EdgeInsets.all(16), children:[ const CMCard(child: Text('Hồ sơ người dùng (demo)')), ])); }
