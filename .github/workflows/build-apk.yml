@@ -1,4 +1,4 @@
-name: Android APK (FULL MAX)
+name: Android APK (ALL-IN-ONE)
 on:
   workflow_dispatch:
   push:
@@ -9,37 +9,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-
       - name: Ensure platforms
         run: flutter create .
-
       - name: Pub get
         run: flutter pub get
-
-      - name: Build release (verbose, no shrink)
+      - name: Build release
         run: |
           set -euxo pipefail
           flutter build apk --release --no-shrink -v | tee release_build.log
           echo "== APK PATHS FOUND =="
           find build -type f -name "*.apk" || true
-
       - name: Upload logs
         uses: actions/upload-artifact@v4
         with:
           name: release_build.log
           path: release_build.log
-
       - name: Upload APK (catch-all)
         uses: actions/upload-artifact@v4
         with:
