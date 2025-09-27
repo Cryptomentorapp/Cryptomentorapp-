@@ -1,1 +1,0 @@
-import 'package:flutter/material.dart'; class CMLoading extends StatelessWidget{ const CMLoading({super.key}); @override Widget build(BuildContext c)=>const Center(child:CircularProgressIndicator()); }

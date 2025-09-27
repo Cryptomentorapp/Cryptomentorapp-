@@ -1,1 +1,0 @@
-import 'package:flutter/material.dart'; class SignalsPage extends StatelessWidget{ const SignalsPage({super.key}); @override Widget build(BuildContext c)=>ListView(padding: const EdgeInsets.all(16), children: const [ Text('Signals demo (placeholder).'), ]);}
