@@ -1,1 +1,0 @@
-import 'package:flutter/material.dart'; import '../widgets/cm_card.dart'; class EventsPage extends StatelessWidget{ const EventsPage({super.key}); @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Events')), body: ListView(padding: const EdgeInsets.all(16), children:[ const CMCard(child: Text('Sự kiện sắp tới (demo)')), ])); }

@@ -1,1 +1,0 @@
-import 'package:flutter/material.dart'; class SettingsPage extends StatelessWidget{ const SettingsPage({super.key}); @override Widget build(BuildContext c)=>ListView(children: const [ ListTile(leading: FlutterLogo(), title: Text('Cryptomentor'), subtitle: Text('Full All-in-one 2.0.0')), Divider(), AboutListTile(applicationName:'Cryptomentor', applicationVersion:'2.0.0'), ]);}
