@@ -1,8 +1,10 @@
 name: Android APK
+
 on:
   workflow_dispatch:
   push:
     branches: [ main, master ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,13 +18,15 @@ jobs:
         with:
           channel: stable
       - run: flutter pub get
-      - run: flutter create . --platforms=android
       - name: Patch Android
         run: |
           sed -i 's/applicationId "com.example.cryptomentor"/applicationId "com.cryptomentor.app"/' android/app/build.gradle || true
           sed -i 's/minSdkVersion [0-9][0-9]*/minSdkVersion 21/' android/app/build.gradle || true
+          sed -i 's/shrinkResources true/shrinkResources false/' android/app/build.gradle || true
+          sed -i 's/minifyEnabled true/minifyEnabled false/' android/app/build.gradle || true
           MANIFEST=android/app/src/main/AndroidManifest.xml
-          grep -q 'android.permission.INTERNET' "$MANIFEST" || sed -i 's#<application#<uses-permission android:name="android.permission.INTERNET"/>\n    <application#' "$MANIFEST"
+          grep -q 'android.permission.INTERNET' "$MANIFEST" || \
+            sed -i 's#<application#<uses-permission android:name="android.permission.INTERNET"/>\n    <application#' "$MANIFEST"
       - run: flutter build apk --release -v
       - uses: actions/upload-artifact@v4
         with:
