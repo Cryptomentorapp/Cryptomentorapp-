@@ -1,0 +1,26 @@
+android {
+    namespace "com.cryptomentor.app"
+    compileSdkVersion 34
+
+    defaultConfig {
+        applicationId "com.cryptomentor.app"
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            // Tắt shrink/minify để tránh lỗi R8
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    implementation "androidx.multidex:multidex:2.0.1"
+}
