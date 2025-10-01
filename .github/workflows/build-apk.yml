@@ -1,44 +1,22 @@
-name: Android APK (ALL-IN-ONE)
+name: Android APK (Free APIs, Heavy Mock)
 on:
   workflow_dispatch:
   push:
-    branches: [ main, master ]
-
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Java 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2
         with:
           channel: stable
-      - name: Ensure platforms
-        run: flutter create .
-      - name: Pub get
-        run: flutter pub get
-      - name: Build release
-        run: |
-          set -euxo pipefail
-          flutter build apk --release --no-shrink -v | tee release_build.log
-          echo "== APK PATHS FOUND =="
-          find build -type f -name "*.apk" || true
-      - name: Upload logs
-        uses: actions/upload-artifact@v4
-        with:
-          name: release_build.log
-          path: release_build.log
-      - name: Upload APK (catch-all)
-        uses: actions/upload-artifact@v4
+      - run: flutter create .
+      - run: flutter pub get
+      - name: Set packageId
+        run: sed -i 's/applicationId ".*"/applicationId "com.cryptomentor.app"/' android/app/build.gradle || true
+      - run: flutter build apk --release --no-shrink -v | tee release_build.log
+      - uses: actions/upload-artifact@v4
         with:
           name: app-apk
-          path: |
-            build/app/outputs/flutter-apk/app-release.apk
-            build/app/outputs/flutter-apk/*-release.apk
-            build/**/outputs/**/*.apk
-          if-no-files-found: warn
+          path: build/app/outputs/flutter-apk/*.apk
