@@ -1,4 +1,4 @@
-name: Build Cryptomentor APK
+name: Build Cryptomentor APK (Auto-detect project dir)
 
 on:
   workflow_dispatch:
@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,28 +23,57 @@ jobs:
         with:
           channel: stable
 
+      - name: Detect Flutter project directory
+        id: detect
+        shell: bash
+        run: |
+          set -e
+          PROJ="$(git ls-files | grep -E '(^|/)(pubspec\.yaml)$' | head -n1 | xargs -r dirname)"
+          if [ -z "$PROJ" ]; then PROJ="."; fi
+          echo "proj_dir=$PROJ" >> $GITHUB_OUTPUT
+          echo "Detected project dir: $PROJ"
+
       - name: Flutter pub get
+        working-directory: ${{ steps.detect.outputs.proj_dir }}
         run: flutter pub get
 
-      - name: Generate android/
-        run: flutter create . --platforms=android
+      - name: Ensure android/ exists
+        working-directory: ${{ steps.detect.outputs.proj_dir }}
+        run: |
+          if [ ! -d android ]; then
+            flutter create . --platforms=android
+          fi
 
       - name: Patch Android (Gradle + Manifest)
+        working-directory: ${{ steps.detect.outputs.proj_dir }}
+        shell: bash
         run: |
-          sed -i 's/applicationId "com.example.cryptomentor"/applicationId "com.cryptomentor.app"/' android/app/build.gradle || true
-          sed -i 's/minSdkVersion [0-9][0-9]*/minSdkVersion 21/' android/app/build.gradle || true
-          sed -i 's/targetSdkVersion [0-9][0-9]*/targetSdkVersion 34/' android/app/build.gradle || true
-          sed -i 's/shrinkResources true/shrinkResources false/g' android/app/build.gradle || true
-          sed -i 's/minifyEnabled true/minifyEnabled false/g' android/app/build.gradle || true
-          grep -q "androidx.multidex:multidex" android/app/build.gradle || sed -i '/dependencies {/a\    implementation "androidx.multidex:multidex:2.0.1"' android/app/build.gradle
-          MANIFEST=android/app/src/main/AndroidManifest.xml
-          grep -q "android.permission.INTERNET" "$MANIFEST" || sed -i '2i <uses-permission android:name="android.permission.INTERNET"/>' "$MANIFEST"
+          set -e
+          GRADLE="android/app/build.gradle"
+          MANIFEST="android/app/src/main/AndroidManifest.xml"
+
+          if [ -f "$GRADLE" ]; then
+            sed -i 's/minSdkVersion[[:space:]]*[0-9][0-9]*/minSdkVersion 21/' "$GRADLE" || true
+            sed -i 's/targetSdkVersion[[:space:]]*[0-9][0-9]*/targetSdkVersion 34/' "$GRADLE" || true
+            sed -i 's/shrinkResources[[:space:]]*true/shrinkResources false/g' "$GRADLE" || true
+            sed -i 's/minifyEnabled[[:space:]]*true/minifyEnabled false/g' "$GRADLE" || true
+            grep -q "androidx.multidex:multidex" "$GRADLE" ||               sed -i '/dependencies {/a\    implementation "androidx.multidex:multidex:2.0.1"' "$GRADLE"
+          else
+            echo "Gradle file not found: $GRADLE"; ls -la android/app || true; exit 1
+          fi
+
+          if [ -f "$MANIFEST" ]; then
+            grep -q "android.permission.INTERNET" "$MANIFEST" ||               sed -i '2i <uses-permission android:name="android.permission.INTERNET"/>' "$MANIFEST"
+          else
+            echo "Manifest not found: $MANIFEST"; exit 1
+          fi
 
       - name: Build release APK
+        working-directory: ${{ steps.detect.outputs.proj_dir }}
         run: flutter build apk --release -v
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: cryptomentor-apk
-          path: build/app/outputs/flutter-apk/*.apk
+          path: ${{ steps.detect.outputs.proj_dir }}/build/app/outputs/flutter-apk/*.apk
