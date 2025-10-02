@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -22,19 +22,16 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
+          channel: stable
 
       - name: Patch Android (Gradle + Manifest)
         run: |
-          sed -i 's/minSdkVersion.*/minSdkVersion 21/' android/app/build.gradle
+          sed -i 's/minSdkVersion.*/minSdkVersion 21/' android/app/build.gradle || true
           sed -i 's/shrinkResources true/shrinkResources false/g' android/app/build.gradle || true
           sed -i 's/minifyEnabled true/minifyEnabled false/g' android/app/build.gradle || true
-          grep -q "multidex" android/app/build.gradle || \
-            echo "    implementation 'androidx.multidex:multidex:2.0.1'" >> android/app/build.gradle
+          grep -q "multidex" android/app/build.gradle ||             sed -i '/dependencies {/a\    implementation "androidx.multidex:multidex:2.0.1"' android/app/build.gradle
 
-          # Thêm quyền INTERNET vào manifest
-          grep -q "android.permission.INTERNET" android/app/src/main/AndroidManifest.xml || \
-            sed -i '2i <uses-permission android:name="android.permission.INTERNET"/>' android/app/src/main/AndroidManifest.xml
+          grep -q "android.permission.INTERNET" android/app/src/main/AndroidManifest.xml ||             sed -i '2i <uses-permission android:name="android.permission.INTERNET"/>' android/app/src/main/AndroidManifest.xml
 
       - name: Flutter clean & pub get
         run: |
@@ -42,10 +39,10 @@ jobs:
           flutter pub get
 
       - name: Build release APK
-        run: flutter build apk --release
+        run: flutter build apk --release -v
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cryptomentor-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/*.apk
