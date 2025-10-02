@@ -1,11 +1,9 @@
-
-name: build-apk
+name: Build Cryptomentor APK
 
 on:
-  push:
-    branches: [ "**" ]
-    tags: [ "v*", "release-*" ]
   workflow_dispatch:
+  push:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -18,22 +16,36 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
           java-version: '17'
+          distribution: 'temurin'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew || true
+      - name: Flutter pub get
+        run: flutter pub get
 
-      - name: Build Debug APK
+      - name: Generate android/
+        run: flutter create . --platforms=android
+
+      - name: Patch Android (Gradle + Manifest)
         run: |
-          ./gradlew :app:assembleDebug
-          ls -lah app/build/outputs/apk/debug || true
+          sed -i 's/applicationId "com.example.cryptomentor"/applicationId "com.cryptomentor.app"/' android/app/build.gradle || true
+          sed -i 's/minSdkVersion [0-9][0-9]*/minSdkVersion 21/' android/app/build.gradle || true
+          sed -i 's/targetSdkVersion [0-9][0-9]*/targetSdkVersion 34/' android/app/build.gradle || true
+          sed -i 's/shrinkResources true/shrinkResources false/g' android/app/build.gradle || true
+          sed -i 's/minifyEnabled true/minifyEnabled false/g' android/app/build.gradle || true
+          grep -q "androidx.multidex:multidex" android/app/build.gradle || sed -i '/dependencies {/a\    implementation "androidx.multidex:multidex:2.0.1"' android/app/build.gradle
+          MANIFEST=android/app/src/main/AndroidManifest.xml
+          grep -q "android.permission.INTERNET" "$MANIFEST" || sed -i '2i <uses-permission android:name="android.permission.INTERNET"/>' "$MANIFEST"
 
-      - name: Upload APK artifact
+      - name: Build release APK
+        run: flutter build apk --release -v
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: cryptomentor-app-debug-apk
-          path: app/build/outputs/apk/debug/*.apk
+          name: cryptomentor-apk
+          path: build/app/outputs/flutter-apk/*.apk
