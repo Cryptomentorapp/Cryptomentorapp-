@@ -13,7 +13,7 @@ android {
 
     buildTypes {
         release {
-            // Tắt shrink/minify để tránh lỗi R8
+            // Disable shrink/minify for stable release build during testing
             minifyEnabled false
             shrinkResources false
             signingConfig signingConfigs.debug
