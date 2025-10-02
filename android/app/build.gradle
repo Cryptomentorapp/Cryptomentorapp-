@@ -13,7 +13,6 @@ android {
 
     buildTypes {
         release {
-            // Disable shrink/minify for stable release build during testing
             minifyEnabled false
             shrinkResources false
             signingConfig signingConfigs.debug
