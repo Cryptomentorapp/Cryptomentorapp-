@@ -1,0 +1,503 @@
+name: Bootstrap Full Project & Build APK
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write   # cho phép push commit bằng GITHUB_TOKEN
+  actions: read
+  id-token: write
+
+jobs:
+  bootstrap_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.22.2'
+
+      - name: Create flutter project skeleton (android/ios)
+        run: |
+          # Nếu repo rỗng, tạo project; nếu đã có android/ thì bỏ qua
+          if [ ! -d "android" ]; then
+            flutter create .
+          fi
+
+      - name: Write pubspec.yaml
+        run: |
+          cat > pubspec.yaml <<'YML'
+          name: cryptomentor
+          description: Cryptomentor - AI Trading Suite
+          publish_to: "none"
+          version: 1.0.0+1
+          environment:
+            sdk: ">=3.3.0 <4.0.0"
+          dependencies:
+            flutter:
+              sdk: flutter
+            http: ^1.2.2
+            intl: ^0.19.0
+            url_launcher: ^6.3.0
+            flutter_markdown: ^0.7.3
+            shared_preferences: ^2.2.3
+          dev_dependencies:
+            flutter_test:
+              sdk: flutter
+            flutter_lints: ^4.0.0
+          flutter:
+            uses-material-design: true
+            assets:
+              - assets/data/
+          YML
+
+      - name: Ensure folders
+        run: |
+          mkdir -p lib/screens lib/services lib/repositories lib/theme assets/data
+
+      - name: Write theme/app_theme.dart
+        run: |
+          cat > lib/theme/app_theme.dart <<'DART'
+          import 'package:flutter/material.dart';
+          ThemeData buildAppTheme() {
+            const gold = Color(0xFFE2C268);
+            return ThemeData(
+              useMaterial3: true,
+              brightness: Brightness.dark,
+              colorScheme: const ColorScheme.dark(primary: gold, secondary: gold),
+              scaffoldBackgroundColor: const Color(0xFF0D0F12),
+              textTheme: const TextTheme(
+                headlineSmall: TextStyle(fontWeight: FontWeight.w800),
+                bodyMedium: TextStyle(color: Colors.white70),
+              ),
+            );
+          }
+          DART
+
+      - name: Write services (HTTP/CoinGecko/CryptoPanic)
+        run: |
+          cat > lib/services/http_client.dart <<'DART'
+          import 'dart:convert';
+          import 'package:http/http.dart' as http;
+          class HttpX {
+            static Future<dynamic> getJson(String url) async {
+              final r = await http.get(Uri.parse(url)).timeout(const Duration(seconds: 15));
+              if (r.statusCode>=200 && r.statusCode<300) {
+                final body = r.body.isNotEmpty ? r.body : 'null';
+                try { return json.decode(body); } catch (_) { return body; }
+              }
+              throw Exception('HTTP ${r.statusCode}: ${r.body}');
+            }
+          }
+          DART
+
+          cat > lib/services/coingecko.dart <<'DART'
+          import 'http_client.dart';
+          class Gecko {
+            static Future<List<dynamic>> markets({int perPage = 100, int page = 1}) async {
+              final url = 'https://api.coingecko.com/api/v3/coins/markets'
+                  '?vs_currency=usd&order=market_cap_desc&per_page=$perPage&page=$page&sparkline=false&price_change_percentage=24h';
+              final data = await HttpX.getJson(url);
+              return (data is List) ? data : <dynamic>[];
+            }
+          }
+          DART
+
+          cat > lib/services/cryptopanic.dart <<'DART'
+          import 'http_client.dart';
+          class CryptoPanic {
+            static Future<List<dynamic>> postsPublic() async {
+              final url = 'https://cryptopanic.com/api/v1/posts/?public=true';
+              final data = await HttpX.getJson(url);
+              return (data is Map && data['results'] is List) ? data['results'] : <dynamic>[];
+            }
+          }
+          DART
+
+      - name: Write repositories
+        run: |
+          cat > lib/repositories/market_repo.dart <<'DART'
+          import 'dart:convert';
+          import 'package:flutter/services.dart' show rootBundle;
+          import '../services/coingecko.dart';
+          class MarketRepo {
+            Future<List<Map<String, dynamic>>> list() async {
+              try {
+                final live = await Gecko.markets(perPage: 100, page: 1);
+                if (live.isNotEmpty) return live.cast<Map<String, dynamic>>();
+              } catch (_) {}
+              final txt = await rootBundle.loadString('assets/data/tokens.json');
+              return (json.decode(txt) as List).cast<Map<String, dynamic>>();
+            }
+          }
+          DART
+
+          cat > lib/repositories/news_repo.dart <<'DART'
+          import 'dart:convert';
+          import 'package:flutter/services.dart' show rootBundle;
+          import '../services/cryptopanic.dart';
+          class NewsRepo {
+            Future<List<Map<String, dynamic>>> list() async {
+              try {
+                final live = await CryptoPanic.postsPublic();
+                if (live.isNotEmpty) {
+                  return live.map<Map<String, dynamic>>((e) => {
+                    "title": (e["title"] ?? "").toString(),
+                    "source": ((e["source"]??{})["title"] ?? "").toString(),
+                  }).toList();
+                }
+              } catch (_) {}
+              final txt = await rootBundle.loadString('assets/data/news.json');
+              return (json.decode(txt) as List).cast<Map<String, dynamic>>();
+            }
+          }
+          DART
+
+          cat > lib/repositories/token_repo.dart <<'DART'
+          import 'dart:convert';
+          import 'package:flutter/services.dart' show rootBundle;
+          class TokenRepo {
+            Future<Map<String, dynamic>> scanByContract(String contract) async {
+              final txt = await rootBundle.loadString('assets/data/token_risk_rules.json');
+              final rules = (json.decode(txt) as Map<String, dynamic>);
+              final risk = rules[contract.toLowerCase()] ?? {"risk":"unknown","notes":"Not in local list"};
+              return risk;
+            }
+            Future<List<Map<String, dynamic>>> searchByName(String name) async {
+              final txt = await rootBundle.loadString('assets/data/tokens.json');
+              final items = (json.decode(txt) as List).cast<Map<String, dynamic>>();
+              final q = name.toLowerCase();
+              return items.where((m) =>
+                (m['name']??'').toString().toLowerCase().contains(q) ||
+                (m['symbol']??'').toString().toLowerCase().contains(q)
+              ).take(20).toList();
+            }
+          }
+          DART
+
+          cat > lib/repositories/whales_repo.dart <<'DART'
+          import 'dart:convert';
+          import 'package:flutter/services.dart' show rootBundle;
+          class WhalesRepo {
+            Future<List<Map<String, dynamic>>> top() async {
+              final txt = await rootBundle.loadString('assets/data/whales.json');
+              return (json.decode(txt) as List).cast<Map<String, dynamic>>();
+            }
+          }
+          DART
+
+          cat > lib/repositories/signals_repo.dart <<'DART'
+          import 'dart:convert';
+          import 'package:flutter/services.dart' show rootBundle;
+          class SignalsRepo {
+            Future<List<Map<String, dynamic>>> list() async {
+              final txt = await rootBundle.loadString('assets/data/signals.json');
+              return (json.decode(txt) as List).cast<Map<String, dynamic>>();
+            }
+          }
+          DART
+
+      - name: Write screens (UI theo layout đen–vàng)
+        run: |
+          cat > lib/screens/market.dart <<'DART'
+          import 'package:flutter/material.dart';
+          import '../repositories/market_repo.dart';
+          class MarketScreen extends StatefulWidget { const MarketScreen({super.key}); @override State<MarketScreen> createState()=>_S(); }
+          class _S extends State<MarketScreen> {
+            final repo = MarketRepo(); late Future<List<Map<String,dynamic>>> fut;
+            @override void initState(){ super.initState(); fut = repo.list(); }
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Market')),
+              body: FutureBuilder<List<Map<String,dynamic>>>(future: fut, builder: (_,s){
+                if(s.connectionState!=ConnectionState.done) return const Center(child:CircularProgressIndicator());
+                if(s.hasError) return Center(child: Text('Error: ${s.error}'));
+                final items=s.data??[];
+                return ListView.separated(itemCount: items.length, separatorBuilder: (_, __)=>const Divider(height:1),
+                  itemBuilder: (_,i){ final r=items[i]; final price=r['current_price']??r['price']??'-';
+                    return ListTile(title: Text('${r['name']} (${(r['symbol']??'').toString().toUpperCase()})'), trailing: Text('$price'));});
+              }));
+          }
+          DART
+
+          cat > lib/screens/news.dart <<'DART'
+          import 'package:flutter/material.dart';
+          import '../repositories/news_repo.dart';
+          class NewsScreen extends StatefulWidget { const NewsScreen({super.key}); @override State<NewsScreen> createState()=>_S(); }
+          class _S extends State<NewsScreen> {
+            final repo=NewsRepo(); late Future<List<Map<String,dynamic>>> fut;
+            @override void initState(){ super.initState(); fut = repo.list(); }
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('News')),
+              body: FutureBuilder<List<Map<String,dynamic>>>(future:fut, builder:(_,s){
+                if(s.connectionState!=ConnectionState.done) return const Center(child:CircularProgressIndicator());
+                if(s.hasError) return Center(child: Text('Error: ${s.error}'));
+                final items=s.data??[];
+                return ListView.separated(itemCount:items.length, separatorBuilder:(_, __)=>const Divider(height:1),
+                  itemBuilder:(_,i){ final r=items[i]; return ListTile(title: Text('${r['title']}'), subtitle: Text('${r['source']??''}'));});
+              }));
+          }
+          DART
+
+          cat > lib/screens/token_scanner.dart <<'DART'
+          import 'package:flutter/material.dart';
+          import '../repositories/token_repo.dart';
+          class TokenScannerScreen extends StatefulWidget { const TokenScannerScreen({super.key}); @override State<TokenScannerScreen> createState()=>_S(); }
+          class _S extends State<TokenScannerScreen> {
+            final repo = TokenRepo(); final ctr = TextEditingController();
+            Map<String,dynamic>? result; List<Map<String,dynamic>> choices = [];
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Token Scanner')),
+              body: Padding(padding: const EdgeInsets.all(16), child: Column(children: [
+                TextField(controller: ctr, decoration: const InputDecoration(labelText: 'Tên token hoặc contract', border: OutlineInputBorder())),
+                const SizedBox(height: 8),
+                Row(children: [
+                  ElevatedButton(onPressed: _search, child: const Text('Tìm theo tên')),
+                  const SizedBox(width: 8),
+                  ElevatedButton(onPressed: _scan, child: const Text('Quét contract')),
+                ]),
+                const Divider(),
+                if (choices.isNotEmpty) Expanded(child: ListView.builder(itemCount: choices.length, itemBuilder: (_,i){
+                  final r=choices[i]; return ListTile(title: Text('${r['name']} (${(r['symbol']??'').toString().toUpperCase()})'),
+                    onTap: ()=>setState(()=>result={"risk":"unknown","notes":"Chọn contract đúng để quét chi tiết"}));})),
+                if (result!=null) Text('Kết quả: ${result!['risk']} – ${result!['notes']}')
+              ])));
+            Future<void> _search() async { final q=ctr.text.trim(); if(q.isEmpty) return;
+              final list=await repo.searchByName(q); setState(()=>choices=list); }
+            Future<void> _scan() async { final contract=ctr.text.trim(); if(contract.isEmpty) return;
+              final r=await repo.scanByContract(contract); setState(()=>result=r); }
+          }
+          DART
+
+          cat > lib/screens/whales.dart <<'DART'
+          import 'package:flutter/material.dart';
+          import '../repositories/whales_repo.dart';
+          class WhalesScreen extends StatefulWidget { const WhalesScreen({super.key}); @override State<WhalesScreen> createState()=>_S(); }
+          class _S extends State<WhalesScreen> {
+            final repo=WhalesRepo(); late Future<List<Map<String,dynamic>>> fut;
+            @override void initState(){ super.initState(); fut = repo.top(); }
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Whales')),
+              body: FutureBuilder<List<Map<String,dynamic>>>(future:fut, builder:(_,s){
+                if(s.connectionState!=ConnectionState.done) return const Center(child:CircularProgressIndicator());
+                final items=s.data??[];
+                return ListView.separated(itemCount:items.length, separatorBuilder:(_, __)=>const Divider(height:1),
+                  itemBuilder:(_,i){ final r=items[i]; return ListTile(title: Text(r['label']??'-'), subtitle: Text('${r['chain']} - ${r['address']}'));});}));
+          }
+          DART
+
+          cat > lib/screens/signals.dart <<'DART'
+          import 'package:flutter/material.dart';
+          import '../repositories/signals_repo.dart';
+          class SignalsScreen extends StatefulWidget { const SignalsScreen({super.key}); @override State<SignalsScreen> createState()=>_S(); }
+          class _S extends State<SignalsScreen> {
+            final repo=SignalsRepo(); late Future<List<Map<String,dynamic>>> fut;
+            @override void initState(){ super.initState(); fut = repo.list(); }
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Signals')),
+              body: FutureBuilder<List<Map<String,dynamic>>>(future:fut, builder:(_,s){
+                if(s.connectionState!=ConnectionState.done) return const Center(child:CircularProgressIndicator());
+                final items=s.data??[];
+                return ListView.separated(itemCount:items.length, separatorBuilder: (_, __)=>const Divider(height:1),
+                  itemBuilder:(_,i){ final r=items[i]; return ListTile(title: Text('${r['pair']} • ${r['tf']}'), trailing: Text('${r['dir']} (${r['conf']})'));});}));
+          }
+          DART
+
+          cat > lib/screens/cmt_hub.dart <<'DART'
+          import 'package:flutter/material.dart';
+          class CMTHubScreen extends StatelessWidget { const CMTHubScreen({super.key});
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('CMT Hub')), body: const Center(child: Text('CMT token info & toggles'))); }
+          DART
+
+          cat > lib/screens/academy.dart <<'DART'
+          import 'dart:convert';
+          import 'package:flutter/material.dart';
+          import 'package:flutter/services.dart' show rootBundle;
+          class AcademyScreen extends StatefulWidget { const AcademyScreen({super.key}); @override State<AcademyScreen> createState()=>_S(); }
+          class _S extends State<AcademyScreen> {
+            late Future<List<Map<String,dynamic>>> fut;
+            @override void initState(){ super.initState(); fut = _load(); }
+            Future<List<Map<String,dynamic>>> _load() async {
+              final txt = await rootBundle.loadString('assets/data/academy_index.json');
+              return (json.decode(txt) as List).cast<Map<String,dynamic>>();
+            }
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Academy')),
+              body: FutureBuilder<List<Map<String,dynamic>>>(future:fut, builder:(_,s){
+                if(s.connectionState!=ConnectionState.done) return const Center(child:CircularProgressIndicator());
+                final items=s.data??[];
+                return ListView.separated(itemCount:items.length, separatorBuilder:(_, __)=>const Divider(height:1),
+                  itemBuilder:(_,i){ final r=items[i]; return ListTile(title: Text(r['title']??'-'), subtitle: Text('${r['level']} • ${r['minutes']}m'));});
+              }));
+          }
+          DART
+
+          cat > lib/screens/launchpad.dart <<'DART'
+          import 'package:flutter/material.dart';
+          class LaunchpadScreen extends StatelessWidget { const LaunchpadScreen({super.key});
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Launchpad')), body: const Center(child: Text('Upcoming/active launches (mock)'))); }
+          DART
+
+          cat > lib/screens/community.dart <<'DART'
+          import 'package:flutter/material.dart';
+          class CommunityScreen extends StatelessWidget { const CommunityScreen({super.key});
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Community')), body: const Center(child: Text('Community hub'))); }
+          DART
+
+          cat > lib/screens/events.dart <<'DART'
+          import 'package:flutter/material.dart';
+          class EventsScreen extends StatelessWidget { const EventsScreen({super.key});
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Events')), body: const Center(child: Text('Crypto events calendar'))); }
+          DART
+
+          cat > lib/screens/user.dart <<'DART'
+          import 'package:flutter/material.dart';
+          class UserScreen extends StatelessWidget { const UserScreen({super.key});
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('User')), body: const Center(child: Text('Profile & Settings'))); }
+          DART
+
+      - name: Write main.dart (home + routes + dashboard)
+        run: |
+          cat > lib/main.dart <<'DART'
+          import 'package:flutter/material.dart';
+          import 'theme/app_theme.dart';
+          import 'screens/market.dart'; import 'screens/news.dart'; import 'screens/token_scanner.dart';
+          import 'screens/whales.dart'; import 'screens/signals.dart'; import 'screens/cmt_hub.dart';
+          import 'screens/academy.dart'; import 'screens/launchpad.dart'; import 'screens/community.dart';
+          import 'screens/events.dart'; import 'screens/user.dart';
+          void main()=>runApp(const CryptomentorApp());
+          class CryptomentorApp extends StatelessWidget{
+            const CryptomentorApp({super.key});
+            @override Widget build(BuildContext c)=>MaterialApp(
+              title:'Cryptomentor', debugShowCheckedModeBanner:false, theme: buildAppTheme(),
+              home: const HomeScreen(),
+              routes:{'/market':(_)=>const MarketScreen(),'/news':(_)=>const NewsScreen(),
+                '/token_scanner':(_)=>const TokenScannerScreen(),'/whales':(_)=>const WhalesScreen(),
+                '/signals':(_)=>const SignalsScreen(),'/cmt_hub':(_)=>const CMTHubScreen(),
+                '/academy':(_)=>const AcademyScreen(),'/launchpad':(_)=>const LaunchpadScreen(),
+                '/community':(_)=>const CommunityScreen(),'/events':(_)=>const EventsScreen(),
+                '/user':(_)=>const UserScreen(),},
+            );
+          }
+          class HomeScreen extends StatefulWidget { const HomeScreen({super.key}); @override State<HomeScreen> createState()=>_S(); }
+          class _S extends State<HomeScreen> {
+            int _idx=0; final pages=const[_Dashboard(),NewsScreen(),CommunityScreen(),EventsScreen(),UserScreen()];
+            @override Widget build(BuildContext c)=>Scaffold(appBar: AppBar(title: const Text('Cryptomentor')),
+              body: pages[_idx],
+              bottomNavigationBar: NavigationBar(selectedIndex:_idx,onDestinationSelected:(i)=>setState(()=>_idx=i),
+                destinations: const[
+                  NavigationDestination(icon: Icon(Icons.home_outlined),label:'Home'),
+                  NavigationDestination(icon: Icon(Icons.article_outlined),label:'News'),
+                  NavigationDestination(icon: Icon(Icons.forum_outlined),label:'Community'),
+                  NavigationDestination(icon: Icon(Icons.event_outlined),label:'Events'),
+                  NavigationDestination(icon: Icon(Icons.person_outline),label:'User'),
+                ]),
+            );
+          }
+          class _Dashboard extends StatelessWidget{ const _Dashboard();
+            @override Widget build(BuildContext c)=>ListView(padding: const EdgeInsets.all(16), children:[
+              const Text('Modules',style: TextStyle(fontSize:20,fontWeight:FontWeight.w800)), const SizedBox(height:12),
+              Wrap(spacing:12,runSpacing:12,children:[
+                _Tile('Market',Icons.pie_chart_outline,'/market'),
+                _Tile('Signals',Icons.show_chart,'/signals'),
+                _Tile('Token Scanner',Icons.shield_outlined,'/token_scanner'),
+                _Tile('Whales',Icons.sailing_outlined,'/whales'),
+                _Tile('CMT Hub',Icons.info_outline,'/cmt_hub'),
+                _Tile('Academy',Icons.school_outlined,'/academy'),
+                _Tile('Launchpad',Icons.rocket_outlined,'/launchpad'),
+                _Tile('News',Icons.article_outlined,'/news'),
+              ]),
+            ]);
+          }
+          class _Tile extends StatelessWidget{
+            final String title; final IconData icon; final String route; const _Tile(this.title,this.icon,this.route,{super.key});
+            @override Widget build(BuildContext c)=>InkWell(onTap:()=>Navigator.pushNamed(c,route),
+              child: Container(width:160,height:100,decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20), border: Border.all(color: Colors.amber.withOpacity(.4))),
+                padding: const EdgeInsets.all(12), child: Column(crossAxisAlignment: CrossAxisAlignment.start,children:[
+                  Icon(icon,color: Colors.amberAccent), const Spacer(),
+                  Text(title,style: const TextStyle(fontSize:16,fontWeight:FontWeight.w700)),
+                ])));
+          }
+          DART
+
+      - name: Write assets (mock data + fallback)
+        run: |
+          cat > assets/data/tokens.json <<'JSON'
+          [
+            {"id":"bitcoin","symbol":"btc","name":"Bitcoin","current_price":68000},
+            {"id":"ethereum","symbol":"eth","name":"Ethereum","current_price":2500},
+            {"id":"solana","symbol":"sol","name":"Solana","current_price":145}
+          ]
+          JSON
+
+          cat > assets/data/news.json <<'JSON'
+          [
+            {"title":"ETF dòng tiền vào kỷ lục","source":"CryptoPanic"},
+            {"title":"ETH devs chốt lịch hard fork","source":"CoinTelegraph"},
+            {"title":"DeFi TVL phục hồi Q4","source":"On-chain"}
+          ]
+          JSON
+
+          cat > assets/data/signals.json <<'JSON'
+          [
+            {"pair":"BTC/USDT","tf":"1h","dir":"long","conf":0.82},
+            {"pair":"ETH/USDT","tf":"4h","dir":"short","conf":0.65},
+            {"pair":"SOL/USDT","tf":"1h","dir":"long","conf":0.74}
+          ]
+          JSON
+
+          cat > assets/data/whales.json <<'JSON'
+          [
+            {"address":"0x1111111111111111111111111111111111111111","chain":"ETH","label":"Whale #1"},
+            {"address":"0x2222222222222222222222222222222222222222","chain":"BSC","label":"Whale #2"},
+            {"address":"0x3333333333333333333333333333333333333333","chain":"ETH","label":"Whale #3"}
+          ]
+          JSON
+
+          cat > assets/data/academy_index.json <<'JSON'
+          [
+            {"slug":"crypto-basics","title":"Crypto cơ bản","level":"Beginner","minutes":10},
+            {"slug":"ta-rsi","title":"Phân tích kỹ thuật: RSI","level":"Intermediate","minutes":12},
+            {"slug":"ta-support-resistance","title":"Hỗ trợ/Kháng cự","level":"Intermediate","minutes":15}
+          ]
+          JSON
+
+          cat > assets/data/token_risk_rules.json <<'JSON'
+          {
+            "0xdeadbeef00000000000000000000000000000000": {"risk":"high","notes":"Mint unlimited, suspicious owner"},
+            "0x0000000000000000000000000000000000000000": {"risk":"invalid","notes":"Zero address"}
+          }
+          JSON
+
+      - name: Android manifest: ensure INTERNET + app label + package
+        run: |
+          MANIFEST="android/app/src/main/AndroidManifest.xml"
+          if ! grep -q 'android.permission.INTERNET' "$MANIFEST"; then
+            sed -i 's|<application |<uses-permission android:name="android.permission.INTERNET" />\n<application |' "$MANIFEST"
+          fi
+          sed -i 's|package="[^"]*"|package="com.cryptomentor.app"|' "$MANIFEST" || true
+          sed -i 's|android:label="[^"]*"|android:label="Cryptomentor"|' "$MANIFEST" || true
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Commit and push full source to main
+        env: { GIT_AUTHOR_NAME: bot, GIT_AUTHOR_EMAIL: bot@users.noreply.github.com, GIT_COMMITTER_NAME: bot, GIT_COMMITTER_EMAIL: bot@users.noreply.github.com }
+        run: |
+          git add -A
+          git commit -m "feat: bootstrap full Cryptomentor source (UI + API free + assets)"
+          git push origin HEAD:main
+
+      - name: Build APK (release)
+        run: flutter build apk --release -v
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Cryptomentor-APK
+          path: build/app/outputs/flutter-apk/app-release.apk
