@@ -1,0 +1,1 @@
+import 'package:flutter/material.dart'; class WhalesScreen extends StatelessWidget{ const WhalesScreen({super.key}); @override Widget build(BuildContext ctx)=>Scaffold(appBar: AppBar(title: const Text('Whales Tracker')), body: const Center(child: Text('Whales tracker coming soon')));}

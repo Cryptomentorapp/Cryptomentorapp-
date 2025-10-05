@@ -1,0 +1,1 @@
+[{"pair": "BTC/USDT", "type": "LONG", "entry": 62000, "tp": [63000, 64500], "sl": 60300, "risk": "Medium", "tf": "H1", "source": "AI-Quant", "status": "Still Valid"}, {"pair": "ETH/USDT", "type": "SHORT", "entry": 2580, "tp": [2520, 2470], "sl": 2650, "risk": "High", "tf": "M15", "source": "Whale", "status": "Late Entry"}]
