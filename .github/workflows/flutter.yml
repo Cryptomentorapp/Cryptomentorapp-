@@ -1,56 +1,29 @@
-name: Build Cryptomentor APK
 
+name: Build Cryptomentor APK (Native)
 on:
   push:
     branches: [ main, master ]
   pull_request:
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     env:
       GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dkotlin.daemon.jvm.options=-Xmx2g"
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Java
-        uses: actions/setup-java@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
+          distribution: temurin
           java-version: '17'
-
-      # 🧩 Ghim Flutter version ổn định (tránh lỗi Kotlin)
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.6'   # <- Version này ổn định nhất khi build CI
-          channel: 'stable'
-
-      - name: Flutter doctor
-        run: flutter doctor -v
-
-      # 🧩 Cài dependency của project
-      - name: Install dependencies
-        run: flutter pub get
-
-      # 🧩 Tạo lại thư mục android/ios (embedding v2, ép project-name hợp lệ)
-      - name: Generate platform folders
-        run: flutter create --project-name cryptomentor --org com.appx.cryptomentor .
-
-      # 🧩 Dọn cache trước khi build (tránh lỗi Kotlin cũ)
-      - name: Clean before build
-        run: flutter clean
-
-      # 🧩 Build file APK
-      - name: Build release APK
-        run: flutter build apk --release --verbose
-
-      # 🧩 Upload APK lên tab "Artifacts" của GitHub Actions
-      - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
+          flutter-version: '3.19.6'
+          channel: stable
+      - run: flutter pub get
+      - run: flutter create --project-name cryptomentor --org com.appx.cryptomentor .
+      - run: flutter clean
+      - run: flutter build apk --release --verbose
+      - uses: actions/upload-artifact@v4
         with:
           name: cryptomentor-apk
           path: build/app/outputs/flutter-apk/app-release.apk
