@@ -15,46 +15,55 @@ jobs:
         with:
           flutter-version: '3.22.2'
 
-      - name: Create project if missing
+      - name: Create project if missing (force valid names)
         run: |
           if [ ! -d "android" ]; then
-            flutter create .
+            flutter create . \
+              --project-name cryptomentorapp \
+              --org com.cryptomentor
           fi
 
       - name: Ensure INTERNET permission
         run: |
-          sed -i 's|<application |<uses-permission android:name="android.permission.INTERNET" />\n<application |' android/app/src/main/AndroidManifest.xml
+          FILE=android/app/src/main/AndroidManifest.xml
+          if ! grep -q 'android.permission.INTERNET' "$FILE"; then
+            sed -i 's|<application |<uses-permission android:name="android.permission.INTERNET" />\
+            <application |' "$FILE"
+          fi
 
-      - name: Write simple main.dart
+      - name: Minimal main.dart (only if empty)
         run: |
           mkdir -p lib
-          cat > lib/main.dart <<'EOF'
-          import 'package:flutter/material.dart';
-          void main() => runApp(const App());
-          class App extends StatelessWidget {
-            const App({super.key});
-            @override
-            Widget build(BuildContext context) {
-              return MaterialApp(
-                home: Scaffold(
-                  backgroundColor: Colors.black,
-                  body: Center(
-                    child: Text('Cryptomentor APK Build OK',
-                      style: TextStyle(color: Colors.amber, fontSize: 20)),
+          if [ ! -s lib/main.dart ]; then
+            cat > lib/main.dart <<'EOF'
+            import 'package:flutter/material.dart';
+            void main() => runApp(const App());
+            class App extends StatelessWidget {
+              const App({super.key});
+              @override
+              Widget build(BuildContext context) {
+                return MaterialApp(
+                  title: 'Cryptomentor',
+                  home: Scaffold(
+                    backgroundColor: Colors.black,
+                    body: const Center(
+                      child: Text('Cryptomentor APK Build OK',
+                          style: TextStyle(color: Colors.amber, fontSize: 20)),
+                    ),
                   ),
-                ),
-              );
+                );
+              }
             }
-          }
-          EOF
+            EOF
+          fi
 
-      - name: Flutter pub get
+      - name: flutter pub get
         run: flutter pub get
 
       - name: Build release APK
         run: flutter build apk --release
 
-      - name: Upload artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: cryptomentor-apk
