@@ -33,7 +33,7 @@ jobs:
 
       # IMPORTANT: Generate Android/iOS folders (v2 embedding) before building
       - name: Generate platform folders
-        run: flutter create .
+        run: flutter create --project-name cryptomentor --org com.appx.cryptomentor .
 
       - name: Build release APK
         run: flutter build apk --release --verbose
