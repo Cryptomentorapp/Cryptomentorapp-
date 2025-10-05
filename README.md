@@ -70,3 +70,7 @@ assets/
 
 ## 📝 License
 Private repo, internal testing only.
+
+
+## CI on GitHub Actions
+- Workflow file at `.github/workflows/flutter.yml` auto-builds APK on push to `main`.
