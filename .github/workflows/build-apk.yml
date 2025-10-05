@@ -1,0 +1,66 @@
+name: Build Cryptomentor APK
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.24.3"
+
+      - name: Create project if missing (force valid names)
+        run: |
+          if [ ! -f "pubspec.yaml" ]; then
+            flutter create --project-name cryptomentorapp --org com.cryptomentor ./
+          fi
+
+      - name: Ensure INTERNET permission
+        run: |
+          FILE=android/app/src/main/AndroidManifest.xml
+          mkdir -p android/app/src/main
+          if [ ! -f "$FILE" ]; then
+            cat > $FILE <<'EOF'
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.cryptomentor">
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <application android:label="Cryptomentor" android:usesCleartextTraffic="true"/>
+</manifest>
+EOF
+          fi
+
+      - name: Minimal main.dart (only if empty)
+        shell: bash
+        run: |
+          mkdir -p lib
+          if [ ! -s lib/main.dart ]; then
+            printf "%s\n" \
+"import 'package:flutter/material.dart';" \
+"void main() => runApp(const App());" \
+"class App extends StatelessWidget { const App({super.key});" \
+"  @override Widget build(BuildContext context) {" \
+"    return MaterialApp(title:'Cryptomentor', home: Scaffold(" \
+"      backgroundColor: Colors.black," \
+"      body: Center(child: Text('Cryptomentor APK Build OK', style: TextStyle(color: Colors.amber,fontSize: 20)))," \
+"    )); } }" \
+> lib/main.dart
+          fi
+
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Build release APK
+        run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: cryptomentor-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
