@@ -1,21 +1,24 @@
-name: cryptomentorapp
-description: Cryptomentor Flutter app (full project, no webview)
-publish_to: "none"
+name: cryptomentor_app
+description: Cryptomentor – AI Trading Suite
+version: 1.0.0+1
 
 environment:
-  sdk: ">=2.18.0 <4.0.0"
+  sdk: '>=3.2.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.6
-  intl: ^0.18.1
+  cupertino_icons: ^1.0.6
+  http: ^1.2.1
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/json/tokens.json
-    - assets/json/news.json
-    - assets/json/signals.json
-    - assets/json/academy.json   # hoặc academy_index.json tùy bản 56KB
-    - assets/knowledge/
+    - assets/data/
+    - assets/icons/
+    - assets/images/
