@@ -1,1 +1,0 @@
-import 'package:flutter/material.dart'; class TokenInfoScreen extends StatelessWidget{ const TokenInfoScreen({super.key}); @override Widget build(BuildContext ctx)=>Scaffold(appBar: AppBar(title: const Text('CMT Info')), body: const Center(child: Text('Token info coming soon')));}
