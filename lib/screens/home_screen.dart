@@ -1,3 +1,4 @@
+import '../services/knowledge.dart';  // ở đầu file
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../components/header.dart';
@@ -26,12 +27,13 @@ class _HomeScreenState extends State<HomeScreen> {
   List<dynamic> markets = [];
   List<dynamic> marketsMock = [];
 
-  @override
-  void initState() {
-    super.initState();
-    _loadMock();
-    _loadLive();
-  }
+List<Map<String, dynamic>> corpus = [];
+@override
+void initState() {
+  super.initState();
+  _loadMock(); _loadLive();
+  KnowledgeService.loadCorpus().then((docs){ setState(()=> corpus = docs); });
+}
 
   Future<void> _loadMock() async {
     final s = await rootBundle.loadString('assets/json/tokens.json');
@@ -64,6 +66,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   MarketOverview(global: global),
                   const SizedBox(height: 12),
                   _marketTable(context, data),
+                  if (corpus.isNotEmpty) Card(
+  child: Padding(
+    padding: const EdgeInsets.all(12),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('AI Training Database (bundled)', style: TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
+        for (final d in corpus)
+          ListTile(
+            leading: const Icon(Icons.menu_book, color: Colors.amber),
+            title: Text(d['path']),
+            subtitle: Text((d['content'] as String).split('\n').take(2).join(' ')),
                 ],
               ),
             ),
