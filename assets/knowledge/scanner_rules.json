@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "id": "owner_priv",
+      "w": 0.25
+    },
+    {
+      "id": "top_holders",
+      "w": 0.25
+    },
+    {
+      "id": "liq_lock",
+      "w": 0.2
+    },
+    {
+      "id": "age",
+      "w": 0.1
+    },
+    {
+      "id": "verified",
+      "w": 0.2
+    }
+  ],
+  "thresh": {
+    "safe": 0.7,
+    "caution": 0.4
+  }
+}

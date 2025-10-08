@@ -1,0 +1,20 @@
+name: cryptomentorapp
+description: Cryptomentor Flutter app (full project, no webview)
+publish_to: "none"
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.6
+  intl: ^0.18.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/json/tokens.json
+    - assets/json/news.json
+    - assets/json/signals.json
+    - assets/json/academy.json
