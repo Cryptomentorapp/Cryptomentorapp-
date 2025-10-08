@@ -1,35 +1,30 @@
 name: build
-
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  android:
+  build-android:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Java 17
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "17"
+          java-version: 17
 
-      - name: Set up Flutter (pin version)
+      - name: Set up Flutter (pin stable)
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.22.3"   # <- pin rõ ràng để khỏi lỗi channel
-          channel: "stable"
+          channel: 'stable'
+          flutter-version: '3.19.6'   # ổn định với AGP 7.4.x/Gradle 7.6
           cache: true
 
-      - name: Flutter doctor (log)
-        run: flutter doctor -v
-
-      - name: Pub get
+      - name: Flutter pub get
         run: flutter pub get
 
       - name: Build release APK
@@ -38,5 +33,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-release.apk
+          name: app-release
           path: build/app/outputs/flutter-apk/app-release.apk
