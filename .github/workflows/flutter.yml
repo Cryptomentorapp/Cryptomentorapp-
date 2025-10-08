@@ -1,29 +1,23 @@
-
-name: Build Cryptomentor APK (Native)
+name: build-apk
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dkotlin.daemon.jvm.options=-Xmx2g"
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.6'
-          channel: stable
-      - run: flutter pub get
-      - run: flutter create --project-name cryptomentor --org com.appx.cryptomentor .
-      - run: flutter clean
-      - run: flutter build apk --release --verbose
-      - uses: actions/upload-artifact@v4
+          flutter-version: 'stable'
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Build release APK
+        run: flutter build apk --release --no-shrink
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
-          name: cryptomentor-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/*.apk
